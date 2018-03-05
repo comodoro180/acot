@@ -28,7 +28,7 @@
 
         <div class="box-body">
             
-          <table class="table table-bordered table-striped dt-responsive tablas" width="100%">
+          <table class="table table-bordered table-striped dt-responsive tablas">
             <thead>
               <tr>
                 <th style="width: 10px">#</th>
@@ -159,28 +159,22 @@
                   <span class="input-group-addon"> <i class="fa fa-user-circle"></i></span>
                   <select class="form-control input-lg" name="nuevoPerfil" required>
                     <option value="">Seleccionar el perfil</option> 
-                    <option value="1">Administrador</option> 
-                    <option value="2">Proveedor</option>
-                    <option value="3">Cotizador</option> 
+                    <option value="Admin">Administrador</option> 
+                    <option value="Proveedor">Proveedor</option>
+                    <option value="Cotizador">Cotizador</option> 
                   </select>
                 </div> 
-              </div>
-              
+              </div>            
             </div>
           </div>
 
           <div class="modal-footer">
             <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
-            <button type="submit" class="btn btn-primary" >Guardar usuario</button>
+            <button type="submit" class="btn btn-primary" data-dismiss="modal">Guardar usuario</button>
           </div>
-    
-          <?php
-            $crearUsuario = new ControladorUsuarios();
-            $crearUsuario -> ctrCrearUsuario();
-          ?>
           
         </form>
       </div>
-    </div>  
+
+    </div>
   </div>
-  <!-- FIN MODAL INGRESAR USUARIO -->
