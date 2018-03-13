@@ -41,60 +41,36 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>1</td>
-                <td>Admin</td>
-                <td>Admin</td>
-                <td>admin@acot.com.co</td>
-                <td>Administrador</td>
-                <td>
-                  <button class="btn btn-success btn-xs">Activado</button>
-                </td>
-                <td>
-                  <div class="btn-group" >
-
-                    <button class="btn btn-warning btn-xs"> <i class="fa fa-pencil"></i> </button>
-                    <button class="btn btn-danger btn-xs"> <i class="fa fa-times"></i> </button>
-
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>1</td>
-                <td>Admin</td>
-                <td>Admin</td>
-                <td>admin@acot.com.co</td>
-                <td>Administrador</td>
-                <td>
-                  <button class="btn btn-success btn-xs">Activado</button>
-                </td>
-                <td>
-                  <div class="btn-group" >
-
-                    <button class="btn btn-warning btn-xs"> <i class="fa fa-pencil"></i> </button>
-                    <button class="btn btn-danger btn-xs"> <i class="fa fa-times"></i> </button>
-
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td>1</td>
-                <td>Admin</td>
-                <td>Admin</td>
-                <td>admin@acot.com.co</td>
-                <td>Administrador</td>
-                <td>
-                  <button class="btn btn-success btn-xs">Activado</button>
-                </td>
-                <td>
-                  <div class="btn-group" >
-
-                    <button class="btn btn-warning btn-xs"> <i class="fa fa-pencil"></i> </button>
-                    <button class="btn btn-danger btn-xs"> <i class="fa fa-times"></i> </button>
-
-                  </div>
-                </td>
-              </tr>                                
+                
+              <?php
+                $usuarios = ModeloUsuarios::mdlMostrarUsuarios("tusuario", null, null);
+                //var_dump($usuarios);
+                foreach ($usuarios as $key => $value){
+                    echo '
+                        <tr>
+                          <td>'.$value["IDUSUARIO"].'</td>
+                          <td>'.$value["NOMBRE"].'</td>
+                          <td>'.$value["APELLIDO"].'</td>
+                          <td>'.$value["EMAIL"].'</td>
+                          <td>'.$value["PERFIL"].'</td>
+                          <td>';
+                          if ($value["ESTADO"] == 1){
+                            echo '<button class="btn btn-success btn-xs">Activado</button>';
+                          } else {
+                            echo '<button class="btn btn-danger btn-xs">Inactivo</button>';  
+                          }         
+                    echo '</td>
+                          <td>
+                            <div class="btn-group" >
+                                <button class="btn btn-warning btnEditarUsuario btn-xs" idusuario="'.$value["IDUSUARIO"].'" data-toggle="modal" data-target="#modalEditarUsuario"><i class="fa fa-pencil"></i></button>                                    
+                                <button class="btn btn-danger btnEliminarUsuario btn-xs" idusuario="'.$value["IDUSUARIO"].'"><i class="fa fa-times"></i></button>
+                            </div>
+                          </td>
+                        </tr>                        
+                    ';                    
+                }
+              ?>
+ 
             </tbody>
           </table>            
 
@@ -184,3 +160,82 @@
     </div>  
   </div>
   <!-- FIN MODAL INGRESAR USUARIO -->
+
+  <!-- MODAL EDITAR USUARIO -->  
+  <div id="modalEditarUsuario" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+
+        <form role="form" method="post" >
+
+          <div class="modal-header" style="background:#3c8dbc; color:white">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Editar usuario</h4>
+          </div>
+
+          <div class="modal-body">
+            <div class="box-body">
+
+              <div class="form-group">
+                <div class="input-group">
+                  <span class="input-group-addon"> <i class="fa fa-user"></i></span>
+                  <input type="text" class="form-control input-lg" id="editarNombre" name="editarNombre" value="" placeholder="Nombre" >                
+                </div>
+              </div>
+
+              <div class="form-group">
+                <div class="input-group">
+                  <span class="input-group-addon"> <i class="fa fa-user"></i></span>                
+                  <input type="text" class="form-control input-lg" id="editarApellido" name="editarApellido" value="" placeholder="Apellido" >
+                </div>
+              </div>            
+
+              <div class="form-group">
+                <div class="input-group">
+                  <span class="input-group-addon"> <i class="fa fa-envelope"></i></span>
+                  <input type="email" class="form-control input-lg" id="editarEmail" name="editarEmail" value="" placeholder="Correo electrónico" readonly>                
+                </div> 
+              </div>
+
+              <div class="form-group">
+                <div class="input-group">
+                  <span class="input-group-addon"> <i class="fa fa-key"></i></span>
+                  <input type="password" class="form-control input-lg" name="editarClave"  placeholder="Escriba la nueva contraseña">
+                  <input type="hidden" id="claveActual" name="claveActual">
+                </div> 
+              </div>
+
+              <div class="form-group">
+                <div class="input-group">
+                  <span class="input-group-addon"> <i class="fa fa-user-circle"></i></span>
+                  <select class="form-control input-lg" name="editarPerfil" >
+                    <option value="" id="editarPerfil"></option>
+                    <option value="1">Administrador</option> 
+                    <option value="2">Proveedor</option>
+                    <option value="3">Cotizador</option> 
+                  </select>
+                </div> 
+              </div>
+              
+            </div>
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
+            <button type="submit" class="btn btn-primary" >Modificar usuario</button>
+          </div>
+  
+        <?php
+
+          $editarUsuario = new ControladorUsuarios();
+          $editarUsuario -> ctrEditarUsuario();
+
+        ?> 
+
+        </form>
+      </div>
+    </div>  
+  </div>
+  <!-- FIN MODAL EDITAR USUARIO -->  

@@ -58,6 +58,14 @@
         </li> 
 --> 
         <li>
+          <a href="#">           
+           <?php
+                $usuario = $_SESSION["usuario"];
+                echo $usuario["NOMBRE"]." ".$usuario["APELLIDO"];
+           ?>
+          </a>
+        </li> 
+        <li>
           <a href="salir">
             <i class="fa fa-sign-out"></i>
             Cerrar sesión
