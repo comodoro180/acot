@@ -14,7 +14,7 @@ class ControladorUsuarios {
             $valor = $_POST["ingEmail"];
             
             $clave = crypt($_POST["ingClave"],'$2a$07$asxx54ahjppf45sd87a5a4dDDGsystemdev$');
-            //$clave = $_POST["ingClave"];
+            ////$clave = $_POST["ingClave"];
 
             $respuesta = ModeloUsuarios::MdlMostrarUsuarios($tabla, $campo, $valor);
 
