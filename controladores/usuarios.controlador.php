@@ -351,6 +351,7 @@ class ControladorUsuarios {
                 $respuesta = ModeloUsuarios::mdlActualizarUsuario2($tabla, $item2, $valor2, $item1, $valor1);
                 
                 if ($respuesta == "ok") {
+                    
                     $destinatario = $_POST["RecuperarEmail"];
                     $asunto = "ACOT-Recuperación de clave";
                     $mensaje = "Ingresa el siguiente código para recuperar la clave : ".$string_aleatorio;
