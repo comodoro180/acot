@@ -57,9 +57,11 @@ class ModeloUsuarios {
     EDITAR USUARIO
     =============================================*/
     static public function mdlEditarUsuario($tabla, $datos){
+        try {
+            
+            $stmt = Conexion::conectar()->prepare("UPDATE $tabla SET nombre = :nombre, apellido = :apellido, clave = :clave, idperfil = :idperfil, email = :email  WHERE idusuario = :idusuario");
 
-            $stmt = Conexion::conectar()->prepare("UPDATE $tabla SET nombre = :nombre, apellido = :apellido, clave = :clave, idperfil = :idperfil  WHERE email = :email");
-
+            $stmt -> bindParam(":idusuario", $datos["idusuario"], PDO::PARAM_STR);
             $stmt -> bindParam(":nombre", $datos["nombre"], PDO::PARAM_STR);
             $stmt -> bindParam(":apellido", $datos["apellido"], PDO::PARAM_STR);
             $stmt -> bindParam(":clave", $datos["clave"], PDO::PARAM_STR);
@@ -74,7 +76,75 @@ class ModeloUsuarios {
 
             $stmt -> close();
             $stmt = null;
+            
+        } catch (PDOException $ex) {
+            print "ERROR:" . $ex->getMessage();
+            return $ex->getMessage();
+        }             
     }
-
     
+    /*=============================================
+    ACTUALIZAR USUARIO
+    =============================================*/
+    static public function mdlActualizarUsuario($tabla, $item1, $valor1, $item2, $valor2){
+        
+            require_once "../conf/config.inc.php";
+
+            $stmt = Conexion::conectar()->prepare("UPDATE $tabla SET $item1 = :$item1 WHERE $item2 = :$item2");
+
+            $stmt -> bindParam(":".$item1, $valor1, PDO::PARAM_STR);
+            $stmt -> bindParam(":".$item2, $valor2, PDO::PARAM_STR);
+
+            if($stmt -> execute()){
+                    return "ok";
+            }else{
+                    return "error";	
+            }
+
+            $stmt -> close();
+            $stmt = null;
+    } 
+ 
+    /*=============================================
+    BORRAR USUARIO
+    =============================================*/    
+    static public function mdlBorrarUsuario($tabla, $datos){
+
+            include_once "../conf/config.inc.php";
+            
+            $stmt = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE idusuario = :idusuario");
+
+            $stmt -> bindParam(":idusuario", $datos, PDO::PARAM_INT);
+
+            if($stmt -> execute()){
+                    return "ok";
+            }else{
+                    return "error";
+            }
+            
+            $stmt -> close();
+            $stmt = null;
+    } 
+
+    /*=============================================
+    ACTUALIZAR USUARIO
+    =============================================*/
+    static public function mdlActualizarUsuario2($tabla, $item1, $valor1, $item2, $valor2){
+        
+            //require_once "../conf/config.inc.php";
+
+            $stmt = Conexion::conectar()->prepare("UPDATE $tabla SET $item1 = :$item1 WHERE $item2 = :$item2");
+
+            $stmt -> bindParam(":".$item1, $valor1, PDO::PARAM_STR);
+            $stmt -> bindParam(":".$item2, $valor2, PDO::PARAM_STR);
+
+            if($stmt -> execute()){
+                    return "ok";
+            }else{
+                    return "error";	
+            }
+
+            $stmt -> close();
+            $stmt = null;
+    }     
 }

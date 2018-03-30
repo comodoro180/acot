@@ -29,15 +29,14 @@ class AjaxUsuarios{
 	public $activarUsuario;
 	public $activarId;
 
-
 	public function ajaxActivarUsuario(){
 
-		$tabla = "usuarios";
+		$tabla = "tusuario";
 
 		$item1 = "estado";
 		$valor1 = $this->activarUsuario;
 
-		$item2 = "id";
+		$item2 = "idusuario";
 		$valor2 = $this->activarId;
 
 		$respuesta = ModeloUsuarios::mdlActualizarUsuario($tabla, $item1, $valor1, $item2, $valor2);

@@ -31,7 +31,7 @@
           <table class="table table-bordered table-striped dt-responsive tablas" width="100%">
             <thead>
               <tr>
-                <th style="width: 10px">#</th>
+                <th style="width: 10px">id</th>
                 <th>Nombre</th>
                 <th>Apellido</th>
                 <th>E-mail</th>
@@ -50,14 +50,14 @@
                         <tr>
                           <td>'.$value["IDUSUARIO"].'</td>
                           <td>'.$value["NOMBRE"].'</td>
-                          <td>'.$value["APELLIDO"].'</td>
+                          <td>'.$value["APELLIDO"].'</td>                              
                           <td>'.$value["EMAIL"].'</td>
                           <td>'.$value["PERFIL"].'</td>
                           <td>';
-                          if ($value["ESTADO"] == 1){
-                            echo '<button class="btn btn-success btn-xs">Activado</button>';
-                          } else {
-                            echo '<button class="btn btn-danger btn-xs">Inactivo</button>';  
+                          if ($value["ESTADO"] == 1){                            
+                            echo '<button class="btn btn-success btn-xs btnActivar" idusuario="'.$value["IDUSUARIO"].'" estadoUsuario="0">Activado</button>';
+                          } else {                           
+                            echo '<button class="btn btn-danger btn-xs btnActivar" idusuario="'.$value["IDUSUARIO"].'" estadoUsuario="1">Desactivado</button></td>';
                           }         
                     echo '</td>
                           <td>
@@ -177,9 +177,12 @@
 
           <div class="modal-body">
             <div class="box-body">
-
+                
+<!--              <input type="text" id="idusuario" name="idusuario" value="" placeholder="idusuario">-->
+              <input type="hidden" id="idusuario" name="idusuario">
+              
               <div class="form-group">
-                <div class="input-group">
+                <div class="input-group">                 
                   <span class="input-group-addon"> <i class="fa fa-user"></i></span>
                   <input type="text" class="form-control input-lg" id="editarNombre" name="editarNombre" value="" placeholder="Nombre" >                
                 </div>
@@ -195,7 +198,7 @@
               <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-addon"> <i class="fa fa-envelope"></i></span>
-                  <input type="email" class="form-control input-lg" id="editarEmail" name="editarEmail" value="" placeholder="Correo electrónico" readonly>                
+                  <input type="email" class="form-control input-lg" id="editarEmail" name="editarEmail" value="" placeholder="Correo electrónico">                
                 </div> 
               </div>
 
@@ -204,6 +207,7 @@
                   <span class="input-group-addon"> <i class="fa fa-key"></i></span>
                   <input type="password" class="form-control input-lg" name="editarClave"  placeholder="Escriba la nueva contraseña">
                   <input type="hidden" id="claveActual" name="claveActual">
+<!--                  <input type="text" class="form-control input-lg" id="claveActual" value="" name="claveActual" placeholder="Clave actual" >-->
                 </div> 
               </div>
 
@@ -239,3 +243,10 @@
     </div>  
   </div>
   <!-- FIN MODAL EDITAR USUARIO -->  
+  
+<?php
+
+  $borrarUsuario = new ControladorUsuarios();
+  $borrarUsuario -> ctrBorrarUsuario();
+  
+?> 
