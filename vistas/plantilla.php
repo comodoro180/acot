@@ -74,7 +74,7 @@ PLUGINGS DE JAVASCRIPT
 
           if ($_GET["ruta"] == "inicio" ||
                   $_GET["ruta"] == "usuarios" ||
-                  //$_GET["ruta"] == "categorias" ||
+                  //$_GET["ruta"] == "recuperar_clave" ||
                   //$_GET["ruta"] == "productos" ||
                   //$_GET["ruta"] == "clientes" ||
                   //$_GET["ruta"] == "ventas" ||
@@ -93,7 +93,17 @@ PLUGINGS DE JAVASCRIPT
       echo '</div>';
       
   } else {
-      require "modulos/login.php";
+      //require_once "modulos/recuperar_clave.php";
+      //require_once "modulos/recuperar_clave.php";
+      if (isset($_GET["ruta"])) {
+        if ($_GET["ruta"] == "recuperar_clave")  {
+            require_once "modulos/" . $_GET["ruta"] . ".php";
+        } else {
+            require_once "modulos/login.php";            
+        }
+      }else {
+            require_once "modulos/login.php";            
+      }      
   }
   ?>
 
