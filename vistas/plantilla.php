@@ -56,7 +56,7 @@ PLUGINGS DE JAVASCRIPT
     <!-- SweetAlert 2 -->
     <script src="vistas/plugins/sweetalert2/sweetalert2.all.js"></script>
     <!-- By default SweetAlert2 doesn't support IE. To enable IE 11 support, include Promise polyfill:-->
-    <script src="vistas/plugins/sweetalert2//core.js"></script>  
+    <script src="vistas/plugins/sweetalert2/core.js"></script>  
 </head>
 
 <!-- <body class="hold-transition skin-blue sidebar-collapse sidebar-mini"> -->
@@ -66,7 +66,7 @@ PLUGINGS DE JAVASCRIPT
   if (isset($_SESSION["iniciarSesion"]) && $_SESSION["iniciarSesion"] == 'ok') {
 
       echo '<div class="wrapper">';
-
+      require_once "conf/config.inc.php";
       require_once "modulos/cabezote.php";
       require_once "modulos/menu.php";
 
@@ -98,6 +98,7 @@ PLUGINGS DE JAVASCRIPT
   ?>
 
 <script src="vistas/js/plantilla.js"></script>
+<script src="vistas/js/usuarios.js"></script>
 
 </body>
 </html>

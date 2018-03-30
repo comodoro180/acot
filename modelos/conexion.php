@@ -4,7 +4,7 @@ class Conexion {
 
     static public function conectar() {       
         
-        require_once 'conf/config.inc.php';
+        //require_once '../conf/config.inc.php';
         
         try {
             $link = new PDO('mysql:host=' . NOMBRE_SERVIDOR . '; dbname=' . NOMBRE_BD, NOMBRE_USUARIO, PASSWORD);
