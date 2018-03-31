@@ -82,21 +82,21 @@
               <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-addon"> <i class="fa fa-user"></i></span>                
-                  <input type="text" class="form-control input-lg" name="nuevoApellido"  placeholder="Apellido" required>
+                  <input type="text" class="form-control input-lg" name="nuevoApellido" placeholder="Apellido" required>
                 </div>
               </div>            
 
               <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-addon"> <i class="fa fa-envelope"></i></span>
-                  <input type="email" class="form-control input-lg" name="nuevoEmail"  placeholder="Correo electrónico" required>                
+                  <input type="email" class="form-control input-lg" id="nuevoEmail" name="nuevoEmail" placeholder="Correo electrónico" required>                
                 </div> 
               </div>
 
               <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-addon"> <i class="fa fa-key"></i></span>
-                  <input type="password" class="form-control input-lg" name="nuevaClave"  placeholder="Contraseña" required>                
+                  <input type="password" class="form-control input-lg" name="nuevaClave" placeholder="Contraseña" required>                
                 </div> 
               </div>
 <!--

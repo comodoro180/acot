@@ -119,7 +119,7 @@
               <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-addon"> <i class="fa fa-envelope"></i></span>
-                  <input type="email" class="form-control input-lg" name="nuevoEmail"  placeholder="Correo electrónico" required>                
+                  <input type="email" class="form-control input-lg" id="nuevoEmail" name="nuevoEmail"  placeholder="Correo electrónico" required>                
                 </div> 
               </div>
 
