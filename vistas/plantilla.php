@@ -63,6 +63,7 @@ PLUGINGS DE JAVASCRIPT
 <body class="hold-transition skin-blue sidebar sidebar-mini login-page">
   
   <?php
+  
   if (isset($_SESSION["iniciarSesion"]) && $_SESSION["iniciarSesion"] == 'ok') {
 
       echo '<div class="wrapper">';
@@ -74,6 +75,7 @@ PLUGINGS DE JAVASCRIPT
 
           if ($_GET["ruta"] == "inicio" ||
                   $_GET["ruta"] == "usuarios" ||
+                  $_GET["ruta"] == "paises" ||
                   //$_GET["ruta"] == "recuperar_clave" ||
                   //$_GET["ruta"] == "productos" ||
                   //$_GET["ruta"] == "clientes" ||
@@ -109,6 +111,7 @@ PLUGINGS DE JAVASCRIPT
 
 <script src="vistas/js/plantilla.js"></script>
 <script src="vistas/js/usuarios.js"></script>
+<script src="vistas/js/paises.js"></script>
 
 </body>
 </html>
