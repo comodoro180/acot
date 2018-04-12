@@ -92,8 +92,7 @@
             <div class="box-body">
                 
               <div class="form-group">
-                <div class="input-group">
-                  <span class="input-group-addon"> <i class="fa fa-globe"></i></span>
+                  <label>País:</label>
                   <select class="form-control input-lg" name="nuevoDepartamentoIdpais" required>
                     <option value="">Seleccionar el país</option> 
                     <?php
@@ -103,14 +102,11 @@
                       }
                     ?>
                   </select>
-                </div> 
               </div>                
 
               <div class="form-group">
-                <div class="input-group">
-                  <span class="input-group-addon"> <i class="fa fa-pencil"></i></span>
+                  <label>Departamento:</label>
                   <input type="text" class="form-control input-lg" name="nuevoNombreDepartamento"  placeholder="Departamento" required>                
-                </div>
               </div>
 
             </div>
@@ -149,13 +145,10 @@
           <div class="modal-body">
             <div class="box-body">                
 
-<!--              <input type="hidden" id="iddepartamento" name="iddepartamento">-->
-              
-              <input type="text" id="iddepartamento" name="iddepartamento" value="">
-              
-              <div class="form-group">
-                <div class="input-group">
-                  <span class="input-group-addon"> <i class="fa fa-globe"></i></span>
+              <input type="hidden" id="iddepartamento" name="iddepartamento">
+             
+              <div class="form-group">                
+                  <label>País:</label>
                   <select class="form-control input-lg" name="editarDepartamentoIdpais" required>
                     <option value="" id="editarDepartamentoIdpais"></option> 
                     <?php
@@ -164,16 +157,13 @@
                         echo '<option value="'.$value["IDPAIS"].'">'.$value["NOMBRE"].'</option>';
                       }
                     ?>
-                  </select>
-                </div> 
+                  </select>                
               </div>                  
-              
-              <div class="form-group">
-                <div class="input-group">                 
-                  <span class="input-group-addon"> <i class="fa fa-user"></i></span>
-                  <input type="text" class="form-control input-lg" id="editarDepartamento" name="editarDepartamento" value="" placeholder="Departamento" >                
-                </div>
-              </div>
+
+              <div class="form-group">                                 
+                  <label>Departamento:</label>
+                  <input type="text" class="form-control input-lg" id="editarDepartamento" name="editarDepartamento" value="" placeholder="Departamento" >                                
+              </div>              
               
             </div>
           </div>
