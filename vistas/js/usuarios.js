@@ -27,7 +27,7 @@ $(".tablas").on("click", ".btnEditarUsuario", function(){
 			$("#claveActual").val(respuesta["CLAVE"]);
 		}
 	});
-})
+});
 
 /*=============================================
 ACTIVAR USUARIO
@@ -68,7 +68,7 @@ $(".tablas").on("click", ".btnActivar", function(){
 
   	}
 
-})
+});
 
 /*=============================================
 REVISAR SI EL USUARIO YA ESTÁ REGISTRADO
@@ -103,8 +103,8 @@ $("#nuevoUsuario").change(function(){
 
 	    }
 
-	})
-})
+	});
+});
 
 /*=============================================
 ELIMINAR USUARIO
