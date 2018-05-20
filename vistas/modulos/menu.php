@@ -76,10 +76,19 @@
         </li> 
 <!--ADMISNISTRACIÓN-->  
         <?php
-            if ($_GET["ruta"] == "paises" || 
+            if (//Geografía
+                $_GET["ruta"] == "paises" || 
                 $_GET["ruta"] == "departamentos" ||
                 $_GET["ruta"] == "ciudades" ||
-                $_GET["ruta"] == "usuarios") {                
+                //Usuarios    
+                $_GET["ruta"] == "roles" ||
+                $_GET["ruta"] == "usuarios"||
+                //Empresas    
+                $_GET["ruta"] == "empresas" ||
+                $_GET["ruta"] == "contactosEmpresa" ||
+                //Productos
+                $_GET["ruta"] == "tipoProducto"
+                    ) {                
                 echo '<li class="treeview active">';
             } else {
                 echo '<li class="treeview">';
@@ -135,7 +144,8 @@
                 </li>
              <!--ADMISNISTRACIÓN - USUARIOS-->
                 <?php
-                    if ($_GET["ruta"] == "usuarios" ) {                
+                    if ($_GET["ruta"] == "usuarios" ||
+                        $_GET["ruta"] == "roles") {                
                         echo '<li class="treeview active">';
                     } else {
                         echo '<li class="treeview">';
@@ -169,15 +179,22 @@
                             </a>
                         </li>
                         <li>
-                            <a href="">
+                            <a href="roles">
                               <i class="fa fa-circle-o"></i>
                               <span>Roles</span>
                             </a>
                         </li>                        
                     </ul>
                 </li>
-             <!--ADMISNISTRACIÓN - EMPRESAS-->                  
-                <li class="treeview">
+             <!--ADMISNISTRACIÓN - EMPRESAS--> 
+                <?php
+                    if ($_GET["ruta"] == "empresas" ||
+                        $_GET["ruta"] == "contactosEmpresa") {                
+                        echo '<li class="treeview active">';
+                    } else {
+                        echo '<li class="treeview">';
+                    }
+                ?>
                     <a href="">
                         <i class="fa fa-list-ul"></i>
                         <span>Empresas</span>
@@ -193,7 +210,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="">
+                            <a href="contactosEmpresa">
                               <i class="fa fa-circle-o"></i>
                               <span>Contactos por empresa</span>
                             </a>
@@ -230,8 +247,15 @@
                         </li>
                     </ul>
                 </li>  
-             <!--ADMISNISTRACIÓN - PRODUCTOS-->                  
-                <li class="treeview">
+             <!--ADMISNISTRACIÓN - PRODUCTOS-->
+                <?php
+                    if ($_GET["ruta"] == "tipoProducto" ||
+                        $_GET["ruta"] == "") {                
+                        echo '<li class="treeview active">';
+                    } else {
+                        echo '<li class="treeview">';
+                    }
+                ?>             
                     <a href="">
                         <i class="fa fa-list-ul"></i>
                         <span>Productos</span>
@@ -241,9 +265,9 @@
                     </a>
                     <ul class="treeview-menu">
                         <li>
-                            <a href="usuarios">
-                              <i class="fa fa-users"></i>
-                              <span>Menu 1.1</span>
+                            <a href="tipoProducto">
+                              <i class="fa fa-circle-o"></i>
+                              <span>Tipos de producto</span>
                             </a>
                         </li>
                         <li>
