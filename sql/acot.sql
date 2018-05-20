@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.5.2
+-- version 4.7.7
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-02-2018 a las 22:01:14
--- Versión del servidor: 10.1.21-MariaDB
--- Versión de PHP: 7.1.1
+-- Tiempo de generación: 20-05-2018 a las 04:01:47
+-- Versión del servidor: 10.1.30-MariaDB
+-- Versión de PHP: 7.2.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -243,13 +245,6 @@ CREATE TABLE `tperfil` (
   `DESCRPCION` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Volcado de datos para la tabla `tperfil`
---
-
-INSERT INTO `tperfil` (`IDPERFIL`, `NOMBRE`, `DESCRPCION`) VALUES
-(1, 'Admin', 'Usuario administrador del sistema');
-
 -- --------------------------------------------------------
 
 --
@@ -353,15 +348,17 @@ CREATE TABLE `tusuario` (
   `EMAIL` varchar(200) NOT NULL,
   `CLAVE` varchar(400) NOT NULL,
   `ESTADO` int(1) NOT NULL DEFAULT '1',
-  `IDPERFIL` int(11) NOT NULL
+  `IDPERFIL` int(11) NOT NULL,
+  `CODIGO` varchar(400) DEFAULT NULL COMMENT 'Codigo de verificaciòn cuando se requiere recuperar la contraseña'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `tusuario`
 --
 
-INSERT INTO `tusuario` (`IDUSUARIO`, `NOMBRE`, `APELLIDO`, `EMAIL`, `CLAVE`, `ESTADO`, `IDPERFIL`) VALUES
-(1, 'Admin', 'Admin', 'Admin', 'Admin', 1, 1);
+INSERT INTO `tusuario` (`IDUSUARIO`, `NOMBRE`, `APELLIDO`, `EMAIL`, `CLAVE`, `ESTADO`, `IDPERFIL`, `CODIGO`) VALUES
+(1, 'Admin', 'Admin A', 'admin@acot.com', '$2a$07$asxx54ahjppf45sd87a5au1gjqdU.ybWXdMxoN7YGHb9SmYjSf9na', 1, 1, '$2a$07$asxx54ahjppf45sd87a5aulIifwlxNr2rf7GPlyJT9BbZhEfanf3S');
+
 
 --
 -- Índices para tablas volcadas
@@ -372,6 +369,7 @@ INSERT INTO `tusuario` (`IDUSUARIO`, `NOMBRE`, `APELLIDO`, `EMAIL`, `CLAVE`, `ES
 --
 ALTER TABLE `tciudad`
   ADD PRIMARY KEY (`IDCIUDAD`),
+  ADD UNIQUE KEY `UK_CIUDAD` (`NOMBRE`),
   ADD KEY `TCIUDAD_fk0` (`IDDEPARTAMENTO`);
 
 --
@@ -539,112 +537,134 @@ ALTER TABLE `tusuario`
 -- AUTO_INCREMENT de la tabla `tciudad`
 --
 ALTER TABLE `tciudad`
-  MODIFY `IDCIUDAD` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `IDCIUDAD` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
 --
 -- AUTO_INCREMENT de la tabla `tcotizacion`
 --
 ALTER TABLE `tcotizacion`
   MODIFY `IDCOTIZACION` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT de la tabla `tcotizaciondetalle`
 --
 ALTER TABLE `tcotizaciondetalle`
   MODIFY `IDCOTIZACIONDETALLE` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT de la tabla `tcotizaciondetalletipoestado`
 --
 ALTER TABLE `tcotizaciondetalletipoestado`
   MODIFY `IDCOTIZACIONDETALLETIPOESTADO` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT de la tabla `tcotizaciontipoestado`
 --
 ALTER TABLE `tcotizaciontipoestado`
   MODIFY `IDCOTIZACIONTIPOESTADO` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT de la tabla `tdepartamento`
 --
 ALTER TABLE `tdepartamento`
-  MODIFY `IDDEPARTAMENTO` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `IDDEPARTAMENTO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
 --
 -- AUTO_INCREMENT de la tabla `tempresa`
 --
 ALTER TABLE `tempresa`
   MODIFY `IDEMPRESA` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT de la tabla `tempresacontactos`
 --
 ALTER TABLE `tempresacontactos`
   MODIFY `IDEMPRESACONTACTOS` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT de la tabla `tordenservicio`
 --
 ALTER TABLE `tordenservicio`
   MODIFY `IDORDENSERVICIO` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT de la tabla `tordenserviciotipoestado`
 --
 ALTER TABLE `tordenserviciotipoestado`
   MODIFY `IDORDENSERVICIOTIPOESTADO` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT de la tabla `tpais`
 --
 ALTER TABLE `tpais`
-  MODIFY `IDPAIS` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `IDPAIS` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
 --
 -- AUTO_INCREMENT de la tabla `tpedido`
 --
 ALTER TABLE `tpedido`
   MODIFY `IDPEDIDO` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT de la tabla `tpedidodetalle`
 --
 ALTER TABLE `tpedidodetalle`
   MODIFY `IDPEDIDODETALLE` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT de la tabla `tpedidotipoestado`
 --
 ALTER TABLE `tpedidotipoestado`
   MODIFY `IDPEDIDOTIPOESTADO` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT de la tabla `tperfil`
 --
 ALTER TABLE `tperfil`
-  MODIFY `IDPERFIL` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `IDPERFIL` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
 --
 -- AUTO_INCREMENT de la tabla `tproducto`
 --
 ALTER TABLE `tproducto`
   MODIFY `IDPRODUCTO` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT de la tabla `tproveedor`
 --
 ALTER TABLE `tproveedor`
   MODIFY `IDPROVEEDOR` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT de la tabla `tproveedorcontactos`
 --
 ALTER TABLE `tproveedorcontactos`
   MODIFY `IDEMPRESACONTACTOS` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT de la tabla `tproveedorproducto`
 --
 ALTER TABLE `tproveedorproducto`
   MODIFY `IDPROVEEDORPRODUCTO` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT de la tabla `tproveedortipoproducto`
 --
 ALTER TABLE `tproveedortipoproducto`
   MODIFY `IDPROVEEDORTIPOPRODUCTO` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT de la tabla `ttipoproducto`
 --
 ALTER TABLE `ttipoproducto`
   MODIFY `IDTIPOPRODUCTO` int(11) NOT NULL AUTO_INCREMENT;
+
 --
 -- AUTO_INCREMENT de la tabla `tusuario`
 --
 ALTER TABLE `tusuario`
-  MODIFY `IDUSUARIO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `IDUSUARIO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
 --
 -- Restricciones para tablas volcadas
 --
@@ -750,6 +770,7 @@ ALTER TABLE `tproveedortipoproducto`
 --
 ALTER TABLE `tusuario`
   ADD CONSTRAINT `TUSUARIO_fk0` FOREIGN KEY (`IDPERFIL`) REFERENCES `tperfil` (`IDPERFIL`);
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

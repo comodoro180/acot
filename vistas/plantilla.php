@@ -25,6 +25,7 @@
   <link rel="stylesheet" href="vistas/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
   <link rel="stylesheet" href="vistas/bower_components/datatables.net-bs/css/responsive.bootstrap.min.css">
   
+  
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -56,13 +57,14 @@ PLUGINGS DE JAVASCRIPT
     <!-- SweetAlert 2 -->
     <script src="vistas/plugins/sweetalert2/sweetalert2.all.js"></script>
     <!-- By default SweetAlert2 doesn't support IE. To enable IE 11 support, include Promise polyfill:-->
-    <script src="vistas/plugins/sweetalert2/core.js"></script>  
+    <script src="vistas/plugins/sweetalert2/core.js"></script>     
+      
 </head>
 
 <!-- <body class="hold-transition skin-blue sidebar-collapse sidebar-mini"> -->
 <body class="hold-transition skin-blue sidebar sidebar-mini login-page">
   
-  <?php
+  <?php  
   
   if (isset($_SESSION["iniciarSesion"]) && $_SESSION["iniciarSesion"] == 'ok') {
 
@@ -77,6 +79,7 @@ PLUGINGS DE JAVASCRIPT
                   $_GET["ruta"] == "usuarios" ||
                   $_GET["ruta"] == "paises" ||
                   $_GET["ruta"] == "departamentos" ||
+                  $_GET["ruta"] == "ciudades" ||
                   //$_GET["ruta"] == "recuperar_clave" ||
                   //$_GET["ruta"] == "productos" ||
                   //$_GET["ruta"] == "clientes" ||
@@ -109,11 +112,13 @@ PLUGINGS DE JAVASCRIPT
       }      
   }
   ?>
-
+    
+<!--<script src="vistas/js/menu.js"></script>-->
 <script src="vistas/js/plantilla.js"></script>
 <script src="vistas/js/usuarios.js"></script>
 <script src="vistas/js/paises.js"></script>
 <script src="vistas/js/departamentos.js"></script>
+<script src="vistas/js/ciudades.js"></script>
 
 </body>
 </html>

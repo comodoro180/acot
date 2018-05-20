@@ -74,9 +74,19 @@
                 </li>               
             </ul>
         </li> 
-<!--ADMISNISTRACIÓN-->        
-        <li class="treeview">
-            <a href="">
+<!--ADMISNISTRACIÓN-->  
+        <?php
+            if ($_GET["ruta"] == "paises" || 
+                $_GET["ruta"] == "departamentos" ||
+                $_GET["ruta"] == "ciudades" ||
+                $_GET["ruta"] == "usuarios") {                
+                echo '<li class="treeview active">';
+            } else {
+                echo '<li class="treeview">';
+            }
+        ?>
+<!--        <li class="treeview" id="menuAdmin">-->
+            <a href="" >
                 <i class="fa fa-cogs"></i>
                 <span>Administración</span>
                 <span class="pull-right-container">
@@ -84,8 +94,17 @@
                 </span>          
             </a>
             <ul class="treeview-menu">
-             <!--ADMISNISTRACIÓN - GEOGRAFÍA-->    
-                <li class="treeview">
+             <!--ADMISNISTRACIÓN - GEOGRAFÍA--> 
+                <?php
+                    if ($_GET["ruta"] == "paises" || 
+                        $_GET["ruta"] == "departamentos" ||
+                        $_GET["ruta"] == "ciudades") {                
+                        echo '<li class="treeview active">';
+                    } else {
+                        echo '<li class="treeview">';
+                    }
+                ?>             
+<!--                <li class="treeview">-->
                     <a href="">
                         <i class="fa fa-list-ul"></i>
                         <span>Geografía</span>
@@ -95,7 +114,7 @@
                     </a>
                     <ul class="treeview-menu">
                         <li>
-                            <a href="paises">
+                            <a href="paises" id="a_paises">
                               <i class="fa fa-circle-o"></i>
                               <span>Países</span>
                             </a>
@@ -107,15 +126,22 @@
                             </a>
                         </li>
                         <li>
-                            <a href="">
+                            <a href="ciudades">
                               <i class="fa fa-circle-o"></i>
                               <span>Ciudades</span>
                             </a>
                         </li>
                     </ul>
                 </li>
-             <!--ADMISNISTRACIÓN - USUARIOS-->   
-                <li class="treeview">
+             <!--ADMISNISTRACIÓN - USUARIOS-->
+                <?php
+                    if ($_GET["ruta"] == "usuarios" ) {                
+                        echo '<li class="treeview active">';
+                    } else {
+                        echo '<li class="treeview">';
+                    }
+                ?>               
+<!--                <li class="treeview">-->
                     <a href="">
                         <i class="fa fa-list-ul"></i>
                         <span>Usuarios</span>
@@ -161,7 +187,7 @@
                     </a>
                     <ul class="treeview-menu">
                         <li>
-                            <a href="usuarios">
+                            <a href="empresas">
                               <i class="fa fa-users"></i>
                               <span>Empresas</span>
                             </a>
