@@ -96,8 +96,14 @@
                     <option value="">Seleccionar el departamento</option> 
                     <?php
                       $departamentos = ModeloDepartamentos::mdlMostrarDepartamentos("tdepartamento", null , null);
+                      $ultimoPais = "";
                       foreach ($departamentos as $key => $value){
-                        echo '<option value="'.$value["IDDEPARTAMENTO"].'">'.$value["NOMBRE"].'</option>';
+                        $ultimoPais = $pais; 
+                        $pais = $value["PAIS"];
+                        if ($pais <> $ultimoPais){
+                            echo '<optgroup label="'.$pais.'">';
+                        } 
+                        echo '<option value="'.$value["IDDEPARTAMENTO"].'">'.$value["NOMBRE"].'</option>';                                               
                       }
                     ?>
                   </select>
@@ -151,9 +157,15 @@
                   <select class="form-control input-lg" name="editarCiudadIddepartamento" required>
                     <option value="" id="editarCiudadIddepartamento"></option> 
                     <?php
-                      $departamentos = ModeloDepartamentos::mdlMostrarDepartamentos("tdepartamento", null , null);                      
+                      $departamentos = ModeloDepartamentos::mdlMostrarDepartamentos("tdepartamento", null , null);
+                      $ultimoPais = "";
                       foreach ($departamentos as $key => $value){
-                        echo '<option value="'.$value["IDDEPARTAMENTO"].'">'.$value["NOMBRE"].'</option>';
+                        $ultimoPais = $pais; 
+                        $pais = $value["PAIS"];
+                        if ($pais <> $ultimoPais){
+                            echo '<optgroup label="'.$pais.'">';
+                        } 
+                        echo '<option value="'.$value["IDDEPARTAMENTO"].'">'.$value["NOMBRE"].'</option>';                                               
                       }
                     ?>
                   </select>                

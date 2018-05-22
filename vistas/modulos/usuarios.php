@@ -7,8 +7,8 @@
       </h1>
       <ol class="breadcrumb">
         <li><a href="inicio"><i class="fa fa-dashboard"></i> Inicio</a></li>
-        <li><a href="usuarios">Usuario</a></li>
-        <li class="active">Blank page</li>
+        <li><a href="">Administración</a></li>
+        <li class="active"><a href="usuarios">Usuarios</a></li>
       </ol>
     </section>
 
@@ -36,8 +36,9 @@
                 <th>Apellido</th>
                 <th>E-mail</th>
                 <th>Perfil</th>
-                <th>Estado</th>
-                <th>Acciones</th>
+                <th>Fecha creación</th>
+                <th>Estado</th>                
+                <th style="width: 10px">Acciones</th>
               </tr>
             </thead>
             <tbody>
@@ -53,6 +54,7 @@
                           <td>'.$value["APELLIDO"].'</td>                              
                           <td>'.$value["EMAIL"].'</td>
                           <td>'.$value["PERFIL"].'</td>
+                          <td>'.$value["FECHA_CREACION"].'</td>
                           <td>';
                           if ($value["ESTADO"] == 1){                            
                             echo '<button class="btn btn-success btn-xs btnActivar" idusuario="'.$value["IDUSUARIO"].'" estadoUsuario="0">Activado</button>';

@@ -11,13 +11,13 @@ class ModeloDepartamentos {
         try {
 		if($campo != null){
                     //$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE $campo = :$campo");
-                    $stmt = Conexion::conectar()->prepare("SELECT d.*,p.NOMBRE as PAIS from tdepartamento d, tpais p where d.IDPAIS = p.IDPAIS and $campo = :$campo");
+                    $stmt = Conexion::conectar()->prepare("SELECT d.*,p.NOMBRE as PAIS from tdepartamento d, tpais p where d.IDPAIS = p.IDPAIS and $campo = :$campo ORDER by p.NOMBRE,d.NOMBRE");
                     $stmt -> bindParam(":".$campo, $valor, PDO::PARAM_STR);
                     $stmt -> execute();
                     return $stmt -> fetch();
 		}else{
 
-                    $stmt = Conexion::conectar()->prepare("SELECT d.*,p.NOMBRE as PAIS from tdepartamento d, tpais p where d.IDPAIS = p.IDPAIS");
+                    $stmt = Conexion::conectar()->prepare("SELECT d.*,p.NOMBRE as PAIS from tdepartamento d, tpais p where d.IDPAIS = p.IDPAIS ORDER by p.NOMBRE,d.NOMBRE");
                     $stmt -> execute();
                     return $stmt -> fetchAll();
 		}		
