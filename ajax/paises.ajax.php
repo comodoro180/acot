@@ -22,7 +22,7 @@ class AjaxPaises{
 	}
 
 	/*=============================================
-	VALIDAR NO REPETIR EMAIL
+	VALIDAR
 	=============================================*/	
 	public $validarPais;
 

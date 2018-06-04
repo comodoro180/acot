@@ -24,7 +24,7 @@ class AjaxDepartamentos{
 }
 
 /*=============================================
-EDITAR USUARIO
+EDITAR
 =============================================*/
 if(isset($_POST["iddepartamento"])){
 

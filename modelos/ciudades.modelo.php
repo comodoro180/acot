@@ -5,13 +5,12 @@ require_once "conexion.php";
 class ModeloCiudades {
     
     /* =============================================
-      MOSTRAR USUARIOS
+      MOSTRAR
       ============================================= */
     static public function mdlMostrarCiudades($tabla, $campo, $valor) {
         try {
 		if($campo != null){
-                    //$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE $campo = :$campo");
-                    //$stmt = Conexion::conectar()->prepare("SELECT d.*,p.NOMBRE as PAIS from tdepartamento d, tpais p where d.IDPAIS = p.IDPAIS and $campo = :$campo");
+                    
                     $stmt = Conexion::conectar()->prepare(
                                 "SELECT c.*, \n"
                               . "d.NOMBRE as DEPARTAMENTO, \n"
@@ -21,9 +20,12 @@ class ModeloCiudades {
                               . "and d.IDPAIS = p.IDPAIS\n"
                               . "and $campo = :$campo"
                             );
+                    
                     $stmt -> bindParam(":".$campo, $valor, PDO::PARAM_STR);
                     $stmt -> execute();
+                    
                     return $stmt -> fetch();
+                    
 		}else{
 
                     $stmt = Conexion::conectar()->prepare(
@@ -36,6 +38,7 @@ class ModeloCiudades {
                             );
                     
                     $stmt -> execute();
+                    
                     return $stmt -> fetchAll();
 		}		
 
@@ -47,7 +50,10 @@ class ModeloCiudades {
             return "ERROR" . $ex->getMessage();
         }
     }
-    
+
+    /* =============================================
+      INGRESAR
+      ============================================= */    
     static public function mdlIngresarCiudad($tabla,$datos){
         try {
             

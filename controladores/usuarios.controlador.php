@@ -131,24 +131,8 @@ class ControladorUsuarios {
 
                             if(isset($_POST["editarClave"]) && $_POST["editarClave"] != ""){
 
-                                    //if(preg_match('/^[a-zA-Z0-9]+$/', $_POST["editarClave"])){
+                                    $encriptar = crypt($_POST["editarClave"], '$2a$07$asxx54ahjppf45sd87a5a4dDDGsystemdev$');
 
-                                            $encriptar = crypt($_POST["editarClave"], '$2a$07$asxx54ahjppf45sd87a5a4dDDGsystemdev$');
-
-                                    /*}else{
-                                        echo'<script>
-                                                swal({
-                                                          type: "error",
-                                                          title: "¡La contraseña no puede ir vacía o llevar caracteres especiales!",
-                                                          showConfirmButton: true,
-                                                          confirmButtonText: "Cerrar"
-                                                          }).then(function(result){
-                                                                if (result.value) {
-                                                                    window.location = "usuarios";
-                                                                }
-                                                        })
-                                            </script>';
-                                    }*/
                             }else{
                                     $encriptar = $_POST["claveActual"];
                             }
@@ -324,10 +308,7 @@ class ControladorUsuarios {
             $tabla = "tusuario";
             $item1 = "email";
             $valor1 = $_POST["RecuperarEmail"];
-            
-            
-            //$clave = crypt($_POST["ingClave"],'$2a$07$asxx54ahjppf45sd87a5a4dDDGsystemdev$');
-            ////$clave = $_POST["ingClave"];
+
 
             $respuesta = ModeloUsuarios::MdlMostrarUsuarios($tabla, $item1, $valor1);
             

@@ -205,7 +205,7 @@
                     <ul class="treeview-menu">
                         <li>
                             <a href="empresas">
-                              <i class="fa fa-users"></i>
+                              <i class="fa fa-circle-o"></i>
                               <span>Empresas</span>
                             </a>
                         </li>

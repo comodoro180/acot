@@ -1,35 +1,35 @@
 <?php
 
-class ControladorCiudades {
+class ControladorEmpresas {
 
     /*=============================================
       CREAR 
     =============================================*/
-    static public function ctrCrearCiudad() {
+    static public function ctrCrearEmpresa() {
 
-        if (isset($_POST["nuevoNombreCiudad"])) {
-            if (preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nuevoNombreCiudad"])) {
-
-                $tabla = "tciudad";
-                
+        if (isset($_POST["nuevaEmpresa"])) {
+            
                 $datos = array(
-                    "nombre"   => $_POST["nuevoNombreCiudad"],
-                    "iddepartamento" => $_POST["nuevoCiudadIddepartamento"]
+                    "nombre"    => $_POST["nuevaEmpresa"],
+                    "telefono"  => $_POST["nuevoTelefono"],
+                    "direccion" => $_POST["nuevaDireccion"],
+                    "nit"       => $_POST["nuevoNit"],
+                    "idCiudad"  => $_POST["nuevaCiudad"]
                 );
                 
-                $respuesta = ModeloCiudades::mdlIngresarCiudad($tabla,$datos);
+                $respuesta = ModeloEmpresas::mdlIngresarEmpresa($datos);
                 
                 if ($respuesta == "ok"){
                     echo '<script>
                             swal({
                                     type: "success",
-                                    title: "¡La ciudad ha sido guardada correctamente!",
+                                    title: "¡La empresa ha sido guardada correctamente!",
                                     showConfirmButton: true,
                                     confirmButtonText: "Cerrar"
 
                             }).then(function(result){
                                     if(result.value){
-                                            window.location = "ciudades";
+                                            window.location = "empresas";
                                     }
                             });
                         </script>';
@@ -43,72 +43,55 @@ class ControladorCiudades {
 
                                 }).then(function(result){
                                         if(result.value){
-                                                window.location = "ciudades";
+                                                window.location = "empresas";
                                         }
                                 });
                         </script>';                    
                 }                
-            } else {
-                echo '<script>
-                        swal({
-                                type: "error",
-                                title: "¡El nombre de la ciudad no puede ir vacío o llevar caracteres especiales!",
-                                showConfirmButton: true,
-                                confirmButtonText: "Cerrar"
 
-                        }).then(function(result){
-                                if(result.value){
-                                        window.location = "ciudades";
-                                }
-                        });
-                </script>';
-            }
         }
     }
+    
 
     /*=============================================
-      MOSTRAR 
+      MOSTRAR
     =============================================*/
-    static public function ctrMostrarCiudades($campo, $valor) {
+    static public function ctrMostrarEmpresas($campo, $valor) {
         
         include_once "../conf/config.inc.php";
         
-        $tabla = "tciudad";
-        
-        $respuesta = ModeloCiudades::MdlMostrarCiudades($tabla, $campo, $valor);
+        $respuesta = ModeloEmpresas::MdlMostrarEmpresas($campo, $valor);
 
         return $respuesta;
     }
 
     /*=============================================
-      EDITAR 
+      EDITAR
     =============================================*/
-    static public function ctrEditarCiudad(){        
+    static public function ctrEditarEmpresa(){        
 
-            if(isset($_POST["idciudad"])){
+            if(isset($_POST["editarEmpresa"])){                            
 
-                    if(preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["editarCiudad"])){
+                            $datos = array( "idEmpresa" => $_POST["idEmpresa"],
+                                            "empresa" => $_POST["editarEmpresa"],
+                                            "telefono" => $_POST["editarTelefono"],
+                                            "direccion" => $_POST["editarDireccion"],
+                                            "nit" => $_POST["editarNit"],
+                                            "idCiudad" => $_POST["editarEmpresaCiudad"]);
 
-                            $tabla = "tciudad";
-
-                            $datos = array( "idciudad" => $_POST["idciudad"],
-                                            "nombre" => $_POST["editarCiudad"],
-                                            "iddepartamento" => $_POST["editarCiudadIddepartamento"]);
-                            //var_dump($datos);                            
-
-                            $respuesta = ModeloCiudades::mdlEditarCiudad($tabla, $datos);
+                            $respuesta = ModeloEmpresas::mdlEditarEmpresa($datos);
 
                             if($respuesta == "ok"){
 
                                     echo'<script>
                                     swal({
                                             type: "success",
-                                            title: "La ciudad ha sido editada correctamente!",
+                                            title: "La empresa ha sido editada correctamente",
                                             showConfirmButton: true,
                                             confirmButtonText: "Cerrar"
                                             }).then(function(result){
                                                     if (result.value) {
-                                                        window.location = "ciudades";
+                                                        window.location = "empresas";
                                                     }
                                             })
                                     </script>';
@@ -122,39 +105,25 @@ class ControladorCiudades {
 
                                         }).then(function(result){
                                                 if(result.value){
-                                                        window.location = "ciudades";
+                                                        window.location = "empresas";
                                                 }
                                         });
                                 </script>';                               
                             }
-                    }else{
-                            echo'<script>
-                                    swal({
-                                            type: "error",
-                                            title: "¡La ciudad no puede ser vacía o llevar caracteres especiales!",
-                                            showConfirmButton: true,
-                                            confirmButtonText: "Cerrar"
-                                            }).then(function(result){
-                                                  if (result.value) {
-                                                    window.location = "ciudades";
-                                                  }
-                                            })
-                            </script>';
-                    }
+
             }
     }
     
     /*=============================================
       BORRAR
     =============================================*/
-    static public function ctrBorrarCiudad(){
+    static public function ctrBorrarEmpresa(){
 
-        if(isset($_GET["idciudad"])){
+        if(isset($_GET["idEmpresa"])){
+                
+                $datos = $_GET["idEmpresa"];
 
-                $tabla ="tciudad";
-                $datos = $_GET["idciudad"];
-
-                $respuesta = ModeloCiudades::mdlBorrarCiudad($tabla, $datos);
+                $respuesta = ModeloEmpresas::mdlBorrarEmpresa($datos);
 
                 if($respuesta == "ok"){
 
@@ -162,13 +131,13 @@ class ControladorCiudades {
 
                         swal({
                                   type: "success",
-                                  title: "La ciudad ha sido borrada correctamente",
+                                  title: "La empresa ha sido borrada correctamente",
                                   showConfirmButton: true,
                                   confirmButtonText: "Cerrar"
                                   }).then(function(result){
                                                         if (result.value) {
 
-                                                        window.location = "ciudades";
+                                                        window.location = "empresas";
 
                                                         }
                                                 })

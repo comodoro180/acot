@@ -24,7 +24,7 @@ class AjaxCiudades{
 }
 
 /*=============================================
-EDITAR USUARIO
+EDITAR
 =============================================*/
 if(isset($_POST["idciudad"])){
 

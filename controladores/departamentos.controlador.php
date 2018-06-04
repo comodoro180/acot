@@ -145,7 +145,7 @@ class ControladorDepartamentos {
     }
     
     /*=============================================
-      BORRAR USUARIO
+      BORRAR 
     =============================================*/
     static public function ctrBorrarDepartamento(){
 

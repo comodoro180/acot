@@ -31,8 +31,6 @@ ELIMINAR
 $(".tablas").on("click", ".btnEliminarTipoProducto", function(){
 
   var idTipoProducto = $(this).attr("idTipoProducto");
-  //var fotoUsuario = $(this).attr("fotoUsuario");
-  //var usuario = $(this).attr("usuario");
 
   swal({
     title: '¿Está seguro de borrar el tipo de producto?',
@@ -46,8 +44,7 @@ $(".tablas").on("click", ".btnEliminarTipoProducto", function(){
   }).then(function(result){
 
     if(result.value){
-
-      //window.location = "index.php?ruta=usuarios&idUsuario="+idUsuario+"&usuario="+usuario+"&fotoUsuario="+fotoUsuario;
+      
       window.location = "index.php?ruta=tipoProducto&idTipoProducto="+idTipoProducto;
 
     }
