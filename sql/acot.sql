@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-05-2018 a las 04:01:47
+-- Tiempo de generación: 27-07-2018 a las 03:01:02
 -- Versión del servidor: 10.1.30-MariaDB
 -- Versión de PHP: 7.2.2
 
@@ -21,8 +21,6 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `acot`
 --
-CREATE DATABASE IF NOT EXISTS `acot` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE `acot`;
 
 -- --------------------------------------------------------
 
@@ -30,12 +28,19 @@ USE `acot`;
 -- Estructura de tabla para la tabla `tciudad`
 --
 
-DROP TABLE IF EXISTS `tciudad`;
 CREATE TABLE `tciudad` (
   `IDCIUDAD` int(11) NOT NULL,
   `NOMBRE` varchar(40) NOT NULL,
   `IDDEPARTAMENTO` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `tciudad`
+--
+
+INSERT INTO `tciudad` (`IDCIUDAD`, `NOMBRE`, `IDDEPARTAMENTO`) VALUES
+(2, 'Cali', 3),
+(3, 'Quito', 5);
 
 -- --------------------------------------------------------
 
@@ -43,7 +48,6 @@ CREATE TABLE `tciudad` (
 -- Estructura de tabla para la tabla `tcotizacion`
 --
 
-DROP TABLE IF EXISTS `tcotizacion`;
 CREATE TABLE `tcotizacion` (
   `IDCOTIZACION` int(11) NOT NULL,
   `FECHACREACION` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
@@ -62,7 +66,6 @@ CREATE TABLE `tcotizacion` (
 -- Estructura de tabla para la tabla `tcotizaciondetalle`
 --
 
-DROP TABLE IF EXISTS `tcotizaciondetalle`;
 CREATE TABLE `tcotizaciondetalle` (
   `IDCOTIZACIONDETALLE` int(11) NOT NULL,
   `VALORUNITARIO` decimal(20,0) NOT NULL,
@@ -80,7 +83,6 @@ CREATE TABLE `tcotizaciondetalle` (
 -- Estructura de tabla para la tabla `tcotizaciondetalletipoestado`
 --
 
-DROP TABLE IF EXISTS `tcotizaciondetalletipoestado`;
 CREATE TABLE `tcotizaciondetalletipoestado` (
   `IDCOTIZACIONDETALLETIPOESTADO` int(11) NOT NULL,
   `NOMBRE` varchar(10) NOT NULL,
@@ -93,7 +95,6 @@ CREATE TABLE `tcotizaciondetalletipoestado` (
 -- Estructura de tabla para la tabla `tcotizaciontipoestado`
 --
 
-DROP TABLE IF EXISTS `tcotizaciontipoestado`;
 CREATE TABLE `tcotizaciontipoestado` (
   `IDCOTIZACIONTIPOESTADO` int(11) NOT NULL,
   `NOMBRE` varchar(10) NOT NULL,
@@ -106,12 +107,20 @@ CREATE TABLE `tcotizaciontipoestado` (
 -- Estructura de tabla para la tabla `tdepartamento`
 --
 
-DROP TABLE IF EXISTS `tdepartamento`;
 CREATE TABLE `tdepartamento` (
   `IDDEPARTAMENTO` int(11) NOT NULL,
   `NOMBRE` varchar(40) NOT NULL,
   `IDPAIS` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `tdepartamento`
+--
+
+INSERT INTO `tdepartamento` (`IDDEPARTAMENTO`, `NOMBRE`, `IDPAIS`) VALUES
+(3, 'Valle del Cauca', 3),
+(4, 'Cundinamarca', 3),
+(5, 'Provincia de Pichincha', 4);
 
 -- --------------------------------------------------------
 
@@ -119,7 +128,6 @@ CREATE TABLE `tdepartamento` (
 -- Estructura de tabla para la tabla `tempresa`
 --
 
-DROP TABLE IF EXISTS `tempresa`;
 CREATE TABLE `tempresa` (
   `IDEMPRESA` int(11) NOT NULL,
   `NOMBRE` varchar(100) NOT NULL,
@@ -130,13 +138,20 @@ CREATE TABLE `tempresa` (
   `IDCIUDAD` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Volcado de datos para la tabla `tempresa`
+--
+
+INSERT INTO `tempresa` (`IDEMPRESA`, `NOMBRE`, `TELEFONOPRINCIPAL`, `DIRECCION`, `NIT`, `ESTADO`, `IDCIUDAD`) VALUES
+(3, 'Acot', '1234', 'Calle 62 # 1-120', '1234', 1, 2),
+(4, 'Acot2', '2345', 'Calle 62 # 1-120', '123', 1, 2);
+
 -- --------------------------------------------------------
 
 --
 -- Estructura de tabla para la tabla `tempresacontactos`
 --
 
-DROP TABLE IF EXISTS `tempresacontactos`;
 CREATE TABLE `tempresacontactos` (
   `IDEMPRESACONTACTOS` int(11) NOT NULL,
   `EMAIL` varchar(200) NOT NULL,
@@ -152,7 +167,6 @@ CREATE TABLE `tempresacontactos` (
 -- Estructura de tabla para la tabla `tordenservicio`
 --
 
-DROP TABLE IF EXISTS `tordenservicio`;
 CREATE TABLE `tordenservicio` (
   `IDORDENSERVICIO` int(11) NOT NULL,
   `FECHACREACION` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
@@ -168,7 +182,6 @@ CREATE TABLE `tordenservicio` (
 -- Estructura de tabla para la tabla `tordenserviciotipoestado`
 --
 
-DROP TABLE IF EXISTS `tordenserviciotipoestado`;
 CREATE TABLE `tordenserviciotipoestado` (
   `IDORDENSERVICIOTIPOESTADO` int(11) NOT NULL,
   `NOMBRE` varchar(10) NOT NULL,
@@ -181,11 +194,18 @@ CREATE TABLE `tordenserviciotipoestado` (
 -- Estructura de tabla para la tabla `tpais`
 --
 
-DROP TABLE IF EXISTS `tpais`;
 CREATE TABLE `tpais` (
   `IDPAIS` int(11) NOT NULL,
   `NOMBRE` varchar(40) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `tpais`
+--
+
+INSERT INTO `tpais` (`IDPAIS`, `NOMBRE`) VALUES
+(3, 'Colombia'),
+(4, 'Ecuador');
 
 -- --------------------------------------------------------
 
@@ -193,7 +213,6 @@ CREATE TABLE `tpais` (
 -- Estructura de tabla para la tabla `tpedido`
 --
 
-DROP TABLE IF EXISTS `tpedido`;
 CREATE TABLE `tpedido` (
   `IDPEDIDO` int(11) NOT NULL,
   `FECHACREACION` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
@@ -211,7 +230,6 @@ CREATE TABLE `tpedido` (
 -- Estructura de tabla para la tabla `tpedidodetalle`
 --
 
-DROP TABLE IF EXISTS `tpedidodetalle`;
 CREATE TABLE `tpedidodetalle` (
   `IDPEDIDODETALLE` int(11) NOT NULL,
   `CANTIDAD` int(11) NOT NULL,
@@ -225,7 +243,6 @@ CREATE TABLE `tpedidodetalle` (
 -- Estructura de tabla para la tabla `tpedidotipoestado`
 --
 
-DROP TABLE IF EXISTS `tpedidotipoestado`;
 CREATE TABLE `tpedidotipoestado` (
   `IDPEDIDOTIPOESTADO` int(11) NOT NULL,
   `NOMBRE` varchar(10) NOT NULL,
@@ -238,12 +255,21 @@ CREATE TABLE `tpedidotipoestado` (
 -- Estructura de tabla para la tabla `tperfil`
 --
 
-DROP TABLE IF EXISTS `tperfil`;
 CREATE TABLE `tperfil` (
   `IDPERFIL` int(11) NOT NULL,
   `NOMBRE` varchar(20) NOT NULL,
   `DESCRPCION` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `tperfil`
+--
+
+INSERT INTO `tperfil` (`IDPERFIL`, `NOMBRE`, `DESCRPCION`) VALUES
+(1, 'Administrador', 'Usuario administrador del sistema'),
+(2, 'Proveedor', 'Usuario del tipo proveedor'),
+(3, 'Cotizador', 'Usuario del tipo Cotizador'),
+(4, 'Registro', 'Perfirl para los usuarios registrados');
 
 -- --------------------------------------------------------
 
@@ -251,7 +277,6 @@ CREATE TABLE `tperfil` (
 -- Estructura de tabla para la tabla `tproducto`
 --
 
-DROP TABLE IF EXISTS `tproducto`;
 CREATE TABLE `tproducto` (
   `IDPRODUCTO` int(11) NOT NULL,
   `NOMBRE` varchar(200) NOT NULL,
@@ -266,7 +291,6 @@ CREATE TABLE `tproducto` (
 -- Estructura de tabla para la tabla `tproveedor`
 --
 
-DROP TABLE IF EXISTS `tproveedor`;
 CREATE TABLE `tproveedor` (
   `IDPROVEEDOR` int(11) NOT NULL,
   `NIT` varchar(30) NOT NULL,
@@ -284,7 +308,6 @@ CREATE TABLE `tproveedor` (
 -- Estructura de tabla para la tabla `tproveedorcontactos`
 --
 
-DROP TABLE IF EXISTS `tproveedorcontactos`;
 CREATE TABLE `tproveedorcontactos` (
   `IDEMPRESACONTACTOS` int(11) NOT NULL,
   `EMAIL` varchar(200) NOT NULL,
@@ -300,7 +323,6 @@ CREATE TABLE `tproveedorcontactos` (
 -- Estructura de tabla para la tabla `tproveedorproducto`
 --
 
-DROP TABLE IF EXISTS `tproveedorproducto`;
 CREATE TABLE `tproveedorproducto` (
   `IDPROVEEDORPRODUCTO` int(11) NOT NULL,
   `IDPROVEEDOR` int(11) NOT NULL,
@@ -314,7 +336,6 @@ CREATE TABLE `tproveedorproducto` (
 -- Estructura de tabla para la tabla `tproveedortipoproducto`
 --
 
-DROP TABLE IF EXISTS `tproveedortipoproducto`;
 CREATE TABLE `tproveedortipoproducto` (
   `IDPROVEEDORTIPOPRODUCTO` int(11) NOT NULL,
   `IDPROVEEDOR` int(11) NOT NULL,
@@ -327,12 +348,18 @@ CREATE TABLE `tproveedortipoproducto` (
 -- Estructura de tabla para la tabla `ttipoproducto`
 --
 
-DROP TABLE IF EXISTS `ttipoproducto`;
 CREATE TABLE `ttipoproducto` (
   `IDTIPOPRODUCTO` int(11) NOT NULL,
   `NOMBRE` varchar(200) NOT NULL,
   `DESCRIPCION` varchar(400) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `ttipoproducto`
+--
+
+INSERT INTO `ttipoproducto` (`IDTIPOPRODUCTO`, `NOMBRE`, `DESCRIPCION`) VALUES
+(3, 'Medicina', 'Productos de medicina');
 
 -- --------------------------------------------------------
 
@@ -340,7 +367,6 @@ CREATE TABLE `ttipoproducto` (
 -- Estructura de tabla para la tabla `tusuario`
 --
 
-DROP TABLE IF EXISTS `tusuario`;
 CREATE TABLE `tusuario` (
   `IDUSUARIO` int(11) NOT NULL,
   `NOMBRE` varchar(100) NOT NULL,
@@ -349,16 +375,16 @@ CREATE TABLE `tusuario` (
   `CLAVE` varchar(400) NOT NULL,
   `ESTADO` int(1) NOT NULL DEFAULT '1',
   `IDPERFIL` int(11) NOT NULL,
-  `CODIGO` varchar(400) DEFAULT NULL COMMENT 'Codigo de verificaciòn cuando se requiere recuperar la contraseña'
+  `CODIGO` varchar(400) DEFAULT NULL COMMENT 'Codigo de verificaciòn cuando se requiere recuperar la contraseña',
+  `FECHA_CREACION` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'Fecha de creación del usuario'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `tusuario`
 --
 
-INSERT INTO `tusuario` (`IDUSUARIO`, `NOMBRE`, `APELLIDO`, `EMAIL`, `CLAVE`, `ESTADO`, `IDPERFIL`, `CODIGO`) VALUES
-(1, 'Admin', 'Admin A', 'admin@acot.com', '$2a$07$asxx54ahjppf45sd87a5au1gjqdU.ybWXdMxoN7YGHb9SmYjSf9na', 1, 1, '$2a$07$asxx54ahjppf45sd87a5aulIifwlxNr2rf7GPlyJT9BbZhEfanf3S');
-
+INSERT INTO `tusuario` (`IDUSUARIO`, `NOMBRE`, `APELLIDO`, `EMAIL`, `CLAVE`, `ESTADO`, `IDPERFIL`, `CODIGO`, `FECHA_CREACION`) VALUES
+(1, 'Admin', 'Admin A', 'admin@acot.com', '$2a$07$asxx54ahjppf45sd87a5au1gjqdU.ybWXdMxoN7YGHb9SmYjSf9na', 1, 1, '$2a$07$asxx54ahjppf45sd87a5aulIifwlxNr2rf7GPlyJT9BbZhEfanf3S', '2018-05-20 15:59:53');
 
 --
 -- Índices para tablas volcadas
@@ -537,7 +563,7 @@ ALTER TABLE `tusuario`
 -- AUTO_INCREMENT de la tabla `tciudad`
 --
 ALTER TABLE `tciudad`
-  MODIFY `IDCIUDAD` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `IDCIUDAD` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `tcotizacion`
@@ -567,13 +593,13 @@ ALTER TABLE `tcotizaciontipoestado`
 -- AUTO_INCREMENT de la tabla `tdepartamento`
 --
 ALTER TABLE `tdepartamento`
-  MODIFY `IDDEPARTAMENTO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `IDDEPARTAMENTO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `tempresa`
 --
 ALTER TABLE `tempresa`
-  MODIFY `IDEMPRESA` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `IDEMPRESA` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `tempresacontactos`
@@ -597,7 +623,7 @@ ALTER TABLE `tordenserviciotipoestado`
 -- AUTO_INCREMENT de la tabla `tpais`
 --
 ALTER TABLE `tpais`
-  MODIFY `IDPAIS` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `IDPAIS` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `tpedido`
@@ -657,7 +683,7 @@ ALTER TABLE `tproveedortipoproducto`
 -- AUTO_INCREMENT de la tabla `ttipoproducto`
 --
 ALTER TABLE `ttipoproducto`
-  MODIFY `IDTIPOPRODUCTO` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `IDTIPOPRODUCTO` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `tusuario`
