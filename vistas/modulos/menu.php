@@ -87,7 +87,8 @@
                 $_GET["ruta"] == "empresas" ||
                 $_GET["ruta"] == "contactosEmpresa" ||
                 //Productos
-                $_GET["ruta"] == "tipoProducto"
+                $_GET["ruta"] == "tipoProducto"||
+                $_GET["ruta"] == "productos"
                     ) {                
                 echo '<li class="treeview active">';
             } else {
@@ -250,7 +251,7 @@
              <!--ADMISNISTRACIÓN - PRODUCTOS-->
                 <?php
                     if ($_GET["ruta"] == "tipoProducto" ||
-                        $_GET["ruta"] == "") {                
+                        $_GET["ruta"] == "productos") {                
                         echo '<li class="treeview active">';
                     } else {
                         echo '<li class="treeview">';
@@ -271,9 +272,9 @@
                             </a>
                         </li>
                         <li>
-                            <a href="">
+                            <a href="productos">
                               <i class="fa fa-circle-o"></i>
-                              <span>Menu 1.2</span>
+                              <span>Productos</span>
                             </a>
                         </li>
                         <li>
