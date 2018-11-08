@@ -5,6 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>  
+    
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>ACOT Cotizaciones</title>
   <link rel="icon" type="image/png" href="vistas/img/plantilla/Acot_icono.png">
@@ -85,7 +86,7 @@ PLUGINGS DE JAVASCRIPT
                   $_GET["ruta"] == "empresas" ||
                   $_GET["ruta"] == "roles" ||
                   //$_GET["ruta"] == "recuperar_clave" ||
-                  //$_GET["ruta"] == "productos" ||
+                  $_GET["ruta"] == "proveedores" ||
                   //$_GET["ruta"] == "clientes" ||
                   //$_GET["ruta"] == "ventas" ||
                   //$_GET["ruta"] == "crear-venta" ||
@@ -127,6 +128,8 @@ PLUGINGS DE JAVASCRIPT
 <script src="vistas/js/productos.js"></script>
 <script src="vistas/js/empresas.js"></script>
 <script src="vistas/js/roles.js"></script>
+<script src="vistas/js/proveedores.js"></script>
+
 </body>
 </html>
 
