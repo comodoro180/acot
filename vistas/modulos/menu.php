@@ -5,7 +5,7 @@
         <li class="active">
           <a href="inicio">
             <i class="fa fa-home"></i>
-            <span>inicio</span>
+            <span>Inicio</span>
           </a>
         </li>
 <!--COTIZACIONES-->
@@ -190,7 +190,7 @@
                         </li>                        
                     </ul>
                 </li>
-             <!--ADMISNISTRACIÃ“N - EMPRESAS--> 
+             <!--ADMISNISTRACIÓN - EMPRESAS--> 
                 <?php
                     if ($_GET["ruta"] == "empresas" ||
                         $_GET["ruta"] == "contactosEmpresa") {                
@@ -216,7 +216,7 @@
                         <li>
                             <a href="contactosEmpresa">
                               <i class="fa fa-circle-o"></i>
-                              <span>Contactos por empresa</span>
+                              <span>Contactos empresa</span>
                             </a>
                         </li>
                     </ul>
