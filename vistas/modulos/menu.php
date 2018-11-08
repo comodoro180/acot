@@ -86,6 +86,8 @@
                 //Empresas    
                 $_GET["ruta"] == "empresas" ||
                 $_GET["ruta"] == "contactosEmpresa" ||
+                //Proveedores    
+                $_GET["ruta"] == "proveedores" ||
                 //Productos
                 $_GET["ruta"] == "tipoProducto"||
                 $_GET["ruta"] == "productos"
@@ -124,6 +126,7 @@
                     </a>
                     <ul class="treeview-menu">
                         <li>
+
                             <a href="paises" id="a_paises">
                               <i class="fa fa-circle-o"></i>
                               <span>Países</span>
@@ -187,7 +190,7 @@
                         </li>                        
                     </ul>
                 </li>
-             <!--ADMISNISTRACIÓN - EMPRESAS--> 
+             <!--ADMISNISTRACIÃ“N - EMPRESAS--> 
                 <?php
                     if ($_GET["ruta"] == "empresas" ||
                         $_GET["ruta"] == "contactosEmpresa") {                
@@ -218,7 +221,16 @@
                         </li>
                     </ul>
                 </li>
-             <!--ADMISNISTRACIÓN - PROVEEDORES-->                  
+             <!--ADMISNISTRACIÓN - PROVEEDORES-->  
+             
+                <?php
+                    if ($_GET["ruta"] == "proveedores") {                
+                        echo '<li class="treeview active">';
+                    } else {
+                        echo '<li class="treeview">';
+                    }
+                ?>
+             
                 <li class="treeview">
                     <a href="">
                         <i class="fa fa-list-ul"></i>
@@ -229,7 +241,7 @@
                     </a>
                     <ul class="treeview-menu">
                         <li>
-                            <a href="usuarios">
+                            <a href="proveedores">
                               <i class="fa fa-users"></i>
                               <span>Proveedores</span>
                             </a>
