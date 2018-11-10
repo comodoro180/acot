@@ -93,7 +93,7 @@
 
               <div class="form-group">
                 <div class="input-group">
-                  <span class="input-group-addon"> <i class="fa fa-pencil"></i></span>
+                  <span class="input-group-addon"> <i class="fa fa-tag"></i></span>
                   <input type="text" class="form-control input-lg" name="nuevoPedidoTipoEstado"  placeholder="Tipo de estado de pedidos" required>                
                 </div>
               </div> 
@@ -146,7 +146,7 @@
               
               <div class="form-group">
                 <div class="input-group">                 
-                  <span class="input-group-addon"> <i class="fa fa-pencil"></i></span>
+                  <span class="input-group-addon"> <i class="fa fa-tag"></i></span>
                   <input type="text" class="form-control input-lg" id="editarPedidoTipoEstado" name="editarPedidoTipoEstado" value="" placeholder="" >                
                 </div>
               </div>
