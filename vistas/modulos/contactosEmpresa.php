@@ -105,7 +105,7 @@
               <label>Nombre:</label>
               <div class="form-group">
                 <div class="input-group">                  
-                  <span class="input-group-addon"> <i class="fa fa-building"></i></span>                                    
+                  <span class="input-group-addon"> <i class="fa fa-address-card"></i></span>                                    
                   <input type="text" class="form-control input-lg" name="nuevoContactoEmpresa"  placeholder="Nombre del Contacto" required>                
                 </div>
               </div>
@@ -113,7 +113,7 @@
               <label>E-mail:</label>
               <div class="form-group">
                 <div class="input-group">
-                  <span class="input-group-addon"> <i class="fa fa-mail-forward"></i></span>                
+                  <span class="input-group-addon"> <i class="fa fa-envelope-open-o"></i></span>                
                   <input type="email" class="form-control input-lg" name="nuevoEmail"  placeholder="Email" required>
                 </div>
               </div>
@@ -121,24 +121,26 @@
               <label>Principal:</label>
               <div class="form-group">
                 <div class="input-group">
-                  <span class="input-group-addon"> <i class="fa fa-mail-forward"></i></span>                
+                  <span class="input-group-addon"> <i class="fa fa-check-circle-o"></i></span>                
                   <input type="number" class="form-control input-lg" name="nuevoPrincipal"  placeholder="Principal" required>
                 </div>
               </div>
               
               <label>Empresa:</label>
               <div class="form-group">
-                  <select class="form-control input-lg" id="nuevoIdEmpresa" name="nuevoIdEmpresa" required>
-                    <option value="">Seleccionar Empresa</option> 
-                    <?php
-                      $empresa = ModeloEmpresas::mdlMostrarEmpresas(null, null);
-                      foreach ($empresa as $key => $value){
-                        echo '<option value="'.$value["IDEMPRESA"].'">'.$value["NOMBRE"].'</option>';
-                      }
-                    ?>
-                  </select>                  
-              </div> 
-              
+                  <div class="input-group">
+                    <span class="input-group-addon"> <i class="fa fa-group"></i></span>
+                        <select class="form-control input-lg" id="nuevoIdEmpresa" name="nuevoIdEmpresa" required>
+                          <option value="">Seleccionar Empresa</option> 
+                          <?php
+                            $empresa = ModeloEmpresas::mdlMostrarEmpresas(null, null);
+                            foreach ($empresa as $key => $value){
+                              echo '<option value="'.$value["IDEMPRESA"].'">'.$value["NOMBRE"].'</option>';
+                            }
+                          ?>
+                        </select>                  
+                    </div> 
+                </div>
             </div>
           </div>
 
@@ -180,7 +182,7 @@
               <label>Contacto:</label>
               <div class="form-group">
                 <div class="input-group">                 
-                  <span class="input-group-addon"> <i class="fa fa-building"></i></span>
+                  <span class="input-group-addon"> <i class="fa fa-address-card"></i></span>
                   <input type="text" class="form-control input-lg" id="editarContactoEmpresa" name="editarContactoEmpresa" value="" placeholder="Nombre" >                
                 </div>
               </div>
@@ -188,7 +190,7 @@
               <label>E-mail:</label>
               <div class="form-group">
                 <div class="input-group">
-                  <span class="input-group-addon"> <i class="fa fa-mail-forward"></i></span>                
+                  <span class="input-group-addon"> <i class="fa fa-envelope-open-o"></i></span>                
                   <input type="text" class="form-control input-lg" id="editarEmail" name="editarEmail" value="" placeholder="Email" >
                 </div>
               </div>            
@@ -196,7 +198,7 @@
               <label>Principal:</label>
               <div class="form-group">
                 <div class="input-group">
-                  <span class="input-group-addon"> <i class="fa fa-mail-forward"></i></span>                
+                  <span class="input-group-addon"> <i class="fa fa-check-circle-o"></i></span>                
                   <input type="text" class="form-control input-lg" id="editarPrincipal" name="editarPrincipal" value="" placeholder="Principal" >
                 </div>
               </div>            
@@ -204,7 +206,7 @@
               <label>Empresa:</label>
               <div class="form-group">
                   <div class="input-group">
-                  <span class="input-group-addon"> <i class="fa fa-globe"></i></span>
+                  <span class="input-group-addon"> <i class="fa fa-group"></i></span>
                     <select class="form-control input-lg" name="editarIdEmpresa" required>
                       <option value="" id="editarIdEmpresa"></option> 
                       <?php

@@ -90,7 +90,9 @@
                 $_GET["ruta"] == "proveedores" ||
                 //Productos
                 $_GET["ruta"] == "tipoProducto"||
-                $_GET["ruta"] == "productos"
+                $_GET["ruta"] == "productos"||
+                //Pedidos                    
+                $_GET["ruta"] == "pedidoTipoEstado"
                     ) {                
                 echo '<li class="treeview active">';
             } else {
@@ -308,9 +310,9 @@
                     </a>
                     <ul class="treeview-menu">
                         <li>
-                            <a href="usuarios">
+                            <a href="pedidoTipoEstado">
                               <i class="fa fa-users"></i>
-                              <span>Menu 1.1</span>
+                              <span>Tipos de Estados</span>
                             </a>
                         </li>
                         <li>

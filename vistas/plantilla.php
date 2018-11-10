@@ -86,6 +86,7 @@ PLUGINGS DE JAVASCRIPT
                   $_GET["ruta"] == "empresas" ||
                   $_GET["ruta"] == "roles" ||
                   $_GET["ruta"] == "contactosEmpresa" ||
+                  $_GET["ruta"] == "pedidoTipoEstado" ||
                   //$_GET["ruta"] == "recuperar_clave" ||
                   $_GET["ruta"] == "proveedores" ||
                   //$_GET["ruta"] == "clientes" ||
@@ -131,6 +132,7 @@ PLUGINGS DE JAVASCRIPT
 <script src="vistas/js/roles.js"></script>
 <script src="vistas/js/proveedores.js"></script>
 <script src="vistas/js/contactosEmpresa.js"></script>
+<script src="vistas/js/pedidoTipoEstado.js"></script>
 
 </body>
 </html>
