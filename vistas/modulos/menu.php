@@ -88,6 +88,7 @@
                 $_GET["ruta"] == "contactosEmpresa" ||
                 //Proveedores    
                 $_GET["ruta"] == "proveedores" ||
+                $_GET["ruta"] == "contactosProveedor" ||
                 //Productos
                 $_GET["ruta"] == "tipoProducto"||
                 $_GET["ruta"] == "productos"||
@@ -226,7 +227,8 @@
              <!--ADMISNISTRACIÓN - PROVEEDORES-->  
              
                 <?php
-                    if ($_GET["ruta"] == "proveedores") {                
+                    if ($_GET["ruta"] == "proveedores"||
+                        $_GET["ruta"] == "contactosProveedor") {                
                         echo '<li class="treeview active">';
                     } else {
                         echo '<li class="treeview">';
@@ -249,7 +251,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="">
+                            <a href="contactosProveedor">
                               <i class="fa fa-circle-o"></i>
                               <span>Contactos por proveedor</span>
                             </a>
