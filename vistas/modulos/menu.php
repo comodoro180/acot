@@ -233,7 +233,7 @@
                     }
                 ?>
              
-                <li class="treeview">
+                
                     <a href="">
                         <i class="fa fa-list-ul"></i>
                         <span>Proveedores</span>

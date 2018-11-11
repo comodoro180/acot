@@ -7,7 +7,7 @@ class ModeloContactosEmpresa{
     /* =============================================
       MOSTRAR 
       ============================================= */
-    static public function mdlMostrarContactosEmpresa($campo, $valor) {
+    static public function mdlMostrarContactosEmpresa($tabla, $campo, $valor) {
         try {
 		if($campo != null){                    
                     $stmt = Conexion::conectar()->prepare("SELECT ce.*, e.nombre as EMPRESA "

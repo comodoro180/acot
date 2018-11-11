@@ -43,7 +43,7 @@
             <tbody>
                 
               <?php
-                $contactoEmpresa = ModeloContactosEmpresa::mdlMostrarContactosEmpresa(null, null);
+                $contactoEmpresa = ModeloContactosEmpresa::mdlMostrarContactosEmpresa('tempresacontactos',null, null);
                 //var_dump($usuarios);
                 foreach ($contactoEmpresa as $key => $value){
                     echo '
@@ -133,7 +133,7 @@
                         <select class="form-control input-lg" id="nuevoIdEmpresa" name="nuevoIdEmpresa" required>
                           <option value="">Seleccionar Empresa</option> 
                           <?php
-                            $empresa = ModeloEmpresas::mdlMostrarEmpresas(null, null);
+                            $empresa = ModeloEmpresas::mdlMostrarEmpresas('tempresa', null, null);
                             foreach ($empresa as $key => $value){
                               echo '<option value="'.$value["IDEMPRESA"].'">'.$value["NOMBRE"].'</option>';
                             }
@@ -207,21 +207,15 @@
               <div class="form-group">
                   <div class="input-group">
                   <span class="input-group-addon"> <i class="fa fa-group"></i></span>
-                    <select class="form-control input-lg" name="editarIdEmpresa" required>
-                      <option value="" id="editarIdEmpresa"></option> 
+                    <select class="form-control input-lg" name="editarIdEmpresaContactoEmpresa" required>
+                      <option value="" id="editarIdEmpresaContactoEmpresa"></option> 
                       <?php
-                        $empresa = ModeloEmpresas::mdlMostrarEmpresas(null , null);
-                        $ultimaEmpresa = "";
-                        foreach ($empresa as $key => $value){
-                          $ultimaEmpresa = $empresas; 
-                          $empresas = $value["EMPRESA"];
-                          if ($empresas <> $ultimaEmpresa){
-                              echo '<optgroup label="'.$empresas.'">';
-                          } 
-                          echo '<option value="'.$value["IDEMPRESA"].'">'.$value["NOMBRE"].'</option>';                                               
-                        }
-                      ?>
-                    </select>
+                            $empresa = ModeloEmpresas::mdlMostrarEmpresas('tempresa',null, null);
+                            foreach ($empresa as $key => $value){
+                              echo '<option value="'.$value["IDEMPRESA"].'">'.$value["NOMBRE"].'</option>';
+                            }
+                          ?> 
+                   </select>
                   </div> 
               </div> 
               

@@ -20,6 +20,7 @@ $(".tablas").on("click", ".btnEditarProducto", function(){
                         $("#idProducto").val(respuesta["IDPRODUCTO"]);
 			$("#editarProducto").val(respuesta["NOMBRE"]);
 			$("#editarDescripcion").val(respuesta["DESCRIPCION"]);
+                        $("#editarTipoProducto").html(respuesta["TIPOPRODUCTO"]);
                         $("#editarTipoProducto").val(respuesta["IDTIPOPRODUCTO"]);
 		}
 	});

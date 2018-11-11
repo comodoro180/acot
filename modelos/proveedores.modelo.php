@@ -7,7 +7,7 @@ class ModeloProveedores{
     /* =============================================
       MOSTRAR 
       ============================================= */
-    static public function mdlMostrarProveedores($campo, $valor) {
+    static public function mdlMostrarProveedores($tabla, $campo, $valor) {
         try {
 		if($campo != null){                    
                     $stmt = Conexion::conectar()->prepare("SELECT p.*, c.nombre as CIUDAD, d.nombre as DEPARTAMENTO, pa.nombre as PAIS  "

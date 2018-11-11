@@ -7,7 +7,7 @@ class ModeloEmpresas{
     /* =============================================
       MOSTRAR 
       ============================================= */
-    static public function mdlMostrarEmpresas($campo, $valor) {
+    static public function mdlMostrarEmpresas($tabla,$campo, $valor) {
         try {
 		if($campo != null){                    
                     $stmt = Conexion::conectar()->prepare("SELECT e.*,c.nombre as CIUDAD, d.nombre as DEPARTAMENTO, p.nombre as PAIS "

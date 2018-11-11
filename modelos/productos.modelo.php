@@ -7,7 +7,7 @@ class ModeloProductos{
     /* =============================================
       MOSTRAR 
       ============================================= */
-    static public function mdlMostrarProductos($campo, $valor) {
+    static public function mdlMostrarProductos($tabla, $campo, $valor) {
         try {
 		if($campo != null){                    
                     $stmt = Conexion::conectar()->prepare("SELECT p.*, tp.nombre as TIPOPRODUCTO "

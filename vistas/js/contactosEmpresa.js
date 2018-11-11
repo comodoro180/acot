@@ -21,7 +21,8 @@ $(".tablas").on("click", ".btnEditarContactoEmpresa", function(){
 			$("#editarEmail").val(respuesta["EMAIL"]);
 			$("#editarPrincipal").val(respuesta["PRINCIPAL"]);
                         $("#editarContactoEmpresa").val(respuesta["NOMBRE"]);
-                        $("#editarIdEmpresa").val(respuesta["IDEMPRESA"]);
+                        $("#editarIdEmpresaContactoEmpresa").html(respuesta["EMPRESA"]);
+                        $("#editarIdEmpresaContactoEmpresa").val(respuesta["IDEMPRESA"]);
 		}
 	});
 });

@@ -23,7 +23,8 @@ $(".tablas").on("click", ".btnEditarProveedor", function(){
                         $("#editarDireccion").val(respuesta["DIRECCION"]);
                         $("#editarTelefono1").val(respuesta["TELEFONO1"]);
 			$("#editarTelefono2").val(respuesta["TELEFONO2"]);
-                        $("#editarCiudad").val(respuesta["IDCIUDAD"]);
+                        $("#editarCiudadProveedor").html(respuesta["CIUDAD"]);
+                        $("#editarCiudadProveedor").val(respuesta["IDCIUDAD"]);
 		}
 	});
 });
@@ -80,8 +81,8 @@ $(".tablas").on("click", ".btnEliminarProveedor", function(){
   //var usuario = $(this).attr("usuario");
 
   swal({
-    title: '¿Está seguro de borrar el proveedor?',
-    text: "¡Si no lo está puede cancelar la accíón!",
+    title: 'ï¿½Estï¿½ seguro de borrar el proveedor?',
+    text: "ï¿½Si no lo estï¿½ puede cancelar la accï¿½ï¿½n!",
     type: 'warning',
     showCancelButton: true,
     confirmButtonColor: '#3085d6',

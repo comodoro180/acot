@@ -42,7 +42,7 @@
             <tbody>
                 
               <?php
-                $productos = ModeloProductos::mdlMostrarProductos(null, null);
+                $productos = ModeloProductos::mdlMostrarProductos('tproducto',null, null);
                 //var_dump($usuarios);
                 foreach ($productos as $key => $value){
                     echo '
@@ -191,13 +191,7 @@
                       <option value="" id="editarTipoProducto"></option> 
                       <?php
                         $tipoProducto = ModeloTipoProducto::mdlMostrarTiposProducto("ttipoproducto", null , null);
-                        $ultimoTipoProducto = "";
                         foreach ($tipoProducto as $key => $value){
-                          $ultimoTipoProducto = $tipos_productos; 
-                          $tipos_productos = $value["TIPOPRODUCTO"];
-                          if ($tipos_productos <> $ultimoTipoProducto){
-                              echo '<optgroup label="'.$tipos_productos.'">';
-                          } 
                           echo '<option value="'.$value["IDTIPOPRODUCTO"].'">'.$value["NOMBRE"].'</option>';                                               
                         }
                       ?>

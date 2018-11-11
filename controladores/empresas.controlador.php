@@ -60,7 +60,9 @@ class ControladorEmpresas {
         
         include_once "../conf/config.inc.php";
         
-        $respuesta = ModeloEmpresas::MdlMostrarEmpresas($campo, $valor);
+        $tabla = "tempresa";
+        
+        $respuesta = ModeloEmpresas::MdlMostrarEmpresas($tabla, $campo, $valor);
 
         return $respuesta;
     }

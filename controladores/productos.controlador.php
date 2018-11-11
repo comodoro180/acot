@@ -58,7 +58,9 @@ class ControladorProductos{
         
         include_once "../conf/config.inc.php";
         
-        $respuesta = ModeloProductos::mdlMostrarProductos($campo, $valor);
+        $tabla = "tproducto";
+        
+        $respuesta = ModeloProductos::mdlMostrarProductos($tabla, $campo, $valor);
 
         return $respuesta;
     }

@@ -59,7 +59,9 @@ class ControladorContactosEmpresa{
         
         include_once "../conf/config.inc.php";
         
-        $respuesta = ModeloContactosEmpresa::mdlMostrarContactosEmpresa($campo, $valor);
+        $tabla = "tempresacontactos";
+        
+        $respuesta = ModeloContactosEmpresa::mdlMostrarContactosEmpresa($tabla,$campo, $valor);
 
         return $respuesta;
     }
@@ -75,7 +77,7 @@ class ControladorContactosEmpresa{
                                             "email"                 => $_POST["editarEmail"],
                                             "principal"             => $_POST["editarPrincipal"],
                                             "nombre"                => $_POST["editarContactoEmpresa"],
-                                            "idEmpresa"             => $_POST["editarIdEmpresa"]);
+                                            "idEmpresa"             => $_POST["editarIdEmpresaContactoEmpresa"]);
 
                             $respuesta = ModeloContactosEmpresa::mdlEditarContactoEmpresa($datos);
 
