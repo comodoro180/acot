@@ -99,7 +99,6 @@
                 echo '<li class="treeview">';
             }
         ?>
-<!--        <li class="treeview" id="menuAdmin">-->
             <a href="" >
                 <i class="fa fa-cogs"></i>
                 <span>Administración</span>
@@ -108,7 +107,7 @@
                 </span>          
             </a>
             <ul class="treeview-menu">
-             <!--ADMISNISTRACIÓN - GEOGRAFÍA--> 
+<!--ADMISNISTRACIÓN - GEOGRAFÍA--> 
                 <?php
                     if ($_GET["ruta"] == "paises" || 
                         $_GET["ruta"] == "departamentos" ||
@@ -118,7 +117,6 @@
                         echo '<li class="treeview">';
                     }
                 ?>             
-<!--                <li class="treeview">-->
                     <a href="">
                         <i class="fa fa-list-ul"></i>
                         <span>Geografía</span>
@@ -148,7 +146,7 @@
                         </li>
                     </ul>
                 </li>
-             <!--ADMISNISTRACIÓN - USUARIOS-->
+<!--ADMISNISTRACIÓN - USUARIOS-->
                 <?php
                     if ($_GET["ruta"] == "usuarios" ||
                         $_GET["ruta"] == "roles") {                
@@ -157,7 +155,6 @@
                         echo '<li class="treeview">';
                     }
                 ?>               
-<!--                <li class="treeview">-->
                     <a href="">
                         <i class="fa fa-list-ul"></i>
                         <span>Usuarios</span>
@@ -173,13 +170,13 @@
                             </a>
                         </li>
                         <li>
-                            <a href="">
+                            <a href="usuarios_empresa">
                               <i class="fa fa-circle-o"></i>
                               <span>Usuarios por empresa</span>
                             </a>
                         </li>
                         <li>
-                            <a href="">
+                            <a href="usuarios_proveedor">
                               <i class="fa fa-circle-o"></i>
                               <span>Usuarios por proveedor</span>
                             </a>
@@ -192,7 +189,7 @@
                         </li>                        
                     </ul>
                 </li>
-             <!--ADMISNISTRACIÓN - EMPRESAS--> 
+<!--ADMISNISTRACIÓN - EMPRESAS--> 
                 <?php
                     if ($_GET["ruta"] == "empresas" ||
                         $_GET["ruta"] == "contactosEmpresa") {                
@@ -223,7 +220,7 @@
                         </li>
                     </ul>
                 </li>
-             <!--ADMISNISTRACIÓN - PROVEEDORES-->  
+<!--ADMISNISTRACIÓN - PROVEEDORES-->  
              
                 <?php
                     if ($_GET["ruta"] == "proveedores") {                
@@ -262,7 +259,7 @@
                         </li>
                     </ul>
                 </li>  
-             <!--ADMISNISTRACIÓN - PRODUCTOS-->
+<!--ADMISNISTRACIÓN - PRODUCTOS-->
                 <?php
                     if ($_GET["ruta"] == "tipoProducto" ||
                         $_GET["ruta"] == "productos") {                
@@ -299,7 +296,7 @@
                         </li>
                     </ul>
                 </li> 
-             <!--ADMISNISTRACIÓN - PEDIDOS-->                  
+<!--ADMISNISTRACIÓN - PEDIDOS-->                  
                 <li class="treeview">
                     <a href="">
                         <i class="fa fa-list-ul"></i>
@@ -329,7 +326,7 @@
                         </li>
                     </ul>
                 </li> 
-                <!--ADMISNISTRACIÓN - COTIZACIONES-->                  
+<!--ADMISNISTRACIÓN - COTIZACIONES-->                  
                 <li class="treeview">
                     <a href="">
                         <i class="fa fa-list-ul"></i>
@@ -359,7 +356,8 @@
                         </li>
                     </ul>
                 </li> 
-                <!--ADMISNISTRACIÓN - ...-->                
+<!--ADMISNISTRACIÓN - ...--> 
+    <!--   
                 <li class="treeview">
                     <a href="">
                         <i class="fa fa-list-ul"></i>
@@ -422,7 +420,7 @@
                 </li>
             </ul>
         </li>        
-
+    -->
     </ul>
   </section>
 </aside>

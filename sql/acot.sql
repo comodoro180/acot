@@ -258,7 +258,7 @@ CREATE TABLE `tpedidotipoestado` (
 CREATE TABLE `tperfil` (
   `IDPERFIL` int(11) NOT NULL,
   `NOMBRE` varchar(20) NOT NULL,
-  `` varchar(200) NOT NULL
+  `DESCRIPCION` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --

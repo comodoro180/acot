@@ -44,7 +44,7 @@
             <tbody>
                 
               <?php
-                $empresas = ModeloEmpresas::mdlMostrarEmpresas(null, null);
+                $empresas = ModeloEmpresas::mdlMostrarEmpresas(null, null,null);
                 //var_dump($usuarios);
                 foreach ($empresas as $key => $value){
                     echo '

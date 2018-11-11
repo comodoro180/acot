@@ -45,7 +45,7 @@
             <tbody>
                 
               <?php
-                $proveedores = ModeloProveedores::mdlMostrarProveedores(null, null);
+                $proveedores = ModeloProveedores::mdlMostrarProveedores(null, null,null);
                 //var_dump($usuarios);
                 foreach ($proveedores as $key => $value){
                     echo '
