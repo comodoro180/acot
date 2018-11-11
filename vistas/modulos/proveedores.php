@@ -56,7 +56,7 @@
                             <td>'.$value["DIRECCION"].'</td>
                             <td>'.$value["TELEFONO1"].'</td>
                             <td>'.$value["TELEFONO2"].'</td>
-                            <td>'.$value["CIUDAD"].' ('.$value["DEPARTAMENTO"].', '.$value["PAIS"].')'.'</td>>
+                            <td>'.$value["CIUDAD"].' ('.$value["DEPARTAMENTO"].', '.$value["PAIS"].')'.'</td>
                             <td>';
                           if ($value["ESTADO"] == 1){                            
                             echo '<button class="btn btn-success btn-xs btnActivarProveedor" idProveedor="'.$value["IDPROVEEDOR"].'" estadoProveedor="0">Activo</button>';

@@ -23,7 +23,7 @@ class ControladorProveedores{
                     echo '<script>
                             swal({
                                     type: "success",
-                                    title: "¡El proveedor ha sido guardado correctamente!",
+                                    title: "Â¡El proveedor ha sido guardado correctamente!",
                                     showConfirmButton: true,
                                     confirmButtonText: "Cerrar"
 

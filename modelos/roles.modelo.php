@@ -32,10 +32,10 @@ class ModeloRoles {
     static public function mdlIngresarRol($tabla,$datos){
         try {
             
-            $stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(nombre,descrpcion) "
-                                                . "VALUES (:nombre,:descrpcion)");
+            $stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(nombre,descripcion) "
+                                                . "VALUES (:nombre,:descripcion)");
 
-            $stmt->bindParam(":descrpcion", $datos["descrpcion"],PDO::PARAM_STR);
+            $stmt->bindParam(":descripcion", $datos["descripcion"],PDO::PARAM_STR);
             $stmt->bindParam(":nombre", $datos["nombre"],PDO::PARAM_STR);
             
             if ($stmt->execute()){
@@ -52,11 +52,11 @@ class ModeloRoles {
     static public function mdlEditarRol($tabla, $datos){
         try {
             
-            $stmt = Conexion::conectar()->prepare("UPDATE $tabla SET NOMBRE = :nombre, DESCRPCION = :descrpcion WHERE idPerfil = :idPerfil");
+            $stmt = Conexion::conectar()->prepare("UPDATE $tabla SET NOMBRE = :nombre, DESCRIPCION = :descripcion WHERE idPerfil = :idPerfil");
 
             $stmt -> bindParam(":idPerfil", $datos["idPerfil"], PDO::PARAM_STR);
             $stmt -> bindParam(":nombre", $datos["nombre"], PDO::PARAM_STR);
-            $stmt -> bindParam(":descrpcion", $datos["descrpcion"],PDO::PARAM_STR);
+            $stmt -> bindParam(":descripcion", $datos["descripcion"],PDO::PARAM_STR);
 
             if($stmt -> execute()){
                     return "ok";

@@ -47,7 +47,7 @@
                         <tr>
                           <td>'.$value["IDPERFIL"].'</td>
                           <td>'.$value["NOMBRE"].'</td>
-                          <td>'.$value["DESCRPCION"].'</td>
+                          <td>'.$value["DESCRIPCION"].'</td>
                           <td>
                             <div class="btn-group" >
                                 <button class="btn btn-warning btnEditarRol btn-xs" idPerfil="'.$value["IDPERFIL"].'" data-toggle="modal" data-target="#modalEditarRol"><i class="fa fa-pencil"></i></button>                                    
@@ -153,7 +153,7 @@
               <div class="form-group">
                 <div class="input-group">                 
                   <span class="input-group-addon"> <i class="fa fa-pencil"></i></span>
-                  <input type="text" class="form-control input-lg" name="editarDescripcioneditarDescripcion" id="editarDescripcion" placeholder="Descripción" required>
+                  <input type="text" class="form-control input-lg" name="editarDescripcion" id="editarDescripcion" placeholder="Descripción" required>
                 </div>
               </div>
               

@@ -18,8 +18,8 @@ $(".tablas").on("click", ".btnEditarRol", function(){
 		dataType: "json",
 		success: function(respuesta){
                         $("#idPerfil").val(respuesta["IDPERFIL"]);
-			$("#editarRol").val(respuesta["NOMBRE"]);
-                        $("#editarDescripcion").val(respuesta["DESCRPCION"]);
+			                  $("#editarRol").val(respuesta["NOMBRE"]);
+                        $("#editarDescripcion").val(respuesta["DESCRIPCION"]);
 		}
 	});
 });
