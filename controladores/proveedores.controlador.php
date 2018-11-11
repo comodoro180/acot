@@ -60,7 +60,9 @@ class ControladorProveedores{
         
         include_once "../conf/config.inc.php";
         
-        $respuesta = ModeloProveedores::mdlMostrarProveedores($campo, $valor);
+        $tabla = "tproveedor";
+        
+        $respuesta = ModeloProveedores::mdlMostrarProveedores($tabla, $campo, $valor);
 
         return $respuesta;
     }
