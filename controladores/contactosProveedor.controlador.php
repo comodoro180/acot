@@ -1,35 +1,34 @@
 <?php
 
-class ControladorProveedores{
+class ControladorContactosProveedor{
 
     /*=============================================
-      CREAR PROVEEDOR
+      CREAR PRODUCTO
     =============================================*/
-    static public function ctrCrearProveedor() {
+    static public function ctrCrearContactoProveedor() {
 
-        if (isset($_POST["nuevoProveedor"])) {
+        if (isset($_POST["nuevoContactoProveedor"])) {
             
-                $datos = array( "nit"         => $_POST["nuevoNit"],
-                                "nombre"      => $_POST["nuevoProveedor"],
-                                "direccion"   => $_POST["nuevaDireccion"],
-                                "telefono1"   => $_POST["nuevoTelefono1"],
-                                "telefono2"   => $_POST["nuevoTelefono2"],
-                                "idCiudad"    => $_POST["nuevaCiudad"]
+                $datos = array(
+                    "email"     => $_POST["nuevoEmail"],
+                    "principal" => $_POST["nuevoPrincipal"],
+                    "nombre"    => $_POST["nuevoContactoProveedor"],
+                    "idProveedor" => $_POST["nuevoIdProveedor"]
                 );
                 
-                $respuesta = ModeloProveedores::mdlIngresarProveedor($datos);
+                $respuesta = ModeloContactosProveedor::mdlIngresarContactosProveedor($datos);
                 
                 if ($respuesta == "ok"){
                     echo '<script>
                             swal({
                                     type: "success",
-                                    title: "¡El proveedor ha sido guardado correctamente!",
+                                    title: "¡El contacto del proveedor ha sido guardado correctamente!",
                                     showConfirmButton: true,
                                     confirmButtonText: "Cerrar"
 
                             }).then(function(result){
                                     if(result.value){
-                                            window.location = "proveedores";
+                                            window.location = "contactosProveedor";
                                     }
                             });
                         </script>';
@@ -43,7 +42,7 @@ class ControladorProveedores{
 
                                 }).then(function(result){
                                         if(result.value){
-                                                window.location = "proveedores";
+                                                window.location = "contactosProveedor";
                                         }
                                 });
                         </script>';                    
@@ -56,13 +55,13 @@ class ControladorProveedores{
     /*=============================================
       MOSTRAR
     =============================================*/
-    static public function ctrMostrarProveedores($campo, $valor) {
+    static public function ctrMostrarContactosProveedor($campo, $valor) {
         
         include_once "../conf/config.inc.php";
         
-        $tabla = "tproveedor";
+        $tabla = "tproveedorcontactos";
         
-        $respuesta = ModeloProveedores::mdlMostrarProveedores($tabla, $campo, $valor);
+        $respuesta = ModeloContactosProveedor::mdlMostrarContactosProveedor($tabla,$campo, $valor);
 
         return $respuesta;
     }
@@ -70,31 +69,29 @@ class ControladorProveedores{
     /*=============================================
       EDITAR
     =============================================*/
-    static public function ctrEditarProveedor(){        
+    static public function ctrEditarContactoProveedor(){        
 
-            if(isset($_POST["editarProveedor"])){                            
+            if(isset($_POST["editarContactoProveedor"])){                            
 
-                            $datos = array( "idProveedor"         => $_POST["idProveedor"],
-                                            "nit"         => $_POST["editarNit"],
-                                            "nombre"      => $_POST["editarProveedor"],
-                                            "direccion"   => $_POST["editarDireccion"],
-                                            "telefono1"   => $_POST["editarTelefono1"],
-                                            "telefono2"   => $_POST["editarTelefono2"],
-                                            "idCiudad"    => $_POST["editarCiudad"]);
+                            $datos = array( "idEmpresaContactos"    => $_POST["idEmpresaContactos"],
+                                            "email"                 => $_POST["editarEmail"],
+                                            "principal"             => $_POST["editarPrincipal"],
+                                            "nombre"                => $_POST["editarContactoProveedor"],
+                                            "idProveedor"             => $_POST["editarIdProveedor"]);
 
-                            $respuesta = ModeloProveedores::mdlEditarProveedor($datos);
+                            $respuesta = ModeloContactosProveedor::mdlEditarContactoProveedor($datos);
 
                             if($respuesta == "ok"){
 
                                     echo'<script>
                                     swal({
                                             type: "success",
-                                            title: "EL proveedor ha sido editado correctamente",
+                                            title: "El contacto del proveedor ha sido editado correctamente",
                                             showConfirmButton: true,
                                             confirmButtonText: "Cerrar"
                                             }).then(function(result){
                                                     if (result.value) {
-                                                        window.location = "proveedores";
+                                                        window.location = "contactosProveedor";
                                                     }
                                             })
                                     </script>';
@@ -108,7 +105,7 @@ class ControladorProveedores{
 
                                         }).then(function(result){
                                                 if(result.value){
-                                                        window.location = "proveedores";
+                                                        window.location = "contactosProveedor";
                                                 }
                                         });
                                 </script>';                               
@@ -120,13 +117,13 @@ class ControladorProveedores{
     /*=============================================
       BORRAR
     =============================================*/
-    static public function ctrBorrarProveedor(){
+    static public function ctrBorrarContactoProveedor(){
 
-        if(isset($_GET["idProveedor"])){
+        if(isset($_GET["idProveedorContactos"])){
                 
-                $datos = $_GET["idProveedor"];
+                $datos = $_GET["idProveedorContactos"];
 
-                $respuesta = ModeloProveedores::mdlBorrarProveedor($datos);
+                $respuesta = ModeloContactosProveedor::mdlBorrarContactoProveedor($datos);
 
                 if($respuesta == "ok"){
 
@@ -134,13 +131,13 @@ class ControladorProveedores{
 
                         swal({
                                   type: "success",
-                                  title: "El proveedor ha sido borrado correctamente",
+                                  title: "El contacto del proveedor ha sido borrado correctamente",
                                   showConfirmButton: true,
                                   confirmButtonText: "Cerrar"
                                   }).then(function(result){
                                                         if (result.value) {
 
-                                                        window.location = "proveedores";
+                                                        window.location = "contactosProveedor";
 
                                                         }
                                                 })
@@ -150,4 +147,3 @@ class ControladorProveedores{
         }
     }
 }            
-

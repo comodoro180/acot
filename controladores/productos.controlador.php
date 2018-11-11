@@ -84,7 +84,7 @@ class ControladorProductos{
                                     echo'<script>
                                     swal({
                                             type: "success",
-                                            title: "EL producto ha sido editado correctamente",
+                                            title: "E producto ha sido editado correctamente",
                                             showConfirmButton: true,
                                             confirmButtonText: "Cerrar"
                                             }).then(function(result){

@@ -9,7 +9,7 @@ class ModeloTipoProducto {
         try {
 		if($campo != null){
                     //$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE $campo = :$campo");
-                    $stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla where $campo = :$campo");
+                    $stmt = Conexion::conectar()->prepare("SELECT * FROM ttipoproducto where $campo = :$campo");
                     $stmt -> bindParam(":".$campo, $valor, PDO::PARAM_STR);
                     $stmt -> execute();
                     return $stmt -> fetch();

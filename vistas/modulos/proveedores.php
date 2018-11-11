@@ -45,7 +45,7 @@
             <tbody>
                 
               <?php
-                $proveedores = ModeloProveedores::mdlMostrarProveedores(null, null,null);
+                $proveedores = ModeloProveedores::mdlMostrarProveedores('tproveedor', null, null);
                 //var_dump($usuarios);
                 foreach ($proveedores as $key => $value){
                     echo '
@@ -247,8 +247,8 @@
               <div class="form-group">
                   <div class="input-group">
                   <span class="input-group-addon"> <i class="fa fa-globe"></i></span>
-                    <select class="form-control input-lg" name="editarCiudad" required>
-                      <option value="" id="editarCiudad"></option> 
+                    <select class="form-control input-lg" name="editarCiudadProveedor" required>
+                      <option value="" id="editarCiudadProveedor"></option> 
                       <?php
                         $ciudades = ModeloCiudades::mdlMostrarCiudades("tciudad", null , null);
                         $ultimoPais = "";
