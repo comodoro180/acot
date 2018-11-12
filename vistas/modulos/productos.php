@@ -170,7 +170,7 @@
               <label>Producto:</label>
               <div class="form-group">
                 <div class="input-group">                 
-                  <span class="input-group-addon"> <i class="fa fa-building"></i></span>
+                  <span class="input-group-addon"> <i class="fa fa-industry"></i></span>
                   <input type="text" class="form-control input-lg" id="editarProducto" name="editarProducto" value="" placeholder="Producto" >                
                 </div>
               </div>
@@ -178,7 +178,7 @@
               <label>Descripción:</label>
               <div class="form-group">
                 <div class="input-group">
-                  <span class="input-group-addon"> <i class="fa fa-phone"></i></span>                
+                  <span class="input-group-addon"> <i class="fa fa-file-text-o"></i></span>                
                   <input type="text" class="form-control input-lg" id="editarDescripcion" name="editarDescripcion" value="" placeholder="Télefono" >
                 </div>
               </div>            
@@ -186,7 +186,7 @@
               <label>Tipo de Producto:</label>
               <div class="form-group">
                   <div class="input-group">
-                  <span class="input-group-addon"> <i class="fa fa-globe"></i></span>
+                  <span class="input-group-addon"> <i class="fa fa-list"></i></span>
                     <select class="form-control input-lg" name="editarTipoProducto" required>
                       <option value="" id="editarTipoProducto"></option> 
                       <?php

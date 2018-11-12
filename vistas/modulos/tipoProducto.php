@@ -100,8 +100,7 @@
                 
               <div class="form-group">
                 <div class="input-group">
-                  <span class="input-group-addon"> <i class="fa fa-pencil"></i></span>
-                  <!--<input type="text" class="form-control textarea" name="nuevaDescripcionTipoProducto"  placeholder="Descripción" required>-->                
+                  <span class="input-group-addon"> <i class="fa fa-pencil"></i></span>                               
                   <textarea class="form-control" rows="3" name="nuevaDescripcionTipoProducto"  placeholder="Descripción" required></textarea>                
                 </div>
               </div>                    
@@ -154,11 +153,10 @@
               <div class="form-group">
                 <div class="input-group">                 
                   <span class="input-group-addon"> <i class="fa fa-pencil"></i></span>
-<!--                  <input type="text" class="form-control textarea" id="editarDescripcionTipoProducto" name="editarDescripcionTipoProducto" value="" placeholder="" >-->
                   <textarea class="form-control" rows="3" name="editarDescripcionTipoProducto" id="editarDescripcionTipoProducto" placeholder="Descripción" required></textarea>
                 </div>
               </div>
-              
+
             </div>
           </div>
 
