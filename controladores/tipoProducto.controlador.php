@@ -167,14 +167,25 @@ class ControladorTiposProducto {
                                   confirmButtonText: "Cerrar"
                                   }).then(function(result){
                                                         if (result.value) {
-
-                                                        window.location = "tipoProducto";
-
+                                                                window.location = "tipoProducto";
                                                         }
                                                 })
-
                         </script>';
-                }
+                } else {
+                        echo '<script>
+                                swal({
+                                        type: "error",
+                                        title: "'.$respuesta.'",
+                                        showConfirmButton: true,
+                                        confirmButtonText: "Cerrar"
+
+                                }).then(function(result){
+                                        if(result.value){
+                                                window.location = "tipoProducto";
+                                        }
+                                });
+                        </script>';                               
+                }                
         }
     }
     

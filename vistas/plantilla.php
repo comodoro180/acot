@@ -25,6 +25,8 @@
   <!-- DataTables -->
   <link rel="stylesheet" href="vistas/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
   <link rel="stylesheet" href="vistas/bower_components/datatables.net-bs/css/responsive.bootstrap.min.css">
+
+  <link rel="stylesheet" href="vistas/css/estilos_Acot.css">
   
   
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->

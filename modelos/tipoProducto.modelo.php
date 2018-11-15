@@ -96,7 +96,9 @@ class ModeloTipoProducto {
 
     static public function mdlBorrarTipoProducto($tabla, $datos){
 
-            include_once "../conf/config.inc.php";
+        //include_once "../conf/config.inc.php";
+
+        try {               
             
             $stmt = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE idTipoProducto = :idTipoProducto");
 
@@ -110,7 +112,12 @@ class ModeloTipoProducto {
             
             $stmt -> close();
             $stmt = null;
-    } 
+
+        } catch (PDOException $ex) {
+            print "ERROR:" . $ex->getMessage();
+            return $ex->getMessage();
+        }
+    }
 
   
 }
