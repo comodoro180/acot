@@ -81,8 +81,8 @@ $(".tablas").on("click", ".btnEliminarProveedor", function(){
   //var usuario = $(this).attr("usuario");
 
   swal({
-    title: '�Est� seguro de borrar el proveedor?',
-    text: "�Si no lo est� puede cancelar la acc��n!",
+    title: '¿Está seguro de borrar el proveedor?',
+    text: "¡Si no lo está puede cancelar la acción!",
     type: 'warning',
     showCancelButton: true,
     confirmButtonColor: '#3085d6',
