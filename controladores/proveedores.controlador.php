@@ -80,7 +80,7 @@ class ControladorProveedores{
                                             "direccion"   => $_POST["editarDireccion"],
                                             "telefono1"   => $_POST["editarTelefono1"],
                                             "telefono2"   => $_POST["editarTelefono2"],
-                                            "idCiudad"    => $_POST["editarCiudad"]);
+                                            "idCiudad"    => $_POST["editarCiudadProveedor"]);
 
                             $respuesta = ModeloProveedores::mdlEditarProveedor($datos);
 

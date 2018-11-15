@@ -110,7 +110,7 @@
               <div class="form-group">
                 <div class="input-group">                  
                   <span class="input-group-addon"> <i class="fa fa-building"></i></span>                                    
-                  <input type="number" class="form-control input-lg" name="nuevoNit"  placeholder="NIT" required>                
+                  <input type="text" class="form-control input-lg" name="nuevoNit"  placeholder="NIT" required>                
                 </div>
               </div>
                 
