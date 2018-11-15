@@ -28,6 +28,7 @@ require_once "modelos/proveedores.modelo.php";
 require_once "modelos/pedidoTipoEstado.modelo.php";
 require_once "modelos/contactosEmpresa.modelo.php";
 require_once "modelos/proveedorProducto.modelo.php";
+require_once "modelos/contactosProveedor.modelo.php";
 
 $plantilla = new ControladorPlantilla();
 $plantilla ->ctrPlantilla();
