@@ -5,7 +5,7 @@
         <li class="active">
           <a href="inicio">
             <i class="fa fa-home"></i>
-            <span>inicio</span>
+            <span>Inicio</span>
           </a>
         </li>
 <!--COTIZACIONES-->
@@ -86,15 +86,21 @@
                 //Empresas    
                 $_GET["ruta"] == "empresas" ||
                 $_GET["ruta"] == "contactosEmpresa" ||
+                //Proveedores    
+                $_GET["ruta"] == "proveedores" ||
+                $_GET["ruta"] == "contactosProveedor" ||
                 //Productos
-                $_GET["ruta"] == "tipoProducto"
+                $_GET["ruta"] == "tipoProducto"||
+                $_GET["ruta"] == "productos"||
+                $_GET["ruta"] == "proveedorProductos"||
+                //Pedidos                    
+                $_GET["ruta"] == "pedidoTipoEstado"
                     ) {                
                 echo '<li class="treeview active">';
             } else {
                 echo '<li class="treeview">';
             }
         ?>
-<!--        <li class="treeview" id="menuAdmin">-->
             <a href="" >
                 <i class="fa fa-cogs"></i>
                 <span>Administración</span>
@@ -103,7 +109,7 @@
                 </span>          
             </a>
             <ul class="treeview-menu">
-             <!--ADMISNISTRACIÓN - GEOGRAFÍA--> 
+<!--ADMISNISTRACIÓN - GEOGRAFÍA--> 
                 <?php
                     if ($_GET["ruta"] == "paises" || 
                         $_GET["ruta"] == "departamentos" ||
@@ -113,7 +119,6 @@
                         echo '<li class="treeview">';
                     }
                 ?>             
-<!--                <li class="treeview">-->
                     <a href="">
                         <i class="fa fa-list-ul"></i>
                         <span>Geografía</span>
@@ -123,26 +128,26 @@
                     </a>
                     <ul class="treeview-menu">
                         <li>
-                            <a href="paises" id="a_paises">
+                            <a href="paises" <?php if ($_GET["ruta"] == "paises") echo 'class="AcotMenuSeleccionado"'; ?>>
                               <i class="fa fa-circle-o"></i>
                               <span>Países</span>
                             </a>
                         </li>
                         <li>
-                            <a href="departamentos">
+                            <a href="departamentos" <?php if ($_GET["ruta"] == "departamentos") echo 'class="AcotMenuSeleccionado"'; ?>>
                               <i class="fa fa-circle-o"></i>
                               <span>Departamentos</span>
                             </a>
                         </li>
                         <li>
-                            <a href="ciudades">
+                            <a href="ciudades" <?php if ($_GET["ruta"] == "ciudades") echo 'class="AcotMenuSeleccionado"'; ?>>
                               <i class="fa fa-circle-o"></i>
                               <span>Ciudades</span>
                             </a>
                         </li>
                     </ul>
                 </li>
-             <!--ADMISNISTRACIÓN - USUARIOS-->
+<!--ADMISNISTRACIÓN - USUARIOS-->
                 <?php
                     if ($_GET["ruta"] == "usuarios" ||
                         $_GET["ruta"] == "roles") {                
@@ -151,7 +156,6 @@
                         echo '<li class="treeview">';
                     }
                 ?>               
-<!--                <li class="treeview">-->
                     <a href="">
                         <i class="fa fa-list-ul"></i>
                         <span>Usuarios</span>
@@ -161,32 +165,32 @@
                     </a>
                     <ul class="treeview-menu">
                         <li>
-                            <a href="usuarios">
+                            <a href="usuarios" <?php if ($_GET["ruta"] == "usuarios") echo 'class="AcotMenuSeleccionado"'; ?>>
                               <i class="fa fa-users"></i>
                               <span>Usuarios</span>
                             </a>
                         </li>
                         <li>
-                            <a href="">
+                            <a href="usuariosEmpresa" <?php if ($_GET["ruta"] == "usuariosEmpresa") echo 'class="AcotMenuSeleccionado"'; ?>>
                               <i class="fa fa-circle-o"></i>
                               <span>Usuarios por empresa</span>
                             </a>
                         </li>
                         <li>
-                            <a href="">
+                            <a href="usuariosProveedor" <?php if ($_GET["ruta"] == "usuariosProveedor") echo 'class="AcotMenuSeleccionado"'; ?>>
                               <i class="fa fa-circle-o"></i>
                               <span>Usuarios por proveedor</span>
                             </a>
                         </li>
                         <li>
-                            <a href="roles">
+                            <a href="roles" <?php if ($_GET["ruta"] == "roles") echo 'class="AcotMenuSeleccionado"'; ?>>
                               <i class="fa fa-circle-o"></i>
                               <span>Roles</span>
                             </a>
                         </li>                        
                     </ul>
                 </li>
-             <!--ADMISNISTRACIÓN - EMPRESAS--> 
+<!--ADMISNISTRACIÓN - EMPRESAS--> 
                 <?php
                     if ($_GET["ruta"] == "empresas" ||
                         $_GET["ruta"] == "contactosEmpresa") {                
@@ -204,21 +208,29 @@
                     </a>
                     <ul class="treeview-menu">
                         <li>
-                            <a href="empresas">
+                            <a href="empresas" <?php if ($_GET["ruta"] == "empresas") echo 'class="AcotMenuSeleccionado"'; ?>>
                               <i class="fa fa-circle-o"></i>
                               <span>Empresas</span>
                             </a>
                         </li>
                         <li>
-                            <a href="contactosEmpresa">
+                            <a href="contactosEmpresa" <?php if ($_GET["ruta"] == "contactosEmpresa") echo 'class="AcotMenuSeleccionado"'; ?>>
                               <i class="fa fa-circle-o"></i>
-                              <span>Contactos por empresa</span>
+                              <span>Contactos empresa</span>
                             </a>
                         </li>
                     </ul>
                 </li>
-             <!--ADMISNISTRACIÓN - PROVEEDORES-->                  
-                <li class="treeview">
+<!--ADMISNISTRACIÓN - PROVEEDORES-->  
+             
+                <?php
+                    if ($_GET["ruta"] == "proveedores"||
+                        $_GET["ruta"] == "contactosProveedor") {                
+                        echo '<li class="treeview active">';
+                    } else {
+                        echo '<li class="treeview">';
+                    }
+                ?>
                     <a href="">
                         <i class="fa fa-list-ul"></i>
                         <span>Proveedores</span>
@@ -228,29 +240,30 @@
                     </a>
                     <ul class="treeview-menu">
                         <li>
-                            <a href="usuarios">
-                              <i class="fa fa-users"></i>
+                            <a href="proveedores" <?php if ($_GET["ruta"] == "proveedores") echo 'class="AcotMenuSeleccionado"'; ?>>
+                              <i class="fa fa-circle-o"></i>
                               <span>Proveedores</span>
                             </a>
                         </li>
                         <li>
-                            <a href="">
+                            <a href="contactosProveedor" <?php if ($_GET["ruta"] == "contactosProveedor") echo 'class="AcotMenuSeleccionado"'; ?>>
                               <i class="fa fa-circle-o"></i>
-                              <span>Contactos por proveedor</span>
+                              <span>Contactos</span>
                             </a>
                         </li>
                         <li>
-                            <a href="">
+                            <a href="cotizacionesProveedor" <?php if ($_GET["ruta"] == "cotizacionesProveedor") echo 'class="AcotMenuSeleccionado"'; ?>>
                               <i class="fa fa-circle-o"></i>
-                              <span>Cotizaciones por proveedor</span>
+                              <span>Cotizaciones</span>                              
                             </a>
                         </li>
                     </ul>
                 </li>  
-             <!--ADMISNISTRACIÓN - PRODUCTOS-->
+<!--ADMISNISTRACIÓN - PRODUCTOS-->
                 <?php
                     if ($_GET["ruta"] == "tipoProducto" ||
-                        $_GET["ruta"] == "") {                
+                        $_GET["ruta"] == "proveedorProductos"||
+                        $_GET["ruta"] == "productos") {                
                         echo '<li class="treeview active">';
                     } else {
                         echo '<li class="treeview">';
@@ -265,26 +278,28 @@
                     </a>
                     <ul class="treeview-menu">
                         <li>
-                            <a href="tipoProducto">
+                            <a href="tipoProducto" <?php if ($_GET["ruta"] == "tipoProducto") echo 'class="AcotMenuSeleccionado"'; ?>>
                               <i class="fa fa-circle-o"></i>
                               <span>Tipos de producto</span>
                             </a>
                         </li>
                         <li>
-                            <a href="">
+                            <a href="productos" <?php if ($_GET["ruta"] == "productos") echo 'class="AcotMenuSeleccionado"'; ?>>
                               <i class="fa fa-circle-o"></i>
-                              <span>Menu 1.2</span>
+                              <span>Productos</span>
                             </a>
                         </li>
+                        <!--
                         <li>
-                            <a href="">
+                            <a href="proveedorProductos">
                               <i class="fa fa-circle-o"></i>
-                              <span>Menu 1.3</span>
+                              <span>Proveedores Productos</span>
                             </a>
                         </li>
+                        -->
                     </ul>
                 </li> 
-             <!--ADMISNISTRACIÓN - PEDIDOS-->                  
+<!--ADMISNISTRACIÓN - PEDIDOS-->                  
                 <li class="treeview">
                     <a href="">
                         <i class="fa fa-list-ul"></i>
@@ -295,11 +310,12 @@
                     </a>
                     <ul class="treeview-menu">
                         <li>
-                            <a href="usuarios">
-                              <i class="fa fa-users"></i>
-                              <span>Menu 1.1</span>
+                            <a href="pedidos">
+                              <i class="fa fa-circle-o"></i>
+                              <span>Pedidos</span>
                             </a>
                         </li>
+                        <!--
                         <li>
                             <a href="">
                               <i class="fa fa-circle-o"></i>
@@ -312,9 +328,10 @@
                               <span>Menu 1.3</span>
                             </a>
                         </li>
+                        -->
                     </ul>
                 </li> 
-                <!--ADMISNISTRACIÓN - COTIZACIONES-->                  
+<!--ADMISNISTRACIÓN - COTIZACIONES-->                  
                 <li class="treeview">
                     <a href="">
                         <i class="fa fa-list-ul"></i>
@@ -325,11 +342,12 @@
                     </a>
                     <ul class="treeview-menu">
                         <li>
-                            <a href="usuarios">
-                              <i class="fa fa-users"></i>
-                              <span>Menu 1.1</span>
+                            <a href="cotizaciones">
+                              <i class="fa fa-circle-o"></i>
+                              <span>Cotizaciones</span>
                             </a>
                         </li>
+                        <!--
                         <li>
                             <a href="">
                               <i class="fa fa-circle-o"></i>
@@ -342,9 +360,11 @@
                               <span>Menu 1.3</span>
                             </a>
                         </li>
+                        -->
                     </ul>
                 </li> 
-                <!--ADMISNISTRACIÓN - ...-->                
+<!--ADMISNISTRACIÓN - ...--> 
+    <!--   
                 <li class="treeview">
                     <a href="">
                         <i class="fa fa-list-ul"></i>
@@ -407,7 +427,7 @@
                 </li>
             </ul>
         </li>        
-
+    -->
     </ul>
   </section>
 </aside>

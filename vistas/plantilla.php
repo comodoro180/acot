@@ -5,6 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>  
+    
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>ACOT Cotizaciones</title>
   <link rel="icon" type="image/png" href="vistas/img/plantilla/Acot_icono.png">
@@ -24,6 +25,8 @@
   <!-- DataTables -->
   <link rel="stylesheet" href="vistas/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
   <link rel="stylesheet" href="vistas/bower_components/datatables.net-bs/css/responsive.bootstrap.min.css">
+
+  <link rel="stylesheet" href="vistas/css/estilos_Acot.css">
   
   
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -81,10 +84,15 @@ PLUGINGS DE JAVASCRIPT
                   $_GET["ruta"] == "departamentos" ||
                   $_GET["ruta"] == "ciudades" ||
                   $_GET["ruta"] == "tipoProducto" ||
+                  $_GET["ruta"] == "productos" ||
                   $_GET["ruta"] == "empresas" ||
                   $_GET["ruta"] == "roles" ||
+                  $_GET["ruta"] == "contactosEmpresa" ||
+                  $_GET["ruta"] == "pedidoTipoEstado" ||
+                  $_GET["ruta"] == "proveedorProductos"||
                   //$_GET["ruta"] == "recuperar_clave" ||
-                  //$_GET["ruta"] == "productos" ||
+                  $_GET["ruta"] == "proveedores" ||
+                  $_GET["ruta"] == "contactosProveedor" ||
                   //$_GET["ruta"] == "clientes" ||
                   //$_GET["ruta"] == "ventas" ||
                   //$_GET["ruta"] == "crear-venta" ||
@@ -123,8 +131,15 @@ PLUGINGS DE JAVASCRIPT
 <script src="vistas/js/departamentos.js"></script>
 <script src="vistas/js/ciudades.js"></script>
 <script src="vistas/js/tipoProducto.js"></script>
+<script src="vistas/js/productos.js"></script>
 <script src="vistas/js/empresas.js"></script>
 <script src="vistas/js/roles.js"></script>
+<script src="vistas/js/proveedores.js"></script>
+<script src="vistas/js/contactosEmpresa.js"></script>
+<script src="vistas/js/pedidoTipoEstado.js"></script>
+<script src="vistas/js/contactosProveedor.js"></script>
+<script src="vistas/js/proveedorProducto.js"></script>
+
 </body>
 </html>
 

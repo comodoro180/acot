@@ -258,14 +258,14 @@ CREATE TABLE `tpedidotipoestado` (
 CREATE TABLE `tperfil` (
   `IDPERFIL` int(11) NOT NULL,
   `NOMBRE` varchar(20) NOT NULL,
-  `DESCRPCION` varchar(200) NOT NULL
+  `DESCRIPCION` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `tperfil`
 --
 
-INSERT INTO `tperfil` (`IDPERFIL`, `NOMBRE`, `DESCRPCION`) VALUES
+INSERT INTO `tperfil` (`IDPERFIL`, `NOMBRE`, `DESCRIPCION`) VALUES
 (1, 'Administrador', 'Usuario administrador del sistema'),
 (2, 'Proveedor', 'Usuario del tipo proveedor'),
 (3, 'Cotizador', 'Usuario del tipo Cotizador'),
@@ -384,7 +384,7 @@ CREATE TABLE `tusuario` (
 --
 
 INSERT INTO `tusuario` (`IDUSUARIO`, `NOMBRE`, `APELLIDO`, `EMAIL`, `CLAVE`, `ESTADO`, `IDPERFIL`, `CODIGO`, `FECHA_CREACION`) VALUES
-(1, 'Admin', 'Admin A', 'admin@acot.com', '$2a$07$asxx54ahjppf45sd87a5au1gjqdU.ybWXdMxoN7YGHb9SmYjSf9na', 1, 1, '$2a$07$asxx54ahjppf45sd87a5aulIifwlxNr2rf7GPlyJT9BbZhEfanf3S', '2018-05-20 15:59:53');
+(1, 'Admin', 'Admin A', 'admin@acot.com', '$2a$07$asxx54ahjppf45sd87a5auE4pAhpsjQota15gZWwNyZjZgyb5OjdO', 1, 1, '$2a$07$asxx54ahjppf45sd87a5aulIifwlxNr2rf7GPlyJT9BbZhEfanf3S', '2018-05-20 15:59:53');
 
 --
 -- Índices para tablas volcadas

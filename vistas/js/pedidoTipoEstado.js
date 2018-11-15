@@ -1,15 +1,15 @@
 /*=============================================
 EDITAR 
 =============================================*/
-$(".tablas").on("click", ".btnEditarRol", function(){
+$(".tablas").on("click", ".btnEditarPedidoTipoEstado", function(){
 
-	var idPerfil = $(this).attr("idPerfil");
+	var idPedidoTipoEstado = $(this).attr("idPedidoTipoEstado");
 	
 	var datos = new FormData();
-	datos.append("idPerfil", idPerfil);        
+	datos.append("idPedidoTipoEstado", idPedidoTipoEstado);        
         //alert(idUsuario);
 	$.ajax({
-		url:"ajax/roles.ajax.php",
+		url:"ajax/pedidoTipoEstado.ajax.php",
 		method: "POST",
 		data: datos,
 		cache: false,
@@ -17,8 +17,8 @@ $(".tablas").on("click", ".btnEditarRol", function(){
 		processData: false,
 		dataType: "json",
 		success: function(respuesta){
-                        $("#idPerfil").val(respuesta["IDPERFIL"]);
-			                  $("#editarRol").val(respuesta["NOMBRE"]);
+                        $("#idPedidoTipoEstado").val(respuesta["IDPEDIDOTIPOESTADO"]);
+			$("#editarPedidoTipoEstado").val(respuesta["NOMBRE"]);
                         $("#editarDescripcion").val(respuesta["DESCRIPCION"]);
 		}
 	});
@@ -28,24 +28,24 @@ $(".tablas").on("click", ".btnEditarRol", function(){
 /*=============================================
 ELIMINAR 
 =============================================*/
-$(".tablas").on("click", ".btnEliminarRol", function(){
+$(".tablas").on("click", ".btnEliminarPedidoTipoEstado", function(){
 
-  var idPerfil = $(this).attr("idPerfil");
+  var idPedidoTipoEstado = $(this).attr("idPedidoTipoEstado");
 
   swal({
-    title: '¿Está seguro de borrar el rol?',
+    title: '¿Está seguro de borrar el tipo de estado de pedidos?',
     text: "¡Si no lo está puede cancelar la accíón!",
     type: 'warning',
     showCancelButton: true,
     confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
       cancelButtonText: 'Cancelar',
-      confirmButtonText: 'Si, borrar el rol!'
+      confirmButtonText: 'Si, borrar el tipo de estado de pedidos!'
   }).then(function(result){
 
     if(result.value){
       
-      window.location = "index.php?ruta=roles&idRol="+idPerfil;
+      window.location = "index.php?ruta=pedidoTipoEstado&idPedidoTipoEstado="+idPedidoTipoEstado;
 
     }
 

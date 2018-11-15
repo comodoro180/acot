@@ -2,30 +2,30 @@
 
 require_once "conexion.php";
 
-class ModeloEmpresas{
+class ModeloProveedores{
     
     /* =============================================
       MOSTRAR 
       ============================================= */
-    static public function mdlMostrarEmpresas($tabla,$campo, $valor) {
+    static public function mdlMostrarProveedores($tabla, $campo, $valor) {
         try {
 		if($campo != null){                    
-                    $stmt = Conexion::conectar()->prepare("SELECT e.*,c.nombre as CIUDAD, d.nombre as DEPARTAMENTO, p.nombre as PAIS "
-                                                        . "FROM tempresa e, tciudad c, tdepartamento d, tpais p "
-                                                        . "WHERE e.IDCIUDAD = c.IDCIUDAD "
+                    $stmt = Conexion::conectar()->prepare("SELECT p.*, c.nombre as CIUDAD, d.nombre as DEPARTAMENTO, pa.nombre as PAIS  "
+                                                        . "FROM tproveedor p, tciudad c, tdepartamento d, tpais pa  "
+                                                        . "WHERE p.IDCIUDAD = c.IDCIUDAD "
                                                         . "AND c.IDDEPARTAMENTO = d.IDDEPARTAMENTO "
-                                                        . "AND d.IDPAIS = p.IDPAIS "
+                                                        . "AND d.IDPAIS = pa.IDPAIS "
                                                         . "AND $campo = :$campo");
                     $stmt -> bindParam(":".$campo, $valor, PDO::PARAM_STR);
                     $stmt -> execute();
                     return $stmt -> fetch();
                     
 		}else{
-                    $stmt = Conexion::conectar()->prepare("SELECT e.*,c.nombre as CIUDAD, d.nombre as DEPARTAMENTO, p.nombre as PAIS "
-                                                        . "FROM tempresa e, tciudad c, tdepartamento d, tpais p "
-                                                        . "WHERE e.IDCIUDAD = c.IDCIUDAD "
+                    $stmt = Conexion::conectar()->prepare("SELECT p.*, c.nombre as CIUDAD, d.nombre as DEPARTAMENTO, pa.nombre as PAIS  "
+                                                        . "FROM tproveedor p, tciudad c, tdepartamento d, tpais pa  "
+                                                        . "WHERE p.IDCIUDAD = c.IDCIUDAD "
                                                         . "AND c.IDDEPARTAMENTO = d.IDDEPARTAMENTO "
-                                                        . "AND d.IDPAIS = p.IDPAIS");
+                                                        . "AND d.IDPAIS = pa.IDPAIS ");
                     $stmt -> execute();
                     return $stmt -> fetchAll();
 		}		
@@ -42,16 +42,17 @@ class ModeloEmpresas{
     /* =============================================
       INGRESAR
       ============================================= */
-    static public function mdlIngresarEmpresa($datos){
+    static public function mdlIngresarProveedor($datos){
         try {
             
-            $stmt = Conexion::conectar()->prepare("INSERT INTO tempresa (NOMBRE, TELEFONOPRINCIPAL, DIRECCION, NIT, ESTADO, IDCIUDAD) VALUES "
-                                                . "(:nombre, :telefono, :direccion, :nit, 0, :idCiudad)");
+            $stmt = Conexion::conectar()->prepare("INSERT INTO tproveedor (NIT, NOMBRE, DIRECCION,TELEFONO1, TELEFONO2, ESTADO, IDCIUDAD) VALUES "
+                                                . "(:nit, :nombre, :direccion, :telefono1, :telefono2, 0, :idCiudad)");
 
-            $stmt->bindParam(":nombre", $datos["nombre"],PDO::PARAM_STR);
-            $stmt->bindParam(":telefono", $datos["telefono"],PDO::PARAM_STR);
-            $stmt->bindParam(":direccion", $datos["direccion"],PDO::PARAM_STR);
             $stmt->bindParam(":nit", $datos["nit"],PDO::PARAM_STR);
+            $stmt->bindParam(":nombre", $datos["nombre"],PDO::PARAM_STR);
+            $stmt->bindParam(":direccion", $datos["direccion"],PDO::PARAM_STR);
+            $stmt->bindParam(":telefono1", $datos["telefono1"],PDO::PARAM_STR);
+            $stmt->bindParam(":telefono2", $datos["telefono2"],PDO::PARAM_STR);
             $stmt->bindParam(":idCiudad", $datos["idCiudad"],PDO::PARAM_STR);
             
             if ($stmt->execute()){
@@ -67,18 +68,22 @@ class ModeloEmpresas{
     /*=============================================
     EDITAR
     =============================================*/
-    static public function mdlEditarEmpresa($datos){
+    static public function mdlEditarProveedor($datos){
         try {
             
-            //$stmt = Conexion::conectar()->prepare("UPDATE $tabla SET nombre = :nombre, apellido = :apellido, clave = :clave, idperfil = :idperfil, email = :email  WHERE idusuario = :idusuario");
-            $stmt = Conexion::conectar()->prepare("UPDATE tempresa SET NOMBRE=:empresa, TELEFONOPRINCIPAL=:telefono, DIRECCION=:direccion, NIT=:nit, IDCIUDAD=:idCiudad WHERE IDEMPRESA=:idEmpresa");
+            $stmt = Conexion::conectar()->prepare("UPDATE tproveedor SET NIT=:nit, "
+                                                . "NOMBRE=:nombre, DIRECCION=:direccion, "
+                                                . "TELEFONO1=:telefono1, TELEFONO2=:telefono2, "
+                                                . "IDCIUDAD=:idCiudad "
+                                                . "WHERE IDPROVEEDOR=:idProveedor");
             
-            $stmt -> bindParam(":idEmpresa", $datos["idEmpresa"], PDO::PARAM_STR);
-            $stmt -> bindParam(":empresa", $datos["empresa"], PDO::PARAM_STR);
-            $stmt -> bindParam(":telefono", $datos["telefono"], PDO::PARAM_STR);
-            $stmt -> bindParam(":direccion", $datos["direccion"], PDO::PARAM_STR);
-            $stmt -> bindParam(":nit", $datos["nit"], PDO::PARAM_INT);            
-            $stmt -> bindParam(":idCiudad", $datos["idCiudad"], PDO::PARAM_STR);
+            $stmt->bindParam(":idProveedor", $datos["idProveedor"],PDO::PARAM_STR);
+            $stmt->bindParam(":nit", $datos["nit"],PDO::PARAM_STR);
+            $stmt->bindParam(":nombre", $datos["nombre"],PDO::PARAM_STR);
+            $stmt->bindParam(":direccion", $datos["direccion"],PDO::PARAM_STR);
+            $stmt->bindParam(":telefono1", $datos["telefono1"],PDO::PARAM_STR);
+            $stmt->bindParam(":telefono2", $datos["telefono2"],PDO::PARAM_STR);
+            $stmt->bindParam(":idCiudad", $datos["idCiudad"],PDO::PARAM_STR);
 
             if($stmt -> execute()){
                     return "ok";
@@ -98,7 +103,7 @@ class ModeloEmpresas{
     /*=============================================
     ACTUALIZAR
     =============================================*/
-    static public function mdlActualizarEmpresa($tabla, $item1, $valor1, $item2, $valor2){
+    static public function mdlActualizarProveedor($tabla, $item1, $valor1, $item2, $valor2){
         
             require_once "../conf/config.inc.php";
 
@@ -120,13 +125,13 @@ class ModeloEmpresas{
     /*=============================================
     BORRAR
     =============================================*/    
-    static public function mdlBorrarEmpresa($datos){
+    static public function mdlBorrarProveedor($datos){
         try{
             include_once "../conf/config.inc.php";
             
-            $stmt = Conexion::conectar()->prepare("DELETE FROM tempresa WHERE IDEMPRESA = :idEmpresa");
+            $stmt = Conexion::conectar()->prepare("DELETE FROM tproveedor WHERE IDPROVEEDOR = :idProveedor");
 
-            $stmt -> bindParam(":idEmpresa", $datos, PDO::PARAM_INT);
+            $stmt -> bindParam(":idProveedor", $datos, PDO::PARAM_INT);
 
             if($stmt -> execute()){
                     return "ok";
@@ -145,3 +150,4 @@ class ModeloEmpresas{
     } 
   
 }
+

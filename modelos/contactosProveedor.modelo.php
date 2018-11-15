@@ -2,26 +2,26 @@
 
 require_once "conexion.php";
 
-class ModeloProductos{
+class ModeloContactosProveedor{
     
     /* =============================================
       MOSTRAR 
       ============================================= */
-    static public function mdlMostrarProductos($tabla, $campo, $valor) {
+    static public function mdlMostrarContactosProveedor($tabla, $campo, $valor) {
         try {
 		if($campo != null){                    
-                    $stmt = Conexion::conectar()->prepare("SELECT p.*, tp.nombre as TIPOPRODUCTO "
-                                                        . "FROM tproducto p, ttipoproducto tp "
-                                                        . "WHERE p.IDTIPOPRODUCTO = tp.IDTIPOPRODUCTO "
+                    $stmt = Conexion::conectar()->prepare("SELECT cp.*, p.nombre as PROVEEDOR "
+                                                        . "FROM tproveedorcontactos cp, tproveedor p "
+                                                        . "WHERE cp.IDPROVEEDOR = p.IDPROVEEDOR "
                                                         . "AND $campo = :$campo");
                     $stmt -> bindParam(":".$campo, $valor, PDO::PARAM_STR);
                     $stmt -> execute();
                     return $stmt -> fetch();
                     
 		}else{
-                    $stmt = Conexion::conectar()->prepare("SELECT p.*,tp.nombre as TIPOPRODUCTO "
-                                                        . "FROM tproducto p, ttipoproducto tp "
-                                                        . "WHERE p.IDTIPOPRODUCTO = tp.IDTIPOPRODUCTO");
+                    $stmt = Conexion::conectar()->prepare("SELECT cp.*, p.nombre as PROVEEDOR "
+                                                        . "FROM tproveedorcontactos cp, tproveedor p "
+                                                        . "WHERE cp.IDPROVEEDOR = p.IDPROVEEDOR ");
                     $stmt -> execute();
                     return $stmt -> fetchAll();
 		}		
@@ -38,15 +38,17 @@ class ModeloProductos{
     /* =============================================
       INGRESAR
       ============================================= */
-    static public function mdlIngresarProducto($datos){
+    static public function mdlIngresarContactosProveedor($datos){
         try {
             
-            $stmt = Conexion::conectar()->prepare("INSERT INTO tproducto (NOMBRE, DESCRIPCION, ESTADO, IDTIPOPRODUCTO) VALUES "
-                                                . "(:nombre, :descripcion, 0, :idTipoProducto)");
+            $stmt = Conexion::conectar()->prepare("INSERT INTO tproveedorcontactos"
+                                                . " (EMAIL, ESTADO, PRINCIPAL, NOMBRE, IDPROVEEDOR) VALUES "
+                                                . "(:email, 0, :principal, :nombre, :idProveedor)");
 
+            $stmt->bindParam(":email", $datos["email"],PDO::PARAM_STR);
+            $stmt->bindParam(":principal", $datos["principal"],PDO::PARAM_STR);
             $stmt->bindParam(":nombre", $datos["nombre"],PDO::PARAM_STR);
-            $stmt->bindParam(":descripcion", $datos["descripcion"],PDO::PARAM_STR);
-            $stmt->bindParam(":idTipoProducto", $datos["idTipoProducto"],PDO::PARAM_STR);
+            $stmt->bindParam(":idProveedor", $datos["idProveedor"],PDO::PARAM_STR);
             
             if ($stmt->execute()){
                 return "ok";
@@ -61,15 +63,19 @@ class ModeloProductos{
     /*=============================================
     EDITAR
     =============================================*/
-    static public function mdlEditarProducto($datos){
+    static public function mdlEditarContactoProveedor($datos){
         try {
             
-            $stmt = Conexion::conectar()->prepare("UPDATE tproducto SET NOMBRE=:producto, DESCRIPCION=:descripcion, IDTIPOPRODUCTO=:idTipoProducto WHERE IDPRODUCTO=:idProducto");
+            $stmt = Conexion::conectar()->prepare("UPDATE tproveedorcontactos "
+                                                . "SET EMAIL=:email, PRINCIPAL=:principal, "
+                                                . "NOMBRE=:nombre, IDPROVEEDOR=:idProveedor "
+                                                . "WHERE IDEMPRESACONTACTOS=:idEmpresaContactos");
             
-            $stmt -> bindParam(":idProducto", $datos["idProducto"], PDO::PARAM_STR);
-            $stmt -> bindParam(":producto", $datos["producto"], PDO::PARAM_STR);
-            $stmt -> bindParam(":descripcion", $datos["descripcion"], PDO::PARAM_STR);
-            $stmt -> bindParam(":idTipoProducto", $datos["idTipoProducto"], PDO::PARAM_STR);
+            $stmt->bindParam(":idEmpresaContactos", $datos["idEmpresaContactos"],PDO::PARAM_STR);
+            $stmt->bindParam(":email", $datos["email"],PDO::PARAM_STR);
+            $stmt->bindParam(":principal", $datos["principal"],PDO::PARAM_STR);
+            $stmt->bindParam(":nombre", $datos["nombre"],PDO::PARAM_STR);
+            $stmt->bindParam(":idProveedor", $datos["idProveedor"],PDO::PARAM_STR);
 
             if($stmt -> execute()){
                     return "ok";
@@ -89,7 +95,7 @@ class ModeloProductos{
     /*=============================================
     ACTUALIZAR
     =============================================*/
-    static public function mdlActualizarProducto($tabla, $item1, $valor1, $item2, $valor2){
+    static public function mdlActualizarContactoProveedor($tabla, $item1, $valor1, $item2, $valor2){
         
             require_once "../conf/config.inc.php";
 
@@ -111,13 +117,13 @@ class ModeloProductos{
     /*=============================================
     BORRAR
     =============================================*/    
-    static public function mdlBorrarProducto($datos){
+    static public function mdlBorrarContactoProveedor($datos){
         try{
             include_once "../conf/config.inc.php";
             
-            $stmt = Conexion::conectar()->prepare("DELETE FROM tproducto WHERE IDPRODUCTO = :idProducto");
+            $stmt = Conexion::conectar()->prepare("DELETE FROM tproveedorcontactos WHERE IDEMPRESACONTACTOS = :idProveedorContactos");
 
-            $stmt -> bindParam(":idProducto", $datos, PDO::PARAM_INT);
+            $stmt -> bindParam(":idProveedorContactos", $datos, PDO::PARAM_INT);
 
             if($stmt -> execute()){
                     return "ok";

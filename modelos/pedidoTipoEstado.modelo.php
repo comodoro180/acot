@@ -2,20 +2,20 @@
 
 require_once "conexion.php";
 
-class ModeloRoles {
+class ModeloPedidoTipoEstado{
     
 
-    static public function mdlMostrarRoles($tabla, $campo, $valor) {
+    static public function mdlMostrarPedidoTipoEstado($tabla, $campo, $valor) {
         try {
 		if($campo != null){
                     //$stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla WHERE $campo = :$campo");
-                    $stmt = Conexion::conectar()->prepare("SELECT * FROM $tabla where $campo = :$campo");
+                    $stmt = Conexion::conectar()->prepare("SELECT * FROM tpedidotipoestado where $campo = :$campo");
                     $stmt -> bindParam(":".$campo, $valor, PDO::PARAM_STR);
                     $stmt -> execute();
                     return $stmt -> fetch();
 		}else{
 
-                    $stmt = Conexion::conectar()->prepare("SELECT * FROM tperfil");
+                    $stmt = Conexion::conectar()->prepare("SELECT * FROM tpedidotipoestado");
                     $stmt -> execute();
                     return $stmt -> fetchAll();
 		}		
@@ -29,7 +29,7 @@ class ModeloRoles {
         }
     }
     
-    static public function mdlIngresarRol($tabla,$datos){
+    static public function mdlIngresarPedidoTipoEstado($tabla,$datos){
         try {
             
             $stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(nombre,descripcion) "
@@ -49,12 +49,12 @@ class ModeloRoles {
     }
     
 
-    static public function mdlEditarRol($tabla, $datos){
+    static public function mdlEditarPedidoTipoEstado($tabla, $datos){
         try {
             
-            $stmt = Conexion::conectar()->prepare("UPDATE $tabla SET NOMBRE = :nombre, DESCRIPCION = :descripcion WHERE idPerfil = :idPerfil");
+            $stmt = Conexion::conectar()->prepare("UPDATE $tabla SET NOMBRE = :nombre, DESCRIPCION = :descripcion WHERE idPedidoTipoEstado = :idPedidoTipoEstado");
 
-            $stmt -> bindParam(":idPerfil", $datos["idPerfil"], PDO::PARAM_STR);
+            $stmt -> bindParam(":idPedidoTipoEstado", $datos["idPedidoTipoEstado"], PDO::PARAM_STR);
             $stmt -> bindParam(":nombre", $datos["nombre"], PDO::PARAM_STR);
             $stmt -> bindParam(":descripcion", $datos["descripcion"],PDO::PARAM_STR);
 
@@ -74,7 +74,7 @@ class ModeloRoles {
     }
     
 
-    static public function mdlActualizarRol($tabla, $item1, $valor1, $item2, $valor2){
+    static public function mdlActualizarPedidoTipoEstado($tabla, $item1, $valor1, $item2, $valor2){
         
             require_once "../conf/config.inc.php";
 
@@ -94,13 +94,13 @@ class ModeloRoles {
     } 
  
 
-    static public function mdlBorrarRol($tabla, $datos){
+    static public function mdlBorrarPedidoTipoEstado($tabla, $datos){
 
             include_once "../conf/config.inc.php";
             
-            $stmt = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE idPerfil = :idRol");
+            $stmt = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE idPedidoTipoEstado = :idPedidoTipoEstado");
 
-            $stmt -> bindParam(":idRol", $datos, PDO::PARAM_INT);
+            $stmt -> bindParam(":idPedidoTipoEstado", $datos, PDO::PARAM_INT);
 
             if($stmt -> execute()){
                     return "ok";
