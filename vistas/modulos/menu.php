@@ -19,7 +19,7 @@
           </a>
           <ul class="treeview-menu">     
             <li>
-              <a href="registrar_cotizacion">
+              <a href="registrarCotizacion">
                 <i class="fa fa-circle-o"></i>
                 <span>Registrar cotización</span>
               </a>
@@ -49,7 +49,7 @@
             </a>
             <ul class="treeview-menu">
                 <li>
-                    <a href="usuarios">
+                    <a href="registrarPedido">
                       <i class="fa fa-circle-o"></i>
                       <span>Registrar pedido</span>
                     </a>
