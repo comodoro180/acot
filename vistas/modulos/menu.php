@@ -289,14 +289,14 @@
                               <span>Productos</span>
                             </a>
                         </li>
-                        <!--
+                        
                         <li>
                             <a href="proveedorProductos">
                               <i class="fa fa-circle-o"></i>
                               <span>Proveedores Productos</span>
                             </a>
                         </li>
-                        -->
+                        
                     </ul>
                 </li> 
 <!--ADMISNISTRACIÓN - PEDIDOS-->                  

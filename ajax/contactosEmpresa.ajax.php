@@ -38,7 +38,7 @@ class AjaxContactosEmpresa{
 		$item2 = "idEmpresaContactos";
 		$valor2 = $this->activarIdContactoEmpresa;
 
-		$respuesta = ModeloContactosEmpresa::mdlActualizarProducto($tabla, $item1, $valor1, $item2, $valor2);
+		$respuesta = ModeloContactosEmpresa::mdlActualizarContactoEmpresa($tabla, $item1, $valor1, $item2, $valor2);
 
 	}
 
