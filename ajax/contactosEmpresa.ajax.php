@@ -41,9 +41,58 @@ class AjaxContactosEmpresa{
 		$respuesta = ModeloContactosEmpresa::mdlActualizarContactoEmpresa($tabla, $item1, $valor1, $item2, $valor2);
 
 	}
+        
+        /*=============================================
+	ACTIVAR
+	=============================================*/	
 
+	public $principal;
+	public $idPrincipalContactoEmpresa;
+
+	public function ajaxPrincipalContactoEmpresa(){
+
+		$tabla = "tempresacontactos";
+
+		$item1 = "principal";
+		$valor1 = $this->principal;
+
+		$item2 = "idEmpresaContactos";
+		$valor2 = $this->idPrincipalContactoEmpresa;
+
+		$respuesta = ModeloContactosEmpresa::mdlActualizarContactoEmpresa($tabla, $item1, $valor1, $item2, $valor2);
+
+	}
+        
+        /*=============================================
+	VALIDAR NO REPETIR EMAIL
+	=============================================*/	
+	public $validarEmail;
+
+	public function ajaxValidarEmail(){
+
+		$item = "email";
+		$valor = $this->validarEmail;
+
+		$respuesta = ControladorContactosEmpresa::ctrMostrarContactosEmpresa($item, $valor);
+
+		echo json_encode($respuesta);
+	}
+        
+        /*=============================================
+	VALIDAR NO REPETIR EMAIL COMO PROVEEDOR
+	=============================================*/	
+	public $validarEmailCP;
+
+	public function ajaxValidarEmailCP(){
+
+		$item = "email";
+		$valor = $this->validarEmailCP;
+
+		$respuesta = ControladorContactosProveedor::ctrMostrarContactosProveedor($item, $valor);
+
+		echo json_encode($respuesta);
+	}
 }
-
 /*=============================================
 EDITAR
 =============================================*/
@@ -65,3 +114,33 @@ if(isset($_POST["activarContactoEmpresa"])){
 	$activarContactoEmpresa ->ajaxActivarContactoEmpresa();
 }
 
+/*=============================================
+ACTIVAR PRINCIPAL
+=============================================*/	
+if(isset($_POST["principal"])){
+
+	$principal = new AjaxContactosEmpresa();
+	$principal -> principal = $_POST["principal"];
+	$principal -> idPrincipalContactoEmpresa = $_POST["idPrincipalContactoEmpresa"];
+	$principal ->ajaxPrincipalContactoEmpresa();
+}
+
+/*=============================================
+VALIDAR NO REPETIR EMAIL
+=============================================*/
+if(isset( $_POST["validarEmail"])){
+
+	$valContactosEmpresa = new AjaxContactosEmpresa();
+	$valContactosEmpresa -> validarEmail = $_POST["validarEmail"];
+	$valContactosEmpresa ->ajaxValidarEmail();
+}
+
+/*=============================================
+VALIDAR NO REPETIR EMAIL CON EMPRESA
+=============================================*/
+if(isset( $_POST["validarEmailCP"])){
+
+	$valContactosEmpresa = new AjaxContactosEmpresa();
+	$valContactosEmpresa -> validarEmailCP = $_POST["validarEmailCP"];
+	$valContactosEmpresa ->ajaxValidarEmailCP();
+}

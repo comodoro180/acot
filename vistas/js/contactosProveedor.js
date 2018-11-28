@@ -4,11 +4,11 @@ EDITAR CONTACTO PROVEEDOR
 $(".tablas").on("click", ".btnEditarContactoProveedor", function(){
 
 	var idProveedorContactos = $(this).attr("idEmpresaContactos");
-	
+        
 	var datos = new FormData();
-	datos.append("idEmpresaContactos", idProveedorContactos);        
-        //alert(idUsuario);
-	$.ajax({
+	datos.append("idEmpresaContactos", idProveedorContactos);
+        
+        $.ajax({
 		url:"ajax/contactosProveedor.ajax.php",
 		method: "POST",
 		data: datos,
@@ -19,7 +19,6 @@ $(".tablas").on("click", ".btnEditarContactoProveedor", function(){
 		success: function(respuesta){
                         $("#idEmpresaContactos").val(respuesta["IDEMPRESACONTACTOS"]);
 			$("#editarEmail").val(respuesta["EMAIL"]);
-			$("#editarPrincipal").val(respuesta["PRINCIPAL"]);
                         $("#editarContactoProveedor").val(respuesta["NOMBRE"]);
                         $("#editarIdProveedor").html(respuesta["PROVEEDOR"]);
                         $("#editarIdProveedor").val(respuesta["IDPROVEEDOR"]);
@@ -32,7 +31,7 @@ ACTIVAR CONTACTO PROVEEDOR
 =============================================*/
 $(".tablas").on("click", ".btnActivarContactoProveedor", function(){
 
-	var idProveedorContactos = $(this).attr("idProveedorContactos");
+	var idProveedorContactos = $(this).attr("idProveedorContacto");
 	var estadoContactoProveedor = $(this).attr("estadoContactoProveedor");
 
 	var datos = new FormData();
@@ -48,6 +47,7 @@ $(".tablas").on("click", ".btnActivarContactoProveedor", function(){
           contentType: false,
           processData: false,
           success: function(respuesta){
+            
           }
   	});
 
@@ -57,17 +57,119 @@ $(".tablas").on("click", ".btnActivarContactoProveedor", function(){
   		$(this).addClass('btn-danger');
   		$(this).html('Inactivo');
   		$(this).attr('estadoContactoProveedor',1);
-
   	}else{
   		$(this).addClass('btn-success');
   		$(this).removeClass('btn-danger');
   		$(this).html('Activo');
   		$(this).attr('estadoContactoProveedor',0);
-
   	}
 
 });
 
+/*=============================================
+ACTIVAR CONTACTO PROVEEDOR PRINCIPAL
+=============================================*/
+$(".tablas").on("click", ".btnContactoProveedorPrincipal", function(){
+
+	var idPrincipal = $(this).attr("idPrincipal");
+	var principal = $(this).attr("principal");
+
+	var datos = new FormData();
+ 	datos.append("idPrincipalContactoProveedor", idPrincipal);
+  	datos.append("principal", principal);
+        
+        
+
+  	$.ajax({
+
+	  url:"ajax/contactosProveedor.ajax.php",
+	  method: "POST",
+	  data: datos,
+	  cache: false,
+          contentType: false,
+          processData: false,
+          success: function(respuesta){
+              
+          }
+  	});
+
+  	if(principal == 0){
+
+  		$(this).removeClass('btn-success');
+  		$(this).addClass('btn-danger');
+  		$(this).html('No Contacto Principal');
+  		$(this).attr('principal',1);
+  	}else{
+  		$(this).addClass('btn-success');
+  		$(this).removeClass('btn-danger');
+  		$(this).html('Contacto Principal');
+  		$(this).val('principal',0);
+  	}
+});
+
+/*=============================================
+REVISAR SI EL EMAIL YA ESTÁ REGISTRADO
+=============================================*/
+$("#nuevoEmailCP").change(function(){
+
+	$(".alert").remove();
+
+	var email = $(this).val();
+
+	var datos = new FormData();
+	datos.append("validarEmail", email);
+
+	 $.ajax({
+	    url:"ajax/contactosProveedor.ajax.php",
+	    method:"POST",
+	    data: datos,
+	    cache: false,
+	    contentType: false,
+	    processData: false,
+	    dataType: "json",
+	    success:function(respuesta){
+	    	
+	    	if(respuesta){
+
+	    		$("#nuevoEmailCP").parent().after('<div class="alert alert-warning">Este email ya existe en la base de datos</div>');
+
+	    		$("#nuevoEmailCP").val("");
+	    	}
+	    }
+	});
+});
+
+/*=============================================
+REVISAR SI EL EMAIL YA ESTÁ REGISTRADO COMO EMPRESA
+=============================================*/
+$("#nuevoEmailCP").change(function(){
+
+	$(".alert").remove();
+
+	var email = $(this).val();
+
+	var datos = new FormData();
+	datos.append("validarEmail", email);
+
+	 $.ajax({
+	    url:"ajax/contactosEmpresa.ajax.php",
+	    method:"POST",
+	    data: datos,
+	    cache: false,
+	    contentType: false,
+	    processData: false,
+	    dataType: "json",
+	    success:function(respuesta){
+	    	
+	    	if(respuesta){
+
+	    		$("#nuevoEmailCP").parent().after('<div class="alert alert-warning">Este email ya pertenece a un contacto de empresa en la base de datos</div>');
+
+	    		$("#nuevoEmailCP").val("");
+	    	}
+	    }
+	});
+});
 
 /*=============================================
 ELIMINAR CONTACTO PROVEEDOR

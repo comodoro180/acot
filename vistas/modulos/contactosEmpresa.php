@@ -51,13 +51,19 @@
                           <td>'.$value["IDEMPRESACONTACTOS"].'</td>
                           <td>'.$value["NOMBRE"].'</td>
                           <td>'.$value["EMAIL"].'</td>                              
-                          <td>'.$value["PRINCIPAL"].'</td>                              
+                          <td>';
+                          if ($value["PRINCIPAL"] == 1){                            
+                            echo '<button class="btn btn-success btn-xs btnPrincipal" idPrincipal="'.$value["IDEMPRESACONTACTOS"].'" principal="0">Contacto Principal</button>';
+                          } else {                           
+                            echo '<button class="btn btn-danger btn-xs btnPrincipal" idPrincipal="'.$value["IDEMPRESACONTACTOS"].'" principal="1">No Contacto Principal</button></td>';
+                          }         
+                    echo '</td>
                           <td>'.$value["EMPRESA"].'</td>
                           <td>';
                           if ($value["ESTADO"] == 1){                            
-                            echo '<button class="btn btn-success btn-xs btnActivarContactoEmpresa" idEmpresaContactos="'.$value["IDEMPRESACONTACTOS"].'" estadoContactoEmpresa="0">Activo</button>';
+                            echo '<button class="btn btn-success btn-xs btnActivarContactoEmpresa "idEmpresaContactos="'.$value["IDEMPRESACONTACTOS"].'" estadoContactoEmpresa="0">Activo</button>';
                           } else {                           
-                            echo '<button class="btn btn-danger btn-xs btnActivarContactoEmpresa" idEmpresaContactos="'.$value["IDEMPRESACONTACTOS"].'" estadoContactoEmpresa="1">Inactivo</button></td>';
+                            echo '<button class="btn btn-danger btn-xs btnActivarContactoEmpresa"idEmpresaContactos="'.$value["IDEMPRESACONTACTOS"].'" estadoContactoEmpresa="1">Inactivo</button></td>';
                           }         
                     echo '</td>
                           <td>
@@ -114,7 +120,7 @@
               <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-addon"> <i class="fa fa-envelope-open-o"></i></span>                
-                  <input type="email" class="form-control input-lg" name="nuevoEmail"  placeholder="Email" required>
+                  <input type="email" class="form-control input-lg" id="nuevoEmailCE" name="nuevoEmailCE"  placeholder="Email" required>
                 </div>
               </div>
               
@@ -122,7 +128,8 @@
               <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-addon"> <i class="fa fa-check-circle-o"></i></span>                
-                  <input type="number" class="form-control input-lg" name="nuevoPrincipal"  placeholder="Principal" required>
+                  <input type="hidden" name="nuevoPrincipal"  placeholder="Principal" value="0">
+                  <input type="checkbox" name="nuevoPrincipal"  placeholder="Principal" value="1"> Contacto Principal
                 </div>
               </div>
               

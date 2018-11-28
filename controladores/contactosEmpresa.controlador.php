@@ -10,7 +10,7 @@ class ControladorContactosEmpresa{
         if (isset($_POST["nuevoContactoEmpresa"])) {
             
                 $datos = array(
-                    "email"     => $_POST["nuevoEmail"],
+                    "email"     => $_POST["nuevoEmailCE"],
                     "principal" => $_POST["nuevoPrincipal"],
                     "nombre"    => $_POST["nuevoContactoEmpresa"],
                     "idEmpresa" => $_POST["nuevoIdEmpresa"]
