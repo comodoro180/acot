@@ -94,7 +94,9 @@
                 $_GET["ruta"] == "productos"||
                 $_GET["ruta"] == "proveedorProductos"||
                 //Pedidos                    
-                $_GET["ruta"] == "pedidoTipoEstado"
+                $_GET["ruta"] == "pedidoTipoEstado"||
+                //Cotizaciones
+                $_GET["ruta"] == "cotizacionTipoEstado"
                     ) {                
                 echo '<li class="treeview active">';
             } else {
@@ -331,7 +333,17 @@
                         -->
                     </ul>
                 </li> 
-<!--ADMISNISTRACIÓN - COTIZACIONES-->                  
+<!--ADMISNISTRACIÓN - COTIZACIONES-->  
+
+                <?php
+                    if ($_GET["ruta"] == "cotizaciones" ||
+                        $_GET["ruta"] == "cotizacionesTipoEstado"){                
+                        echo '<li class="treeview active">';
+                    } else {
+                        echo '<li class="treeview">';
+                    }
+                ?> 
+
                 <li class="treeview">
                     <a href="">
                         <i class="fa fa-list-ul"></i>
@@ -342,9 +354,15 @@
                     </a>
                     <ul class="treeview-menu">
                         <li>
-                            <a href="cotizaciones">
+                            <a href="cotizaciones" <?php if ($_GET["ruta"] == "cotizaciones") echo 'class="AcotMenuSeleccionado"'; ?>>
                               <i class="fa fa-circle-o"></i>
                               <span>Cotizaciones</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="cotizacionTipoEstado" <?php if ($_GET["ruta"] == "cotizacionTipoEstado") echo 'class="AcotMenuSeleccionado"'; ?>>
+                              <i class="fa fa-circle-o"></i>
+                              <span>Tipo de Estado de Cotizaciones</span>
                             </a>
                         </li>
                         <!--

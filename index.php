@@ -14,6 +14,8 @@ require_once "controladores/contactosEmpresa.controlador.php";
 require_once "controladores/pedidoTipoEstado.controlador.php";
 require_once "controladores/contactosProveedor.controlador.php";
 require_once "controladores/proveedorProducto.controlador.php";
+require_once "controladores/cotizacionTipoEstado.controlador.php";
+
 
 require_once "modelos/productos.modelo.php";
 require_once "modelos/usuarios.modelo.php";
@@ -30,6 +32,8 @@ require_once "modelos/contactosEmpresa.modelo.php";
 require_once "modelos/contactosProveedor.modelo.php";
 require_once "modelos/proveedorProducto.modelo.php";
 require_once "modelos/contactosProveedor.modelo.php";
+require_once "modelos/cotizacionTipoEstado.modelo.php";
+
 
 $plantilla = new ControladorPlantilla();
 $plantilla ->ctrPlantilla();
