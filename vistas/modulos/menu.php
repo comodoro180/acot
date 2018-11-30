@@ -93,6 +93,7 @@
                 $_GET["ruta"] == "tipoProducto"||
                 $_GET["ruta"] == "productos"||
                 $_GET["ruta"] == "proveedorProductos"||
+                $_GET["ruta"] == "proveedorTipoProducto"||
                 //Pedidos                    
                 $_GET["ruta"] == "pedidoTipoEstado"||
                 //Cotizaciones
@@ -265,6 +266,7 @@
                 <?php
                     if ($_GET["ruta"] == "tipoProducto" ||
                         $_GET["ruta"] == "proveedorProductos"||
+                        $_GET["ruta"] == "proveedorTipoProducto"||
                         $_GET["ruta"] == "productos") {                
                         echo '<li class="treeview active">';
                     } else {
@@ -293,9 +295,16 @@
                         </li>
                         
                         <li>
-                            <a href="proveedorProductos">
+                            <a href="proveedorProductos" <?php if ($_GET["ruta"] == "proveedorProductos") echo 'class="AcotMenuSeleccionado"'; ?>>
                               <i class="fa fa-circle-o"></i>
                               <span>Proveedores Productos</span>
+                            </a>
+                        </li>
+                        
+                        <li>
+                            <a href="proveedorTipoProducto" <?php if ($_GET["ruta"] == "proveedorTipoProducto") echo 'class="AcotMenuSeleccionado"'; ?>>
+                              <i class="fa fa-circle-o"></i>
+                              <span>Proveedores Tipo Productos</span>
                             </a>
                         </li>
                         
