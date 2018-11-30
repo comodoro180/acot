@@ -41,7 +41,8 @@ class ControladorUsuarios {
 
         if (isset($_POST["nuevoEmail"])) {
             if (preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nuevoNombre"]) &&
-                preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nuevoApellido"])) {
+                preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nuevoApellido"]) &&
+                preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚBACDEFGHIJKLMNOPQRSTUVWXYZ ]+$/', $_POST["nuevoEmail"])) {
 
                 $tabla = "tusuario";
                 
@@ -90,7 +91,7 @@ class ControladorUsuarios {
                 echo '<script>
                         swal({
                                 type: "error",
-                                title: "¡El nombre o apellido no puede ir vacío o llevar caracteres especiales!",
+                                title: "¡El nombre o apellido no puede ir vacío o llevar caracteres especiales!\n¡El email no puede contener caracteres en mayusculas!",
                                 showConfirmButton: true,
                                 confirmButtonText: "Cerrar"
 
@@ -125,7 +126,8 @@ class ControladorUsuarios {
 
             if(isset($_POST["editarNombre"])){
 
-                    if(preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["editarNombre"])){
+                    if(preg_match('/^[0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["editarNombre"]) &&
+                        preg_match('ABCDEFGHIJKLMNOPQRSTUVWXYZÑ', $_POST["editarEmail"])){
 
                             $tabla = "tusuario";
 
@@ -179,7 +181,7 @@ class ControladorUsuarios {
                             echo'<script>
                                     swal({
                                             type: "error",
-                                            title: "¡El nombre no puede ir vacío o llevar caracteres especiales!",
+                                            title: "¡El nombre no puede ir vacío o llevar caracteres especiales! \n ¡El email no puede contener caracteres en mayusculas!",
                                             showConfirmButton: true,
                                             confirmButtonText: "Cerrar"
                                             }).then(function(result){
@@ -233,7 +235,8 @@ class ControladorUsuarios {
 
         if (isset($_POST["nuevoEmail"])) {
             if (preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nuevoNombre"]) &&
-                preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nuevoApellido"])) {
+                preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nuevoApellido"]) &&
+                preg_match('/^[ABCDEFGHIJKLMONPQRSTUVWXYZÑ ]+$/', $_POST["nuevoEmail"])) {
 
                 $tabla = "tusuario";
                 
@@ -282,7 +285,7 @@ class ControladorUsuarios {
                 echo '<script>
                         swal({
                                 type: "error",
-                                title: "¡El nombre o apellido no puede ir vacío o llevar caracteres especiales!",
+                                title: "¡El nombre o apellido no puede ir vacío o llevar caracteres especiales!\n¡El email no puede contener caracteres en mayusculas!",
                                 showConfirmButton: true,
                                 confirmButtonText: "Cerrar"
 
@@ -304,6 +307,7 @@ class ControladorUsuarios {
         //include_once "conf/config.inc.php";
         
         if (isset($_POST["RecuperarEmail"])) {
+            if(preg_match('/^[ ABCDEFGHIJKLMNOPQRSTUVWXYZÑ ]+$/', $_POST["RecuperarEmail"])){
 
             $tabla = "tusuario";
             $item1 = "email";
@@ -423,6 +427,21 @@ class ControladorUsuarios {
                         swal({
                                 type: "error",
                                 title: "¡El email '.$valor1.' no se encuentra registrado!",
+                                showConfirmButton: true,
+                                confirmButtonText: "Cerrar"
+
+                        }).then(function(result){
+                                if(result.value){
+                                        window.location = "ingreso";
+                                }
+                        });
+                </script>';
+            } 
+            }else {
+                echo '<script>
+                        swal({
+                                type: "error",
+                                title: "¡El email no puede contener caracteres en mayusculas!",
                                 showConfirmButton: true,
                                 confirmButtonText: "Cerrar"
 
