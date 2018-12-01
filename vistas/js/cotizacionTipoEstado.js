@@ -28,7 +28,7 @@ $(".tablas").on("click", ".btnEditarCotizacionTipoEstado", function(){
 /*=============================================
 ELIMINAR 
 =============================================*/
-$(".tablas").on("click", ".btnEliminarCotizacionTpoEstado", function(){
+$(".tablas").on("click", ".btnEliminarCotizacionTipoEstado", function(){
 
   var idCotizacionTipoEstado = $(this).attr("idCotizacionTipoEstado");
 

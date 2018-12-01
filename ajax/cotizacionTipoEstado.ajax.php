@@ -11,7 +11,7 @@ class AjaxCotizacionTipoEstado{
 
 	public $idCotizacionTipoEstado;
 
-	public function ajaxEditarCotizacionTipoEstao(){
+	public function ajaxEditarCotizacionTipoEstado(){
 
 		$campo = "IDCOTIZACIONTIPOESTADO";
 		$valor = $this->idCotizacionTipoEstado;
@@ -42,7 +42,7 @@ if(isset($_POST["idCotizacionTipoEstado"])){
 
 	$editar = new AjaxCotizacionTipoEstado();
 	$editar -> idCotizacionTipoEstado = $_POST["idCotizacionTipoEstado"];
-	$editar ->ajaxEditarCotizacionTipoEstao();
+	$editar ->ajaxEditarCotizacionTipoEstado();
 }
 
 

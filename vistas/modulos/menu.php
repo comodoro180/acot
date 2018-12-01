@@ -97,7 +97,8 @@
                 //Pedidos                    
                 $_GET["ruta"] == "pedidoTipoEstado"||
                 //Cotizaciones
-                $_GET["ruta"] == "cotizacionTipoEstado"
+                $_GET["ruta"] == "cotizacionTipoEstado"||
+                $_GET["ruta"] == "cotizacionDetalleTipoEstado"
                     ) {                
                 echo '<li class="treeview active">';
             } else {
@@ -263,6 +264,7 @@
                     </ul>
                 </li>  
 <!--ADMISNISTRACIÓN - PRODUCTOS-->
+            
                 <?php
                     if ($_GET["ruta"] == "tipoProducto" ||
                         $_GET["ruta"] == "proveedorProductos"||
@@ -346,14 +348,15 @@
 
                 <?php
                     if ($_GET["ruta"] == "cotizaciones" ||
-                        $_GET["ruta"] == "cotizacionesTipoEstado"){                
+                        $_GET["ruta"] == "cotizacionTipoEstado"||
+                        $_GET["ruta"] == "cotizacionDetalleTipoEstado") {                
                         echo '<li class="treeview active">';
                     } else {
                         echo '<li class="treeview">';
                     }
-                ?> 
+                ?>
 
-                <li class="treeview">
+                
                     <a href="">
                         <i class="fa fa-list-ul"></i>
                         <span>Cotizaciones</span>
@@ -371,7 +374,14 @@
                         <li>
                             <a href="cotizacionTipoEstado" <?php if ($_GET["ruta"] == "cotizacionTipoEstado") echo 'class="AcotMenuSeleccionado"'; ?>>
                               <i class="fa fa-circle-o"></i>
-                              <span>Tipo de Estado de Cotizaciones</span>
+                              <span>Estado de Cotizaciones</span>
+                            </a>
+                        </li>
+                        
+                        <li>
+                            <a href="cotizacionDetalleTipoEstado" <?php if ($_GET["ruta"] == "cotizacionDetalleTipoEstado") echo 'class="AcotMenuSeleccionado"'; ?>>
+                              <i class="fa fa-circle-o"></i>
+                              <span>Estado Detalle Cotizaciones</span>
                             </a>
                         </li>
                         <!--

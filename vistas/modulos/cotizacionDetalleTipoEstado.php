@@ -3,13 +3,13 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Administración de Tipos de Estado de Cotizaciones
+        Administración de Estados de Detalles de Cotizaciones
       </h1>
       <ol class="breadcrumb">
         <li><a href="inicio">Inicio</a></li>
         <li><a href="">Administración</a></li>
         <li><a href="">Cotizaciones</a></li>
-        <li class="active">Tipos de Estado</li>
+        <li class="active">Estado del Detalle Cotización</li>
       </ol>
     </section>
 
@@ -21,8 +21,8 @@
 
         <div class="box-header with-border">
           
-          <button class="btn btn-primary" data-toggle="modal" data-target="#modalAgregarCotizacionTipoEstado">
-            Agregar Tipo de Estado de Cotización
+          <button class="btn btn-primary" data-toggle="modal" data-target="#modalAgregarCotizacionDetalleTipoEstado">
+            Agregar Estado
           </button>
 
         </div>
@@ -32,7 +32,7 @@
           <table class="table table-bordered table-striped dt-responsive tablas" width="100%">
             <thead>
               <tr>
-                <th style="width: 10px">id</th>
+                <th style="width: 10px">ID</th>
                 <th>Nombre</th>
                 <th>Descripción</th>
                 <th>Acciones</th>
@@ -41,18 +41,18 @@
             <tbody>
                 
               <?php
-                $tiposEstadoCotizacion = ModeloCotizacionTipoEstado::mdlMostrarCotizacionTipoEstado("tcotizaciontipoestado", null, null);
+                $tipoDetalleEstadoCotizacion = ModeloCotizacionDetalleTipoEstado::mdlMostrarCotizacionDetalleTipoEstado('tcotizaciondetalletipoestado', null, null);
                 //var_dump($usuarios);
-                foreach ($tiposEstadoCotizacion as $key => $value){
+                foreach ($tipoDetalleEstadoCotizacion as $key => $value){
                     echo '
                         <tr>
-                          <td>'.$value["IDCOTIZACIONTIPOESTADO"].'</td>
+                          <td>'.$value["IDCOTIZACIONDETALLETIPOESTADO"].'</td>
                           <td>'.$value["NOMBRE"].'</td>
                           <td>'.$value["DESCRIPCION"].'</td>
                           <td>
                             <div class="btn-group" >
-                                <button class="btn btn-warning btnEditarCotizacionTipoEstado btn-xs" idCotizacionTipoEstado="'.$value["IDCOTIZACIONTIPOESTADO"].'" data-toggle="modal" data-target="#modalEditarCotizacionTipoEstado"><i class="fa fa-pencil"></i></button>                                    
-                                <button class="btn btn-danger btnEliminarCotizacionTipoEstado btn-xs" idCotizacionTipoEstado="'.$value["IDCOTIZACIONTIPOESTADO"].'"><i class="fa fa-times"></i></button>
+                                <button class="btn btn-warning btnEditarCotizacionDetalleTipoEstado btn-xs" idCotizacionDetalleTipoEstado="'.$value["IDCOTIZACIONDETALLETIPOESTADO"].'" data-toggle="modal" data-target="#modalEditarCotizacionDetalleTipoEstado"><i class="fa fa-pencil"></i></button>                                    
+                                <button class="btn btn-danger btnEliminarCotizacionDetalleTipoEstado btn-xs" idCotizacionDetalleTipoEstado="'.$value["IDCOTIZACIONDETALLETIPOESTADO"].'"><i class="fa fa-times"></i></button>
                             </div>
                           </td>
                         </tr>                        
@@ -74,8 +74,8 @@
   </div>
   <!-- /.content-wrapper -->  
 
-  <!-- MODAL AGREGAR TIPO ESTADO COTIZACION-->  
-  <div id="modalAgregarCotizacionTipoEstado" class="modal fade" role="dialog">
+  <!-- MODAL AGREGAR TIPO ESTADO DETALLE COTIZACION-->  
+  <div id="modalAgregarCotizacionDetalleTipoEstado" class="modal fade" role="dialog">
     <div class="modal-dialog">
 
       <!-- Modal content-->
@@ -85,7 +85,7 @@
 
           <div class="modal-header" style="background:#3c8dbc; color:white">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title">Agregar Tipo de Estado de Cotización</h4>
+            <h4 class="modal-title">Agregar Estado del Detalle de Cotización</h4>
           </div>
 
           <div class="modal-body">
@@ -94,7 +94,7 @@
               <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-addon"> <i class="fa fa-pencil"></i></span>
-                  <input type="text" class="form-control input-lg" name="nuevoNombre"  placeholder="Tipo de estado de cotización" required>                
+                  <input type="text" class="form-control input-lg" name="nuevoNombre"  placeholder="Estado del detalle de cotización" required>                
                 </div>
               </div> 
                 
@@ -110,12 +110,12 @@
 
           <div class="modal-footer">
             <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
-            <button type="submit" class="btn btn-primary" >Guardar Tipo de Estado</button>
+            <button type="submit" class="btn btn-primary" >Guardar Estado</button>
           </div>
     
           <?php
-            $crearCotizacionTipoEstado = new ControladorCotizacionTipoEstado();
-            $crearCotizacionTipoEstado ->ctrCrearCotizacionTipoEstado();
+            $crearCotizacionDetalleTipoEstado = new ControladorCotizacionDetalleTipoEstado();
+            $crearCotizacionDetalleTipoEstado ->ctrCrearCotizacionDetalleTipoEstado();
           ?>
           
         </form>
@@ -124,8 +124,8 @@
   </div>
   <!-- FIN MODAL INGRESAR TIPO ESTADO COTIZACION -->
 
-  <!-- MODAL EDITAR TIPO ESTADO COTIZACION -->  
-  <div id="modalEditarCotizacionTipoEstado" class="modal fade" role="dialog">
+  <!-- MODAL EDITAR TIPO ESTADO DETALLE COTIZACION -->  
+  <div id="modalEditarCotizacionDetalleTipoEstado" class="modal fade" role="dialog">
     <div class="modal-dialog">
 
       <!-- Modal content-->
@@ -135,25 +135,25 @@
 
           <div class="modal-header" style="background:#3c8dbc; color:white">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title">Editar Estado Cotización</h4>
+            <h4 class="modal-title">Editar Estado del Detalle de Cotización</h4>
           </div>
 
           <div class="modal-body">
             <div class="box-body">                
 
-              <input type="hidden" id="idCotizacionTipoEstado" name="idCotizacionTipoEstado">
+                <input type="hidden" id="idCotizacionDetalleTipoEstado" name="idCotizacionDetalleTipoEstado">
               
               <div class="form-group">
                 <div class="input-group">                 
                   <span class="input-group-addon"> <i class="fa fa-pencil"></i></span>
-                  <input type="text" class="form-control input-lg" id="editarNombre" name="editarNombre" value="" placeholder="Tipo de Estado de la Cotización" >                
+                  <input type="text" class="form-control input-lg" id="editarNombreDetalle" name="editarNombreDetalle" value="" placeholder="Tipo de Estado de la Cotización" >                
                 </div>
               </div>
 
               <div class="form-group">
                 <div class="input-group">                 
                   <span class="input-group-addon"> <i class="fa fa-pencil"></i></span>
-                  <textarea class="form-control" rows="3" name="editarDescripcion" id="editarDescripcion" placeholder="Descripción" required></textarea>
+                  <textarea class="form-control" rows="3" name="editarDescripcionDetalle" id="editarDescripcionDetalle" value="" placeholder="Descripción" required></textarea>
                 </div>
               </div>
 
@@ -162,13 +162,13 @@
 
           <div class="modal-footer">
             <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Salir</button>
-            <button type="submit" class="btn btn-primary">Modificar Tipo de Estado</button>
+            <button type="submit" class="btn btn-primary">Modificar Estado</button>
           </div>
   
         <?php
 
-          $editarCotizacionTipoEstado = new ControladorCotizacionTipoEstado();
-          $editarCotizacionTipoEstado ->ctrEditarCotizacionTipoEstado();
+          $editarCotizacionDetalleTipoEstado = new ControladorCotizacionDetalleTipoEstado();
+          $editarCotizacionDetalleTipoEstado ->ctrEditarCotizacionDetalleTipoEstado();
 
         ?> 
 
@@ -176,11 +176,11 @@
       </div>
     </div>  
   </div>
-  <!-- FIN MODAL EDITAR TIPO ESTADO COTIZACIÓN -->  
+  <!-- FIN MODAL EDITAR TIPO ESTADO DETALLE COTIZACIÓN -->  
   
 <?php
 
-  $borrarCotizacionTipoEstado = new ControladorCotizacionTipoEstado();
-  $borrarCotizacionTipoEstado ->ctrBorrarCotizacionTipoEstado();
+  $borrarCotizacionDetalleTipoEstado = new ControladorCotizacionDetalleTipoEstado();
+  $borrarCotizacionDetalleTipoEstado ->ctrBorrarCotizacionDetalleTipoEstado();
   
 ?> 
