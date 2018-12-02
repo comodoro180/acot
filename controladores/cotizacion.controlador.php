@@ -1,34 +1,35 @@
 <?php
 
-class ControladorPedidos{
+class ControladorCotizacion{
 
     /*=============================================
       CREAR PEDIDO
     =============================================*/
-    static public function ctrCrearPedido() {
+    static public function ctrCrearCotizacion() {
 
-        if (isset($_POST["nuevaFechaE"])) {
+        if (isset($_POST["nuevaFechaVC"])) {
             
-                $datos = array( "fechaEntrega"          => $_POST["nuevaFechaE"],
-                                "observaciones"         => $_POST["nuevaObservacion"],
-                                "idPedidoTipoEstado"    => $_POST["nuevoPedidoTipoEstado"],
-                                "idEmpresa"             => $_POST["nuevaEmpresa"],
-                                "idUsuario"             => $_POST["nuevoUsuario"]
+                $datos = array( "fechaVencimiento"          => $_POST["nuevaFechaVC"],
+                                "observaciones"             => $_POST["nuevaObservacionC"],
+                                "idCotizacionTipoEstado"    => $_POST["nuevaCotizacionTipoEstado"],
+                                "idPedido"                  => $_POST["nuevoPedidoC"],
+                                "idProveedor"               => $_POST["nuevoProveedorC"],
+                                "idUsuario"                 => $_POST["nuevoUsuarioC"]
                 );
                 
-                $respuesta = ModeloPedidos::mdlIngresarPedido($datos);
+                $respuesta = ModeloCotizacion::mdlIngresarCotizacion($datos);
                 
                 if ($respuesta == "ok"){
                     echo '<script>
                             swal({
                                     type: "success",
-                                    title: "¡El pedido ha sido guardado correctamente!",
+                                    title: "¡La cotización ha sido guardada correctamente!",
                                     showConfirmButton: true,
                                     confirmButtonText: "Cerrar"
 
                             }).then(function(result){
                                     if(result.value){
-                                            window.location = "pedidos";
+                                            window.location = "cotizaciones";
                                     }
                             });
                         </script>';
@@ -42,7 +43,7 @@ class ControladorPedidos{
 
                                 }).then(function(result){
                                         if(result.value){
-                                                window.location = "pedidos";
+                                                window.location = "cotizaciones";
                                         }
                                 });
                         </script>';                    
@@ -55,13 +56,13 @@ class ControladorPedidos{
     /*=============================================
       MOSTRAR
     =============================================*/
-    static public function ctrMostrarPedidos($campo, $valor) {
+    static public function ctrMostrarCotizaciones($campo, $valor) {
         
         include_once "../conf/config.inc.php";
         
-        $tabla = "tpedido";
+        $tabla = "tcotizacion";
         
-        $respuesta = ModeloPedidos::mdlMostrarPedidos($tabla, $campo, $valor);
+        $respuesta = ModeloCotizacion::mdlMostrarCotizacion($tabla, $campo, $valor);
 
         return $respuesta;
     }
@@ -69,30 +70,31 @@ class ControladorPedidos{
     /*=============================================
       EDITAR
     =============================================*/
-    static public function ctrEditarPedido(){        
+    static public function ctrEditarCotizacion(){        
 
-            if(isset($_POST["idPedido"])){                            
+            if(isset($_POST["idCotizacion"])){                            
 
-                            $datos = array( "idPedido"              => $_POST["idPedido"],
-                                            "observaciones"         => $_POST["editarObservacionesP"],
-                                            "fechaEntrega"          => $_POST["editarFechaEP"],
-                                            "idPedidoTipoEstado"    => $_POST["editarPedidoTipoEstadoP"],
-                                            "idEmpresa"             => $_POST["editarEmpresaP"],
-                                            "idUsuario"             => $_POST["editarUsuarioP"]);
+                            $datos = array( "idCotizacion"              => $_POST["idCotizacion"],
+                                            "fechaVencimiento"          => $_POST["editarFechaVC"],
+                                            "observaciones"             => $_POST["editarObservacionesC"],
+                                            "idCotizacionTipoEstado"    => $_POST["editarCotizacionTipoEstado"],
+                                            "idPedido"                  => $_POST["editarPedidoC"],
+                                            "idProveedor"               => $_POST["editarProveedorC"],
+                                            "idUsuario"                 => $_POST["editarUsuarioC"]);
 
-                            $respuesta = ModeloPedidos::mdlEditarPedido($datos);
+                            $respuesta = ModeloCotizacion::mdlEditarCotizacion($datos);
 
                             if($respuesta == "ok"){
 
                                     echo'<script>
                                     swal({
                                             type: "success",
-                                            title: "El pedido ha sido editado correctamente",
+                                            title: "La cotización ha sido editada correctamente",
                                             showConfirmButton: true,
                                             confirmButtonText: "Cerrar"
                                             }).then(function(result){
                                                     if (result.value) {
-                                                        window.location = "pedidos";
+                                                        window.location = "cotizaciones";
                                                     }
                                             })
                                     </script>';
@@ -106,7 +108,7 @@ class ControladorPedidos{
 
                                         }).then(function(result){
                                                 if(result.value){
-                                                        window.location = "pedidos";
+                                                        window.location = "cotizaciones";
                                                 }
                                         });
                                 </script>';                               
@@ -118,13 +120,13 @@ class ControladorPedidos{
     /*=============================================
       BORRAR
     =============================================*/
-    static public function ctrBorrarPedido(){
+    static public function ctrBorrarCotizacion(){
 
-        if(isset($_GET["idPedido"])){
+        if(isset($_GET["idCotizacion"])){
                 
-                $datos = $_GET["idPedido"];
+                $datos = $_GET["idCotizacion"];
 
-                $respuesta = ModeloPedidos::mdlBorrarPedido($datos);
+                $respuesta = ModeloCotizacion::mdlBorrarCotizacion($datos);
 
                 if($respuesta == "ok"){
 
@@ -132,13 +134,13 @@ class ControladorPedidos{
 
                         swal({
                                   type: "success",
-                                  title: "El pedido ha sido borrado correctamente",
+                                  title: "La cotización ha sido borrada correctamente",
                                   showConfirmButton: true,
                                   confirmButtonText: "Cerrar"
                                   }).then(function(result){
                                                         if (result.value) {
 
-                                                        window.location = "pedidos";
+                                                        window.location = "cotizaciones";
 
                                                         }
                                                 })

@@ -99,6 +99,7 @@
                 $_GET["ruta"] == "pedidoDetalle"||
                 $_GET["ruta"] == "pedidoTipoEstado"||
                 //Cotizaciones
+                $_GET["ruta"] == "cotizaciones"||
                 $_GET["ruta"] == "cotizacionTipoEstado"||
                 $_GET["ruta"] == "cotizacionDetalleTipoEstado"
                     ) {                
