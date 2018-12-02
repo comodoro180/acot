@@ -102,7 +102,9 @@
                 $_GET["ruta"] == "cotizaciones"||
                 $_GET["ruta"] == "cotizacionDetalle"||
                 $_GET["ruta"] == "cotizacionTipoEstado"||
-                $_GET["ruta"] == "cotizacionDetalleTipoEstado"
+                $_GET["ruta"] == "cotizacionDetalleTipoEstado"||
+                //Ordenes de servicio
+                $_GET["ruta"] == "ordenServicioTipoEstado"
                     ) {                
                 echo '<li class="treeview active">';
             } else {
@@ -427,7 +429,44 @@
                         </li>
                         -->
                     </ul>
-                </li> 
+                </li>
+<!--ADMISNISTRACIÓN - ORDEN SERVICIO-->  
+
+                <?php
+                    if ($_GET["ruta"] == "ordenServicioTipoEstado"||
+                        $_GET["ruta"] == "ordenServicio") {                
+                        echo '<li class="treeview active">';
+                    } else {
+                        echo '<li class="treeview">';
+                    }
+                ?>
+
+                
+                    <a href="">
+                        <i class="fa fa-list-ul"></i>
+                        <span>Orden de Servicio</span>
+                        <span class="pull-right-container">
+                            <i class="fa fa-angle-left pull-right"></i>
+                        </span>          
+                    </a>
+                    <ul class="treeview-menu">
+                        
+                        <li>
+                            <a href="ordenServicio" <?php if ($_GET["ruta"] == "ordenServicio") echo 'class="AcotMenuSeleccionado"'; ?>>
+                              <i class="fa fa-circle-o"></i>
+                              <span>Orden de Servicio</span>
+                            </a>
+                        </li>
+                        
+                        <li>
+                            <a href="ordenServicioTipoEstado" <?php if ($_GET["ruta"] == "ordenServicioTipoEstado") echo 'class="AcotMenuSeleccionado"'; ?>>
+                              <i class="fa fa-circle-o"></i>
+                              <span>Estados Orden</span>
+                            </a>
+                        </li>
+
+                    </ul>
+                </li>                 
 <!--ADMISNISTRACIÓN - ...--> 
     <!--   
                 <li class="treeview">
