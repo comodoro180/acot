@@ -95,6 +95,7 @@
                 $_GET["ruta"] == "proveedorProductos"||
                 $_GET["ruta"] == "proveedorTipoProducto"||
                 //Pedidos                    
+                $_GET["ruta"] == "pedidos"||
                 $_GET["ruta"] == "pedidoTipoEstado"||
                 //Cotizaciones
                 $_GET["ruta"] == "cotizacionTipoEstado"||
@@ -312,8 +313,16 @@
                         
                     </ul>
                 </li> 
-<!--ADMISNISTRACIÓN - PEDIDOS-->                  
-                <li class="treeview">
+<!--ADMISNISTRACIÓN - PEDIDOS-->    
+
+                <?php
+                    if ($_GET["ruta"] == "pedidos"){                
+                        echo '<li class="treeview active">';
+                    } else {
+                        echo '<li class="treeview">';
+                    }
+                ?>             
+<!--                <li class="treeview">-->
                     <a href="">
                         <i class="fa fa-list-ul"></i>
                         <span>Pedidos</span>
@@ -323,7 +332,7 @@
                     </a>
                     <ul class="treeview-menu">
                         <li>
-                            <a href="pedidos">
+                            <a href="pedidos" <?php if ($_GET["ruta"] == "pedidos") echo 'class="AcotMenuSeleccionado"'; ?>>
                               <i class="fa fa-circle-o"></i>
                               <span>Pedidos</span>
                             </a>
