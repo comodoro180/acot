@@ -90,6 +90,7 @@ PLUGINGS DE JAVASCRIPT
                   $_GET["ruta"] == "contactosEmpresa" ||
                   $_GET["ruta"] == "pedidoTipoEstado" ||
                   $_GET["ruta"] == "pedidos" ||
+                  $_GET["ruta"] == "pedidoDetalle" ||
                   $_GET["ruta"] == "cotizacionTipoEstado" ||
                   $_GET["ruta"] == "proveedorProductos"||
                   $_GET["ruta"] == "proveedorTipoProducto"||
@@ -147,6 +148,7 @@ PLUGINGS DE JAVASCRIPT
 <script src="vistas/js/proveedorTipoProducto.js"></script>
 <script src="vistas/js/cotizacionDetalleTipoEstado.js"></script>
 <script src="vistas/js/pedidos.js"></script>
+<script src="vistas/js/pedidoDetalle.js"></script>
 
 </body>
 </html>

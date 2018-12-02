@@ -10,7 +10,7 @@ class ModeloPedidos{
     static public function mdlMostrarPedidos($tabla, $campo, $valor) {
         try {
 		if($campo != null){                    
-                    $stmt = Conexion::conectar()->prepare("SELECT p.*, pe.nombre, pe.apellido as ESTADO, e.nombre as EMPRESA, CONCAT(u.nombre,' ',u.apellido) as USUARIO "
+                    $stmt = Conexion::conectar()->prepare("SELECT p.*, pe.nombre as ESTADO, e.nombre as EMPRESA, CONCAT(u.nombre,' ',u.apellido) as USUARIO "
                                                         . "FROM tpedido p, tpedidotipoestado pe, tempresa e, tusuario u  "
                                                         . "WHERE p.IDPEDIDOTIPOESTADO = pe.IDPEDIDOTIPOESTADO "
                                                         . "AND p.IDEMPRESA = e.IDEMPRESA "

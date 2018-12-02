@@ -96,6 +96,7 @@
                 $_GET["ruta"] == "proveedorTipoProducto"||
                 //Pedidos                    
                 $_GET["ruta"] == "pedidos"||
+                $_GET["ruta"] == "pedidoDetalle"||
                 $_GET["ruta"] == "pedidoTipoEstado"||
                 //Cotizaciones
                 $_GET["ruta"] == "cotizacionTipoEstado"||
@@ -316,7 +317,8 @@
 <!--ADMISNISTRACIÓN - PEDIDOS-->    
 
                 <?php
-                    if ($_GET["ruta"] == "pedidos"){                
+                    if ($_GET["ruta"] == "pedidos" ||
+                        $_GET["ruta"] == "pedidoDetalle"){                
                         echo '<li class="treeview active">';
                     } else {
                         echo '<li class="treeview">';
@@ -335,6 +337,12 @@
                             <a href="pedidos" <?php if ($_GET["ruta"] == "pedidos") echo 'class="AcotMenuSeleccionado"'; ?>>
                               <i class="fa fa-circle-o"></i>
                               <span>Pedidos</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="pedidoDetalle" <?php if ($_GET["ruta"] == "pedidoDetalle") echo 'class="AcotMenuSeleccionado"'; ?>>
+                              <i class="fa fa-circle-o"></i>
+                              <span>Detalle Pedidos</span>
                             </a>
                         </li>
                         <!--
