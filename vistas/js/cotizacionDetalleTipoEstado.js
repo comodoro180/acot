@@ -4,7 +4,6 @@ EDITAR
 $(".tablas").on("click", ".btnEditarCotizacionDetalleTipoEstado", function(){
 
 	var idCotizacionDetalleTipoEstado = $(this).attr("idCotizacionDetalleTipoEstado");
-	
 	var datos = new FormData();
 	datos.append("idCotizacionDetalleTipoEstado", idCotizacionDetalleTipoEstado);        
         //alert(idUsuario);
@@ -17,7 +16,6 @@ $(".tablas").on("click", ".btnEditarCotizacionDetalleTipoEstado", function(){
 		processData: false,
 		dataType: "json",
 		success: function(respuesta){
-                        console.log(respuesta);
                         $("#idCotizacionDetalleTipoEstado").val(respuesta["IDCOTIZACIONDETALLETIPOESTADO"]);
 			$("#editarNombreDetalle").val(respuesta["NOMBRE"]);
                         $("#editarDescripcionDetalle").val(respuesta["DESCRIPCION"]);
