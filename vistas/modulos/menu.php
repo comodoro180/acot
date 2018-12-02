@@ -100,6 +100,7 @@
                 $_GET["ruta"] == "pedidoTipoEstado"||
                 //Cotizaciones
                 $_GET["ruta"] == "cotizaciones"||
+                $_GET["ruta"] == "cotizacionDetalle"||
                 $_GET["ruta"] == "cotizacionTipoEstado"||
                 $_GET["ruta"] == "cotizacionDetalleTipoEstado"
                     ) {                
@@ -367,6 +368,7 @@
                 <?php
                     if ($_GET["ruta"] == "cotizaciones" ||
                         $_GET["ruta"] == "cotizacionTipoEstado"||
+                        $_GET["ruta"] == "cotizacionDetalle"||
                         $_GET["ruta"] == "cotizacionDetalleTipoEstado") {                
                         echo '<li class="treeview active">';
                     } else {
@@ -389,6 +391,14 @@
                               <span>Cotizaciones</span>
                             </a>
                         </li>
+                        
+                        <li>
+                            <a href="cotizacionDetalle" <?php if ($_GET["ruta"] == "cotizacionDetalle") echo 'class="AcotMenuSeleccionado"'; ?>>
+                              <i class="fa fa-circle-o"></i>
+                              <span>Detalle Cotizaciones</span>
+                            </a>
+                        </li>
+                        
                         <li>
                             <a href="cotizacionTipoEstado" <?php if ($_GET["ruta"] == "cotizacionTipoEstado") echo 'class="AcotMenuSeleccionado"'; ?>>
                               <i class="fa fa-circle-o"></i>
