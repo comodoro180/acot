@@ -104,6 +104,7 @@
                 $_GET["ruta"] == "cotizacionTipoEstado"||
                 $_GET["ruta"] == "cotizacionDetalleTipoEstado"||
                 //Ordenes de servicio
+                $_GET["ruta"] == "ordenServicio"||
                 $_GET["ruta"] == "ordenServicioTipoEstado"
                     ) {                
                 echo '<li class="treeview active">';

@@ -150,7 +150,7 @@
                     <?php
                       $usuario = ModeloUsuarios::mdlMostrarUsuarios("tusuario", null , null);
                       foreach ($usuario as $key => $value){
-                        echo '<option value="'.$value["IDUSUARIO"].'">'.$value["NOMBRE"].'</option>';
+                        echo '<option value="'.$value["IDUSUARIO"].'">'.$value["NOMBRE"]." ".$value["APELLIDO"].'</option>';
                       }
                     ?>
                   </select>

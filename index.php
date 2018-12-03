@@ -22,6 +22,7 @@ require_once "controladores/pedidoDetalle.controlador.php";
 require_once "controladores/cotizacion.controlador.php";
 require_once "controladores/cotizacionDetalle.controlador.php";
 require_once "controladores/ordenServicioTipoEstado.controlador.php";
+require_once "controladores/ordenServicio.controlador.php";
 
 
 require_once "modelos/productos.modelo.php";
@@ -46,6 +47,7 @@ require_once "modelos/pedido.modelo.php";
 require_once "modelos/pedidoDetalle.modelo.php";
 require_once "modelos/cotizacion.modelo.php";
 require_once "modelos/ordenServicioTipoEstado.modelo.php";
+require_once "modelos/ordenServicio.modelo.php";
 
 
 $plantilla = new ControladorPlantilla();

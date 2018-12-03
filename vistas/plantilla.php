@@ -156,6 +156,7 @@ PLUGINGS DE JAVASCRIPT
 <script src="vistas/js/cotizaciones.js"></script>
 <script src="vistas/js/cotizacionDetalle.js"></script>
 <script src="vistas/js/ordenServicioTipoEstado.js"></script>
+<script src="vistas/js/ordenServicio.js"></script>
 
 </body>
 </html>
