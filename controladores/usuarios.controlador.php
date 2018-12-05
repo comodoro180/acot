@@ -15,11 +15,11 @@ class ControladorUsuarios {
             $valor = $_POST["ingEmail"];
             
             $clave = crypt($_POST["ingClave"],'$2a$07$asxx54ahjppf45sd87a5a4dDDGsystemdev$');
-            ////$clave = $_POST["ingClave"];
+            ////$clave = $_POST["ingClave"];            
 
             $respuesta = ModeloUsuarios::MdlMostrarUsuarios($tabla, $campo, $valor);
 
-            if ($respuesta["EMAIL"] == $_POST["ingEmail"] && $respuesta["CLAVE"] == $clave) {
+            if (strtolower($respuesta["EMAIL"]) == strtolower($_POST["ingEmail"]) && $respuesta["CLAVE"] == $clave) {
 
                 $_SESSION["iniciarSesion"] = "ok";
                 $_SESSION["usuario"] = $respuesta;
@@ -41,8 +41,7 @@ class ControladorUsuarios {
 
         if (isset($_POST["nuevoEmail"])) {
             if (preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nuevoNombre"]) &&
-                preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nuevoApellido"]) &&
-                preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚBACDEFGHIJKLMNOPQRSTUVWXYZ ]+$/', $_POST["nuevoEmail"])) {
+                preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nuevoApellido"])) {
 
                 $tabla = "tusuario";
                 
@@ -51,7 +50,7 @@ class ControladorUsuarios {
                 $datos = array(
                     "nombre"   => $_POST["nuevoNombre"],
                     "apellido" => $_POST["nuevoApellido"],
-                    "email"    => $_POST["nuevoEmail"],
+                    "email"    => strtolower($_POST["nuevoEmail"]),
                     "clave"    => $encriptar,
                     "idperfil" => $_POST["nuevoPerfil"]
                 );
@@ -91,7 +90,7 @@ class ControladorUsuarios {
                 echo '<script>
                         swal({
                                 type: "error",
-                                title: "¡El nombre o apellido no puede ir vacío o llevar caracteres especiales!\n¡El email no puede contener caracteres en mayusculas!",
+                                title: "¡El nombre o apellido no puede ir vacío o llevar caracteres especiales!",
                                 showConfirmButton: true,
                                 confirmButtonText: "Cerrar"
 
@@ -126,8 +125,7 @@ class ControladorUsuarios {
 
             if(isset($_POST["editarNombre"])){
 
-                    if(preg_match('/^[0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["editarNombre"]) &&
-                        preg_match('ABCDEFGHIJKLMNOPQRSTUVWXYZÑ', $_POST["editarEmail"])){
+                    if(preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["editarNombre"])){
 
                             $tabla = "tusuario";
 
@@ -142,7 +140,7 @@ class ControladorUsuarios {
                             $datos = array( "idusuario" => $_POST["idusuario"],
                                             "nombre" => $_POST["editarNombre"],
                                             "apellido" => $_POST["editarApellido"],
-                                            "email" => $_POST["editarEmail"],
+                                            "email" => strtolower($_POST["editarEmail"]),
                                             "clave" => $encriptar,
                                             "idperfil" => $_POST["editarPerfil"]);
 
@@ -181,7 +179,7 @@ class ControladorUsuarios {
                             echo'<script>
                                     swal({
                                             type: "error",
-                                            title: "¡El nombre no puede ir vacío o llevar caracteres especiales! \n ¡El email no puede contener caracteres en mayusculas!",
+                                            title: "¡El nombre no puede ir vacío o llevar caracteres especiales!",
                                             showConfirmButton: true,
                                             confirmButtonText: "Cerrar"
                                             }).then(function(result){
@@ -235,8 +233,7 @@ class ControladorUsuarios {
 
         if (isset($_POST["nuevoEmail"])) {
             if (preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nuevoNombre"]) &&
-                preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nuevoApellido"]) &&
-                preg_match('/^[ABCDEFGHIJKLMONPQRSTUVWXYZÑ ]+$/', $_POST["nuevoEmail"])) {
+                preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚ ]+$/', $_POST["nuevoApellido"])) {
 
                 $tabla = "tusuario";
                 
@@ -245,7 +242,7 @@ class ControladorUsuarios {
                 $datos = array(
                     "nombre"   => $_POST["nuevoNombre"],
                     "apellido" => $_POST["nuevoApellido"],
-                    "email"    => $_POST["nuevoEmail"],
+                    "email"    => strtolower($_POST["nuevoEmail"]),
                     "clave"    => $encriptar,
                     "idperfil" => 4 //Perfil de Registro
                 );
@@ -285,7 +282,7 @@ class ControladorUsuarios {
                 echo '<script>
                         swal({
                                 type: "error",
-                                title: "¡El nombre o apellido no puede ir vacío o llevar caracteres especiales!\n¡El email no puede contener caracteres en mayusculas!",
+                                title: "¡El nombre o apellido no puede ir vacío o llevar caracteres especiales!",
                                 showConfirmButton: true,
                                 confirmButtonText: "Cerrar"
 
@@ -307,18 +304,17 @@ class ControladorUsuarios {
         //include_once "conf/config.inc.php";
         
         if (isset($_POST["RecuperarEmail"])) {
-            if(preg_match('/^[ ABCDEFGHIJKLMNOPQRSTUVWXYZÑ ]+$/', $_POST["RecuperarEmail"])){
 
             $tabla = "tusuario";
             $item1 = "email";
-            $valor1 = $_POST["RecuperarEmail"];
+            $valor1 = strtolower($_POST["RecuperarEmail"]);
 
 
             $respuesta = ModeloUsuarios::MdlMostrarUsuarios($tabla, $item1, $valor1);
             
             //var_dump($respuesta);
 
-            if ($respuesta["EMAIL"] == $_POST["RecuperarEmail"]) { 
+            if (strtolower($respuesta["EMAIL"]) == strtolower($_POST["RecuperarEmail"])) { 
                 
                 $caracteres = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
                 $numero_caracteres = strlen($caracteres);
@@ -436,21 +432,6 @@ class ControladorUsuarios {
                                 }
                         });
                 </script>';
-            } 
-            }else {
-                echo '<script>
-                        swal({
-                                type: "error",
-                                title: "¡El email no puede contener caracteres en mayusculas!",
-                                showConfirmButton: true,
-                                confirmButtonText: "Cerrar"
-
-                        }).then(function(result){
-                                if(result.value){
-                                        window.location = "ingreso";
-                                }
-                        });
-                </script>';
             }
         }        
     }
@@ -463,7 +444,7 @@ class ControladorUsuarios {
             
             require_once "conf/config.inc.php";
             
-            $email = $_POST["recuEmail"];
+            $email = strtolower($_POST["recuEmail"]);
             $codigo = $_POST["recuCodigo"];
             $clave = $_POST["recuClave"];
             

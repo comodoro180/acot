@@ -39,7 +39,7 @@ class ModeloUsuarios {
 
             $stmt->bindParam(":nombre", $datos["nombre"],PDO::PARAM_STR);
             $stmt->bindParam(":apellido", $datos["apellido"],PDO::PARAM_STR);
-            $stmt->bindParam(":email", $datos["email"],PDO::PARAM_STR);
+            $stmt->bindParam(":email", strtolower($datos["email"]),PDO::PARAM_STR);
             $stmt->bindParam(":clave", $datos["clave"],PDO::PARAM_STR);
             $stmt->bindParam(":idperfil", $datos["idperfil"],PDO::PARAM_STR);
             
@@ -66,7 +66,7 @@ class ModeloUsuarios {
             $stmt -> bindParam(":apellido", $datos["apellido"], PDO::PARAM_STR);
             $stmt -> bindParam(":clave", $datos["clave"], PDO::PARAM_STR);
             $stmt -> bindParam(":idperfil", $datos["idperfil"], PDO::PARAM_INT);            
-            $stmt -> bindParam(":email", $datos["email"], PDO::PARAM_STR);
+            $stmt -> bindParam(":email", strtolower($datos["email"]), PDO::PARAM_STR);
 
             if($stmt -> execute()){
                     return "ok";
