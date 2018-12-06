@@ -201,7 +201,7 @@
 
           <div class="modal-header" style="background:#3c8dbc; color:white">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title">Agregar Detalle Pedido</h4>
+            <h4 class="modal-title">Editar Detalle Cotización</h4>
           </div>
 
           <div class="modal-body">

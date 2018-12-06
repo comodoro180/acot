@@ -46,6 +46,7 @@ require_once "modelos/cotizacionDetalleTipoEstado.modelo.php";
 require_once "modelos/pedido.modelo.php";
 require_once "modelos/pedidoDetalle.modelo.php";
 require_once "modelos/cotizacion.modelo.php";
+require_once "modelos/cotizacionDetalle.modelo.php";
 require_once "modelos/ordenServicioTipoEstado.modelo.php";
 require_once "modelos/ordenServicio.modelo.php";
 
