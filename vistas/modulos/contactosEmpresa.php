@@ -124,15 +124,6 @@
                 </div>
               </div>
               
-              <label>Principal:</label>
-              <div class="form-group">
-                <div class="input-group">
-                  <span class="input-group-addon"> <i class="fa fa-check-circle-o"></i></span>                
-                  <input type="hidden" name="nuevoPrincipal"  placeholder="Principal" value="0">
-                  <input type="checkbox" name="nuevoPrincipal"  placeholder="Principal" value="1"> Contacto Principal
-                </div>
-              </div>
-              
               <label>Empresa:</label>
               <div class="form-group">
                   <div class="input-group">
@@ -146,8 +137,16 @@
                             }
                           ?>
                         </select>                  
-                    </div> 
+                  </div> 
+              </div>
+              
+              <div class="form-group">
+                <div class="input-group">
+                  <input type="hidden" name="nuevoPrincipal"  placeholder="Principal" value="0">
+                  <input type="checkbox" name="nuevoPrincipal"  placeholder="Principal" value="1"> Contacto Principal
                 </div>
+              </div>
+              
             </div>
           </div>
 
@@ -202,14 +201,6 @@
                 </div>
               </div>            
               
-              <label>Principal:</label>
-              <div class="form-group">
-                <div class="input-group">
-                  <span class="input-group-addon"> <i class="fa fa-check-circle-o"></i></span>                
-                  <input type="text" class="form-control input-lg" id="editarPrincipal" name="editarPrincipal" value="" placeholder="Principal" >
-                </div>
-              </div>            
-
               <label>Empresa:</label>
               <div class="form-group">
                   <div class="input-group">
