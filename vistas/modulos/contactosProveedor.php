@@ -116,13 +116,21 @@
                 </div>
               </div>
               
-              <label>E-mail:</label>
+              <label>Email:</label>
               <div class="form-group">
-                <div class="input-group">
-                  <span class="input-group-addon"> <i class="fa fa-envelope-open-o"></i></span>                
-                  <input type="email" class="form-control input-lg" id="nuevoEmailCP" name="nuevoEmailCP"  placeholder="Email" required>
+                  <div class="input-group">
+                    <span class="input-group-addon"> <i class="fa fa-envelope-open-o"></i></span>
+                        <select class="form-control input-lg" id="nuevoEmailCP" name="nuevoEmailCP" required>
+                          <option value="">Seleccionar Correo</option> 
+                          <?php
+                            $persona = ModeloUsuarios::mdlMostrarUsuarios('tusuario', null, null);
+                            foreach ($persona as $key => $value){
+                              echo '<option value="'.$value["EMAIL"].'">'.$value["EMAIL"].'</option>';
+                            }
+                          ?>
+                        </select>                  
+                    </div> 
                 </div>
-              </div>
               
               <label>Proveedor:</label>
               <div class="form-group">
@@ -197,7 +205,15 @@
               <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-addon"> <i class="fa fa-envelope-open-o"></i></span>                
-                  <input type="text" class="form-control input-lg" id="editarEmail" name="editarEmail" value="" placeholder="Email" >
+                  <select class="form-control input-lg" name="editarEmailCP" id="editarEmailCPR" required>
+                      <option value="" id="editarEmailCP"></option> 
+                      <?php
+                            $persona = ModeloUsuarios::mdlMostrarUsuarios('tusuario',null, null);
+                            foreach ($persona as $key => $value){
+                              echo '<option value="'.$value["EMAIL"].'">'.$value["EMAIL"].'</option>';
+                            }
+                          ?> 
+                   </select>
                 </div>
               </div>            
               

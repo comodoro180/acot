@@ -64,6 +64,21 @@ class AjaxContactosEmpresa{
 	}
         
         /*=============================================
+	VALIDAR NO REPETIR CONTACTO EMPRESA
+	=============================================*/	
+	public $validarContactoEmpresa;
+
+	public function ajaxValidarCE(){
+
+		$item = "nombre";
+		$valor = $this->validarContactoEmpresa;
+
+		$respuesta = ControladorContactosEmpresa::ctrMostrarContactosEmpresa($item, $valor);
+
+		echo json_encode($respuesta);
+	}
+        
+        /*=============================================
 	VALIDAR NO REPETIR EMAIL
 	=============================================*/	
 	public $validarEmail;

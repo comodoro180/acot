@@ -18,7 +18,8 @@ $(".tablas").on("click", ".btnEditarContactoProveedor", function(){
 		dataType: "json",
 		success: function(respuesta){
                         $("#idEmpresaContactos").val(respuesta["IDEMPRESACONTACTOS"]);
-			$("#editarEmail").val(respuesta["EMAIL"]);
+			$("#editarEmailCP").val(respuesta["EMAIL"]);
+			$("#editarEmailCP").html(respuesta["EMAIL"]);
                         $("#editarContactoProveedor").val(respuesta["NOMBRE"]);
                         $("#editarIdProveedor").html(respuesta["PROVEEDOR"]);
                         $("#editarIdProveedor").val(respuesta["IDPROVEEDOR"]);
@@ -133,7 +134,7 @@ $("#nuevoEmailCP").change(function(){
 
 	    		$("#nuevoEmailCP").parent().after('<div class="alert alert-warning">Este email ya existe en la base de datos</div>');
 
-	    		$("#nuevoEmailCP").val("");
+	    		$("#nuevoEmailCP").val(respuesta[""]);
 	    	}
 	    }
 	});
@@ -166,6 +167,38 @@ $("#nuevoEmailCP").change(function(){
 	    		$("#nuevoEmailCP").parent().after('<div class="alert alert-warning">Este email ya pertenece a un contacto de empresa en la base de datos</div>');
 
 	    		$("#nuevoEmailCP").val("");
+	    	}
+	    }
+	});
+});
+
+/*=============================================
+REVISAR SI EL EMAIL YA ESTÁ REGISTRADO COMO EMPRESA AL EDITAR
+=============================================*/
+$("#editarEmailCPR").change(function(){
+
+	$(".alert").remove();
+
+	var email = $(this).val();
+
+	var datos = new FormData();
+	datos.append("validarEmail", email);
+
+	 $.ajax({
+	    url:"ajax/contactosEmpresa.ajax.php",
+	    method:"POST",
+	    data: datos,
+	    cache: false,
+	    contentType: false,
+	    processData: false,
+	    dataType: "json",
+	    success:function(respuesta){
+	    	
+	    	if(respuesta){
+
+	    		$("#editarEmailCPR").parent().after('<div class="alert alert-warning">Este email ya pertenece a un contacto de empresa en la base de datos</div>');
+
+	    		$("#editarEmailCPR").val("");
 	    	}
 	    }
 	});

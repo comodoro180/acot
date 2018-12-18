@@ -112,16 +112,24 @@
               <div class="form-group">
                 <div class="input-group">                  
                   <span class="input-group-addon"> <i class="fa fa-address-card"></i></span>                                    
-                  <input type="text" class="form-control input-lg" name="nuevoContactoEmpresa"  placeholder="Nombre del Contacto" required>                
+                  <input type="text" class="form-control input-lg" name="nuevoContactoEmpresa" id="nuevoContactoEmpresa" placeholder="Nombre del Contacto" required>                
                 </div>
               </div>
               
-              <label>E-mail:</label>
+              <label>Email:</label>
               <div class="form-group">
-                <div class="input-group">
-                  <span class="input-group-addon"> <i class="fa fa-envelope-open-o"></i></span>                
-                  <input type="email" class="form-control input-lg" id="nuevoEmailCE" name="nuevoEmailCE"  placeholder="Email" required>
-                </div>
+                  <div class="input-group">
+                  <span class="input-group-addon"> <i class="fa fa-group"></i></span>
+                  <select class="form-control input-lg" name="nuevoEmailCE" id="nuevoEmailCE" required>
+                      <option value="" id="nuevoEmailCE">Seleccione el correo Electronico</option> 
+                      <?php
+                            $persona = ModeloUsuarios::mdlMostrarUsuarios('tusuario',null, null);
+                            foreach ($persona as $key => $value){
+                              echo '<option value="'.$value["EMAIL"].'">'.$value["EMAIL"].'</option>';
+                            }
+                          ?> 
+                   </select>
+                  </div> 
               </div>
               
               <label>Empresa:</label>
@@ -193,13 +201,21 @@
                 </div>
               </div>
 
-              <label>E-mail:</label>
+              <label>Email:</label>
               <div class="form-group">
-                <div class="input-group">
-                  <span class="input-group-addon"> <i class="fa fa-envelope-open-o"></i></span>                
-                  <input type="text" class="form-control input-lg" id="editarEmail" name="editarEmail" value="" placeholder="Email" >
-                </div>
-              </div>            
+                  <div class="input-group">
+                  <span class="input-group-addon"> <i class="fa fa-group"></i></span>
+                  <select class="form-control input-lg" name="editarEmailCE" id="editarEmailCEM" >
+                      <option value="" id="editarEmailCE"></option> 
+                      <?php
+                            $persona = ModeloUsuarios::mdlMostrarUsuarios('tusuario',null, null);
+                            foreach ($persona as $key => $value){
+                              echo '<option value="'.$value["EMAIL"].'">'.$value["EMAIL"].'</option>';
+                            }
+                          ?> 
+                   </select>
+                  </div> 
+              </div>             
               
               <label>Empresa:</label>
               <div class="form-group">
@@ -216,6 +232,11 @@
                    </select>
                   </div> 
               </div> 
+              <div class="form-group">
+                <div class="input-group">
+                    <input type="checkbox" name="editarPrincipal" id="editarPrincipal" value=""> Contacto Principal
+                </div>
+              </div>
               
             </div>
           </div>

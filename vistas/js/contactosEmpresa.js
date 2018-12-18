@@ -18,12 +18,15 @@ $(".tablas").on("click", ".btnEditarContactoEmpresa", function(){
 		dataType: "json",
 		success: function(respuesta){
                         $("#idEmpresaContactos").val(respuesta["IDEMPRESACONTACTOS"]);
-			$("#editarEmail").val(respuesta["EMAIL"]);
+			$("#editarEmailCE").val(respuesta["EMAIL"]);
+			$("#editarEmailCE").html(respuesta["EMAIL"]);
+			$("#editarPrincipal").val(respuesta["PRINCIPAL"]);
                         $("#editarContactoEmpresa").val(respuesta["NOMBRE"]);
                         $("#editarIdEmpresaContactoEmpresa").html(respuesta["EMPRESA"]);
                         $("#editarIdEmpresaContactoEmpresa").val(respuesta["IDEMPRESA"]);
 		}
 	});
+        
 });
 
 /*=============================================
@@ -108,42 +111,6 @@ $(".tablas").on("click", ".btnPrincipal", function(){
 
 });
 /*=============================================
-REVISAR SI EL CONTACTO DE EMPRESA YA ESTÁ REGISTRADO
-=============================================*/
-
-$("#nuevoContactoEmpresa").change(function(){
-
-	$(".alert").remove();
-
-	var contactoEmpresa = $(this).val();
-
-	var datos = new FormData();
-	datos.append("validarContactoEmpresa", contactoEmpresa);
-
-	 $.ajax({
-	    url:"ajax/contactosEmpresa.ajax.php",
-	    method:"POST",
-	    data: datos,
-	    cache: false,
-	    contentType: false,
-	    processData: false,
-	    dataType: "json",
-	    success:function(respuesta){
-	    	
-	    	if(respuesta){
-
-	    		$("#nuevoContactoEmpresa").parent().after('<div class="alert alert-warning">Este usuario ya existe en la base de datos</div>');
-
-	    		$("#nuevoContactoEmpresa").val("");
-
-	    	}
-
-	    }
-
-	});
-});
-
-/*=============================================
 REVISAR SI EL EMAIL YA ESTÁ REGISTRADO
 =============================================*/
 $("#nuevoEmailCE").change(function(){
@@ -202,6 +169,38 @@ $("#nuevoEmailCE").change(function(){
 	    		$("#nuevoEmailCE").parent().after('<div class="alert alert-warning">Este email ya pertenece a un contacto de proveedor en la base de datos</div>');
 
 	    		$("#nuevoEmailCE").val("");
+	    	}
+	    }
+	});
+});
+
+/*=============================================
+REVISAR SI EL EMAIL YA ESTÁ REGISTRADO COMO PROVEEDOR AL EDITAR
+=============================================*/
+$("#editarEmailCEM").change(function(){
+
+	$(".alert").remove();
+
+	var email = $(this).val();
+
+	var datos = new FormData();
+	datos.append("validarEmail", email);
+
+	 $.ajax({
+	    url:"ajax/contactosProveedor.ajax.php",
+	    method:"POST",
+	    data: datos,
+	    cache: false,
+	    contentType: false,
+	    processData: false,
+	    dataType: "json",
+	    success:function(respuesta){
+	    	
+	    	if(respuesta){
+
+	    		$("#editarEmailCEM").parent().after('<div class="alert alert-warning">Este email ya pertenece a un contacto de proveedor en la base de datos</div>');
+
+	    		$("#editarEmailCEM").val("");
 	    	}
 	    }
 	});

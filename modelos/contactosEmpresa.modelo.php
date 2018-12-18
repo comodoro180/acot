@@ -67,7 +67,7 @@ class ModeloContactosEmpresa{
         try {
             
             $stmt = Conexion::conectar()->prepare("UPDATE tempresacontactos "
-                                                . "SET EMAIL=:email, "
+                                                . "SET EMAIL=:email, PRINCIPAL=:principal, "
                                                 . "NOMBRE=:nombre, IDEMPRESA=:idEmpresa "
                                                 . "WHERE IDEMPRESACONTACTOS=:idEmpresaContactos");
             
