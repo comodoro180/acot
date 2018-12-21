@@ -68,11 +68,13 @@ class ModeloContactosProveedor{
             
             $stmt = Conexion::conectar()->prepare("UPDATE tproveedorcontactos "
                                                 . "SET EMAIL=:email, NOMBRE=:nombre, "
+                                                . "PRINCIPAL=:principal, "
                                                 . "IDPROVEEDOR=:idProveedor WHERE "
                                                 . "IDEMPRESACONTACTOS=:idEmpresaContactos");
             
             $stmt->bindParam(":idEmpresaContactos", $datos["idEmpresaContactos"],PDO::PARAM_STR);
             $stmt->bindParam(":email", $datos["email"],PDO::PARAM_STR);
+            $stmt->bindParam(":principal", $datos["principal"],PDO::PARAM_STR);
             $stmt->bindParam(":nombre", $datos["nombre"],PDO::PARAM_STR);
             $stmt->bindParam(":idProveedor", $datos["idProveedor"],PDO::PARAM_STR);
 

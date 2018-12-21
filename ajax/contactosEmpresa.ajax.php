@@ -43,7 +43,7 @@ class AjaxContactosEmpresa{
 	}
         
         /*=============================================
-	ACTIVAR
+	BOTÓN PRINCIPAL
 	=============================================*/	
 
 	public $principal;
@@ -107,6 +107,20 @@ class AjaxContactosEmpresa{
 
 		echo json_encode($respuesta);
 	}
+        /*=============================================
+	VALIDAR NO REPETIR EMAIL COMO PROVEEDOR AL EDITAR
+	=============================================*/	
+	public $validarEmailCE;
+
+	public function ajaxValidarEmailCPEditar(){
+
+		$item = "email";
+		$valor = $this->validarEmailCE;
+
+		$respuesta = ControladorContactosProveedor::ctrMostrarContactosProveedor($item, $valor);
+
+		echo json_encode($respuesta);
+	}
 }
 /*=============================================
 EDITAR
@@ -151,11 +165,20 @@ if(isset( $_POST["validarEmail"])){
 }
 
 /*=============================================
-VALIDAR NO REPETIR EMAIL CON EMPRESA
+VALIDAR NO REPETIR EMAIL CON PROVEEDOR
 =============================================*/
 if(isset( $_POST["validarEmailCP"])){
 
 	$valContactosEmpresa = new AjaxContactosEmpresa();
 	$valContactosEmpresa -> validarEmailCP = $_POST["validarEmailCP"];
 	$valContactosEmpresa ->ajaxValidarEmailCP();
+}
+/*=============================================
+VALIDAR NO REPETIR EMAIL CON PROVEEDOR AL EDITAR
+=============================================*/
+if(isset( $_POST["validarEmailCE"])){
+
+	$valContactosEmpresa = new AjaxContactosEmpresa();
+	$valContactosEmpresa -> validarEmailCE = $_POST["validarEmailCE"];
+	$valContactosEmpresa ->ajaxValidarEmailCPEditar();
 }

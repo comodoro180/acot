@@ -234,7 +234,7 @@
               </div> 
               <div class="form-group">
                 <div class="input-group">
-                    <input type="checkbox" name="editarPrincipal" id="editarPrincipal" value=""> Contacto Principal
+                    <input type="checkbox" name="editarPrincipal" id="editarPrincipal" value="1"> Contacto Principal
                 </div>
               </div>
               

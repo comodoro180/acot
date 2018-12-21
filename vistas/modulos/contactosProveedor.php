@@ -233,6 +233,12 @@
                   </div> 
               </div> 
               
+              <div class="form-group">
+                <div class="input-group">
+                    <input type="checkbox" name="editarPrincipalCP" id="editarPrincipalCP" placeholder="Principal" value="1"> Contacto Principal
+                </div>
+              </div>
+              
             </div>
           </div>
 

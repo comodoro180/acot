@@ -74,7 +74,8 @@ class ControladorContactosProveedor{
             if(isset($_POST["editarContactoProveedor"])){                            
 
                             $datos = array( "idEmpresaContactos"    => $_POST["idEmpresaContactos"],
-                                            "email"                 => $_POST["editarEmail"],
+                                            "email"                 => $_POST["editarEmailCP"],
+                                            "principal"             => $_POST["editarPrincipalCP"],
                                             "nombre"                => $_POST["editarContactoProveedor"],
                                             "idProveedor"           => $_POST["editarIdProveedor"]);
 

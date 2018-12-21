@@ -20,6 +20,11 @@ $(".tablas").on("click", ".btnEditarContactoProveedor", function(){
                         $("#idEmpresaContactos").val(respuesta["IDEMPRESACONTACTOS"]);
 			$("#editarEmailCP").val(respuesta["EMAIL"]);
 			$("#editarEmailCP").html(respuesta["EMAIL"]);
+                        if(respuesta["PRINCIPAL"] == 1){
+				$('#editarPrincipalCP').prop('checked', true);	
+			}else{
+				$('#editarPrincipalCP').prop('checked', false);	
+			}
                         $("#editarContactoProveedor").val(respuesta["NOMBRE"]);
                         $("#editarIdProveedor").html(respuesta["PROVEEDOR"]);
                         $("#editarIdProveedor").val(respuesta["IDPROVEEDOR"]);

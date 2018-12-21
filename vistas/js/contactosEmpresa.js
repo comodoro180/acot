@@ -2,7 +2,7 @@
 EDITAR CONTACTO EMPRESA
 =============================================*/
 $(".tablas").on("click", ".btnEditarContactoEmpresa", function(){
-
+			
 	var idEmpresaContactos = $(this).attr("idEmpresaContactos");
 	
 	var datos = new FormData();
@@ -17,10 +17,18 @@ $(".tablas").on("click", ".btnEditarContactoEmpresa", function(){
 		processData: false,
 		dataType: "json",
 		success: function(respuesta){
-                        $("#idEmpresaContactos").val(respuesta["IDEMPRESACONTACTOS"]);
+            $("#idEmpresaContactos").val(respuesta["IDEMPRESACONTACTOS"]);
 			$("#editarEmailCE").val(respuesta["EMAIL"]);
 			$("#editarEmailCE").html(respuesta["EMAIL"]);
-			$("#editarPrincipal").val(respuesta["PRINCIPAL"]);
+
+			if(respuesta["PRINCIPAL"] == 1){
+				$('#editarPrincipal').prop('checked', true);	
+			}else{
+				$('#editarPrincipal').prop('checked', false);	
+			}
+			
+			//$("#editarPrincipal").val(respuesta["PRINCIPAL"]);
+
                         $("#editarContactoEmpresa").val(respuesta["NOMBRE"]);
                         $("#editarIdEmpresaContactoEmpresa").html(respuesta["EMPRESA"]);
                         $("#editarIdEmpresaContactoEmpresa").val(respuesta["IDEMPRESA"]);
