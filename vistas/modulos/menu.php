@@ -231,8 +231,7 @@
 <!--ADMISNISTRACIÓN - PROVEEDORES-->  
              
                 <?php
-                    if ($_GET["ruta"] == "proveedores"||
-                        $_GET["ruta"] == "cotizacionesProveedor") {                
+                    if ($_GET["ruta"] == "proveedores") {                
                         echo '<li class="treeview active">';
                     } else {
                         echo '<li class="treeview">';
@@ -250,12 +249,6 @@
                             <a href="proveedores" <?php if ($_GET["ruta"] == "proveedores") echo 'class="AcotMenuSeleccionado"'; ?>>
                               <i class="fa fa-circle-o"></i>
                               <span>Proveedores</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="cotizacionesProveedor" <?php if ($_GET["ruta"] == "cotizacionesProveedor") echo 'class="AcotMenuSeleccionado"'; ?>>
-                              <i class="fa fa-circle-o"></i>
-                              <span>Cotizaciones</span>                              
                             </a>
                         </li>
                     </ul>

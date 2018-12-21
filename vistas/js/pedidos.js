@@ -15,8 +15,13 @@ $(".tablas").on("click", ".btnEditarPedido", function(){
 		processData: false,
 		dataType: "json",
 		success: function(respuesta){
+                    
+                        datos = respuesta["FECHAENTREGA"].split(" ");
+                        fecha = datos[0].split("-");
+                        hora = datos[1].split(":");
+                        
                         $("#idPedido").val(respuesta["IDPEDIDO"]);
-                        $("#editarFechaEP").val(respuesta["FECHAENTREGA"]);
+                        $("#editarFechaEP").val(fecha["0"]+"-"+fecha["1"]+"-"+fecha["2"]+"T"+hora[0]+":"+hora[1]);
 			$("#editarObservacionesP").val(respuesta["OBSERVACIONES"]);
                         $("#editarPedidoTipoEstadoP").html(respuesta["ESTADO"]);
                         $("#editarPedidoTipoEstadoP").val(respuesta["IDPEDIDOTIPOESTADO"]);

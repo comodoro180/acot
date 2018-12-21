@@ -15,8 +15,13 @@ $(".tablas").on("click", ".btnEditarCotizacion", function(){
 		processData: false,
 		dataType: "json",
 		success: function(respuesta){
+                    
+                        datos = respuesta["FECHAVENCIMIENTO"].split(" ");
+                        fecha = datos[0].split("-");
+                        hora = datos[1].split(":");
+                        
                         $("#idCotizacion").val(respuesta["IDCOTIZACION"]);
-                        $("#editarFechaVC").val(respuesta["FECHAVENCIMIENTO"]);
+                        $("#editarFechaVC").val(fecha["0"]+"-"+fecha["1"]+"-"+fecha["2"]+"T"+hora[0]+":"+hora[1]);
 			$("#editarObservacionesC").val(respuesta["OBSERVACIONES"]);
                         $("#editarCotizacionTipoEstado").html(respuesta["ESTADO"]);
                         $("#editarCotizacionTipoEstado").val(respuesta["IDCOTIZACIONTIPOESTADO"]);
