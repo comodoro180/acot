@@ -1,2 +1,2 @@
 # acot
-Acot cotizaciones
+Acot cotizaciones.
