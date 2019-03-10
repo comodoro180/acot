@@ -161,8 +161,8 @@
 <!--ADMISNISTRACIÓN - USUARIOS-->
                 <?php
                     if ($_GET["ruta"] == "usuarios" ||
-                        $_GET["ruta"] == "contactosProveedor" ||
-                        $_GET["ruta"] == "contactosEmpresa" ||
+                        $_GET["ruta"] == "usuariosProveedor" ||
+                        $_GET["ruta"] == "usuariosEmpresa" ||
                         $_GET["ruta"] == "roles") {                
                         echo '<li class="treeview active">';
                     } else {
@@ -184,13 +184,13 @@
                             </a>
                         </li>
                         <li>
-                            <a href="contactosEmpresa" <?php if ($_GET["ruta"] == "contactosEmpresa") echo 'class="AcotMenuSeleccionado"'; ?>>
+                            <a href="usuariosEmpresa" <?php if ($_GET["ruta"] == "usuariosEmpresa") echo 'class="AcotMenuSeleccionado"'; ?>>
                               <i class="fa fa-circle-o"></i>
                               <span>Usuarios por empresa</span>
                             </a>
                         </li>
                         <li>
-                            <a href="contactosProveedor" <?php if ($_GET["ruta"] == "contactosProveedor") echo 'class="AcotMenuSeleccionado"'; ?>>
+                            <a href="usuariosProveedor" <?php if ($_GET["ruta"] == "usuariosProveedor") echo 'class="AcotMenuSeleccionado"'; ?>>
                               <i class="fa fa-circle-o"></i>
                               <span>Usuarios por proveedor</span>
                             </a>
@@ -231,7 +231,8 @@
 <!--ADMISNISTRACIÓN - PROVEEDORES-->  
              
                 <?php
-                    if ($_GET["ruta"] == "proveedores") {                
+                    if ($_GET["ruta"] == "proveedores"||
+                        $_GET["ruta"] == "contactosProveedor") {                
                         echo '<li class="treeview active">';
                     } else {
                         echo '<li class="treeview">';
@@ -251,6 +252,12 @@
                               <span>Proveedores</span>
                             </a>
                         </li>
+                        <li>
+                            <a href="contactosProveedor" <?php if ($_GET["ruta"] == "contactosProveedor") echo 'class="AcotMenuSeleccionado"'; ?>>
+                              <i class="fa fa-circle-o"></i>
+                              <span>Contactos proveedor</span>
+                            </a>
+                        </li>                        
                     </ul>
                 </li>  
 <!--ADMISNISTRACIÓN - PRODUCTOS-->
