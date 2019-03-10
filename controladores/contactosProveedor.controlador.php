@@ -10,7 +10,7 @@ class ControladorContactosProveedor{
         if (isset($_POST["nuevoContactoProveedor"])) {
             
                 $datos = array(
-                    "email"     => $_POST["nuevoEmail"],
+                    "email"     => $_POST["nuevoEmailCP"],
                     "principal" => $_POST["nuevoPrincipal"],
                     "nombre"    => $_POST["nuevoContactoProveedor"],
                     "idProveedor" => $_POST["nuevoIdProveedor"]
@@ -74,10 +74,10 @@ class ControladorContactosProveedor{
             if(isset($_POST["editarContactoProveedor"])){                            
 
                             $datos = array( "idEmpresaContactos"    => $_POST["idEmpresaContactos"],
-                                            "email"                 => $_POST["editarEmail"],
-                                            "principal"             => $_POST["editarPrincipal"],
+                                            "email"                 => $_POST["editarEmailCP"],
+                                            "principal"             => $_POST["editarPrincipalCP"],
                                             "nombre"                => $_POST["editarContactoProveedor"],
-                                            "idProveedor"             => $_POST["editarIdProveedor"]);
+                                            "idProveedor"           => $_POST["editarIdProveedor"]);
 
                             $respuesta = ModeloContactosProveedor::mdlEditarContactoProveedor($datos);
 

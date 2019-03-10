@@ -27,8 +27,8 @@ class AjaxContactosProveedor{
 
 	public $activarContactoProveedor;
 	public $activarIdContactoProveedor;
-
-	public function ajaxActivarContactoProveedor(){
+        
+        public function ajaxActivarContactoProveedor(){
 
 		$tabla = "tproveedorcontactos";
 
@@ -39,8 +39,62 @@ class AjaxContactosProveedor{
 		$valor2 = $this->activarIdContactoProveedor;
 
 		$respuesta = ModeloContactosProveedor::mdlActualizarContactoProveedor($tabla, $item1, $valor1, $item2, $valor2);
+                
+                
 
 	}
+        
+        /*=============================================
+	ACTIVAR PRINCIPAL
+	=============================================*/
+        
+        public $principal;
+	public $idPrincipalContactoProveedor;
+        
+        public function ajaxPrincipalContactoProveedor(){
+
+		$tabla = "tproveedorcontactos";
+
+		$item1 = "principal";
+		$valor1 = $this->principal;
+
+		$item2 = "idEmpresaContactos";
+		$valor2 = $this->idPrincipalContactoProveedor;
+
+		$respuesta = ModeloContactosProveedor::mdlActualizarContactoProveedor($tabla, $item1, $valor1, $item2, $valor2);
+                
+	}
+        
+        /*=============================================
+	VALIDAR NO REPETIR EMAIL
+	=============================================*/	
+	public $validarEmail;
+
+	public function ajaxValidarEmail(){
+
+		$item = "email";
+		$valor = $this->validarEmail;
+
+		$respuesta = ControladorContactosProveedor::ctrMostrarContactosProveedor($item, $valor);
+
+		echo json_encode($respuesta);
+	}
+        
+        /*=============================================
+	VALIDAR NO REPETIR EMAIL COMO EMPRESA
+	=============================================*/	
+	public $validarEmailCE;
+
+	public function ajaxValidarEmailCE(){
+
+		$item = "email";
+		$valor = $this->validarEmailCE;
+
+		$respuesta = ControladorContactosEmpresa::ctrMostrarContactosEmpresa($item, $valor);
+
+		echo json_encode($respuesta);
+	}
+        
 
 }
 
@@ -65,3 +119,32 @@ if(isset($_POST["activarContactoProveedor"])){
 	$activarContactoProveedor ->ajaxActivarContactoProveedor();
 }
 
+/*=============================================
+ACTIVAR PRINCIPAL
+=============================================*/	
+if(isset($_POST["principal"])){
+
+	$principal = new AjaxContactosProveedor();
+	$principal -> principal = $_POST["principal"];
+	$principal -> idPrincipalContactoProveedor = $_POST["idPrincipalContactoProveedor"];
+	$principal ->ajaxPrincipalContactoProveedor();
+}
+
+/*=============================================
+VALIDAR NO REPETIR EMAIL
+=============================================*/
+if(isset( $_POST["validarEmail"])){
+
+	$valContactosProveedor = new AjaxContactosProveedor();
+	$valContactosProveedor -> validarEmail = $_POST["validarEmail"];
+	$valContactosProveedor ->ajaxValidarEmail();
+}
+/*=============================================
+VALIDAR NO REPETIR EMAIL CON EMPRESA
+=============================================*/
+if(isset( $_POST["validarEmailCE"])){
+
+	$valContactosProveedor = new AjaxContactosProveedor();
+	$valContactosProveedor -> validarEmailCE = $_POST["validarEmailCE"];
+	$valContactosProveedor ->ajaxValidarEmailCE();
+}

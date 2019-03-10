@@ -67,9 +67,10 @@ class ModeloContactosProveedor{
         try {
             
             $stmt = Conexion::conectar()->prepare("UPDATE tproveedorcontactos "
-                                                . "SET EMAIL=:email, PRINCIPAL=:principal, "
-                                                . "NOMBRE=:nombre, IDPROVEEDOR=:idProveedor "
-                                                . "WHERE IDEMPRESACONTACTOS=:idEmpresaContactos");
+                                                . "SET EMAIL=:email, NOMBRE=:nombre, "
+                                                . "PRINCIPAL=:principal, "
+                                                . "IDPROVEEDOR=:idProveedor WHERE "
+                                                . "IDEMPRESACONTACTOS=:idEmpresaContactos");
             
             $stmt->bindParam(":idEmpresaContactos", $datos["idEmpresaContactos"],PDO::PARAM_STR);
             $stmt->bindParam(":email", $datos["email"],PDO::PARAM_STR);
@@ -112,8 +113,8 @@ class ModeloContactosProveedor{
 
             $stmt -> close();
             $stmt = null;
-    } 
- 
+    }
+    
     /*=============================================
     BORRAR
     =============================================*/    

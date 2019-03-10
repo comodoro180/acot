@@ -15,11 +15,11 @@ class ControladorUsuarios {
             $valor = $_POST["ingEmail"];
             
             $clave = crypt($_POST["ingClave"],'$2a$07$asxx54ahjppf45sd87a5a4dDDGsystemdev$');
-            ////$clave = $_POST["ingClave"];
+            ////$clave = $_POST["ingClave"];            
 
             $respuesta = ModeloUsuarios::MdlMostrarUsuarios($tabla, $campo, $valor);
 
-            if ($respuesta["EMAIL"] == $_POST["ingEmail"] && $respuesta["CLAVE"] == $clave) {
+            if (strtolower($respuesta["EMAIL"]) == strtolower($_POST["ingEmail"]) && $respuesta["CLAVE"] == $clave) {
 
                 $_SESSION["iniciarSesion"] = "ok";
                 $_SESSION["usuario"] = $respuesta;
@@ -50,7 +50,7 @@ class ControladorUsuarios {
                 $datos = array(
                     "nombre"   => $_POST["nuevoNombre"],
                     "apellido" => $_POST["nuevoApellido"],
-                    "email"    => $_POST["nuevoEmail"],
+                    "email"    => strtolower($_POST["nuevoEmail"]),
                     "clave"    => $encriptar,
                     "idperfil" => $_POST["nuevoPerfil"]
                 );
@@ -140,7 +140,7 @@ class ControladorUsuarios {
                             $datos = array( "idusuario" => $_POST["idusuario"],
                                             "nombre" => $_POST["editarNombre"],
                                             "apellido" => $_POST["editarApellido"],
-                                            "email" => $_POST["editarEmail"],
+                                            "email" => strtolower($_POST["editarEmail"]),
                                             "clave" => $encriptar,
                                             "idperfil" => $_POST["editarPerfil"]);
 
@@ -242,7 +242,7 @@ class ControladorUsuarios {
                 $datos = array(
                     "nombre"   => $_POST["nuevoNombre"],
                     "apellido" => $_POST["nuevoApellido"],
-                    "email"    => $_POST["nuevoEmail"],
+                    "email"    => strtolower($_POST["nuevoEmail"]),
                     "clave"    => $encriptar,
                     "idperfil" => 4 //Perfil de Registro
                 );
@@ -307,14 +307,14 @@ class ControladorUsuarios {
 
             $tabla = "tusuario";
             $item1 = "email";
-            $valor1 = $_POST["RecuperarEmail"];
+            $valor1 = strtolower($_POST["RecuperarEmail"]);
 
 
             $respuesta = ModeloUsuarios::MdlMostrarUsuarios($tabla, $item1, $valor1);
             
             //var_dump($respuesta);
 
-            if ($respuesta["EMAIL"] == $_POST["RecuperarEmail"]) { 
+            if (strtolower($respuesta["EMAIL"]) == strtolower($_POST["RecuperarEmail"])) { 
                 
                 $caracteres = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
                 $numero_caracteres = strlen($caracteres);
@@ -444,7 +444,7 @@ class ControladorUsuarios {
             
             require_once "conf/config.inc.php";
             
-            $email = $_POST["recuEmail"];
+            $email = strtolower($_POST["recuEmail"]);
             $codigo = $_POST["recuCodigo"];
             $clave = $_POST["recuClave"];
             

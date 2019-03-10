@@ -142,7 +142,7 @@
               <div class="form-group">
                 <div class="input-group">                  
                   <span class="input-group-addon"> <i class="fa fa-phone"></i></span>                                    
-                  <input type="number" class="form-control input-lg" name="nuevoTelefono2"  placeholder="Telefono 2" required>                
+                  <input type="number" class="form-control input-lg" name="nuevoTelefono2"  placeholder="Telefono 2">                
                 </div>
               </div>
               

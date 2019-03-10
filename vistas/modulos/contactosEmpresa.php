@@ -51,13 +51,19 @@
                           <td>'.$value["IDEMPRESACONTACTOS"].'</td>
                           <td>'.$value["NOMBRE"].'</td>
                           <td>'.$value["EMAIL"].'</td>                              
-                          <td>'.$value["PRINCIPAL"].'</td>                              
+                          <td>';
+                          if ($value["PRINCIPAL"] == 1){                            
+                            echo '<button class="btn btn-success btn-xs btnPrincipal" idPrincipal="'.$value["IDEMPRESACONTACTOS"].'" principal="0">Contacto Principal</button>';
+                          } else {                           
+                            echo '<button class="btn btn-danger btn-xs btnPrincipal" idPrincipal="'.$value["IDEMPRESACONTACTOS"].'" principal="1">No Contacto Principal</button></td>';
+                          }         
+                    echo '</td>
                           <td>'.$value["EMPRESA"].'</td>
                           <td>';
                           if ($value["ESTADO"] == 1){                            
-                            echo '<button class="btn btn-success btn-xs btnActivarContactoEmpresa" idEmpresaContactos="'.$value["IDEMPRESACONTACTOS"].'" estadoContactoEmpresa="0">Activo</button>';
+                            echo '<button class="btn btn-success btn-xs btnActivarContactoEmpresa "idEmpresaContactos="'.$value["IDEMPRESACONTACTOS"].'" estadoContactoEmpresa="0">Activo</button>';
                           } else {                           
-                            echo '<button class="btn btn-danger btn-xs btnActivarContactoEmpresa" idEmpresaContactos="'.$value["IDEMPRESACONTACTOS"].'" estadoContactoEmpresa="1">Inactivo</button></td>';
+                            echo '<button class="btn btn-danger btn-xs btnActivarContactoEmpresa"idEmpresaContactos="'.$value["IDEMPRESACONTACTOS"].'" estadoContactoEmpresa="1">Inactivo</button></td>';
                           }         
                     echo '</td>
                           <td>
@@ -106,24 +112,24 @@
               <div class="form-group">
                 <div class="input-group">                  
                   <span class="input-group-addon"> <i class="fa fa-address-card"></i></span>                                    
-                  <input type="text" class="form-control input-lg" name="nuevoContactoEmpresa"  placeholder="Nombre del Contacto" required>                
+                  <input type="text" class="form-control input-lg" name="nuevoContactoEmpresa" id="nuevoContactoEmpresa" placeholder="Nombre del Contacto" required>                
                 </div>
               </div>
               
-              <label>E-mail:</label>
+              <label>Email:</label>
               <div class="form-group">
-                <div class="input-group">
-                  <span class="input-group-addon"> <i class="fa fa-envelope-open-o"></i></span>                
-                  <input type="email" class="form-control input-lg" name="nuevoEmail"  placeholder="Email" required>
-                </div>
-              </div>
-              
-              <label>Principal:</label>
-              <div class="form-group">
-                <div class="input-group">
-                  <span class="input-group-addon"> <i class="fa fa-check-circle-o"></i></span>                
-                  <input type="number" class="form-control input-lg" name="nuevoPrincipal"  placeholder="Principal" required>
-                </div>
+                  <div class="input-group">
+                  <span class="input-group-addon"> <i class="fa fa-group"></i></span>
+                  <select class="form-control input-lg" name="nuevoEmailCE" id="nuevoEmailCE" required>
+                      <option value="" id="nuevoEmailCE">Seleccione el correo Electronico</option> 
+                      <?php
+                            $persona = ModeloUsuarios::mdlMostrarUsuarios('tusuario',null, null);
+                            foreach ($persona as $key => $value){
+                              echo '<option value="'.$value["EMAIL"].'">'.$value["EMAIL"].'</option>';
+                            }
+                          ?> 
+                   </select>
+                  </div> 
               </div>
               
               <label>Empresa:</label>
@@ -139,8 +145,16 @@
                             }
                           ?>
                         </select>                  
-                    </div> 
+                  </div> 
+              </div>
+              
+              <div class="form-group">
+                <div class="input-group">
+                  <input type="hidden" name="nuevoPrincipal"  placeholder="Principal" value="0">
+                  <input type="checkbox" name="nuevoPrincipal"  placeholder="Principal" value="1"> Contacto Principal
                 </div>
+              </div>
+              
             </div>
           </div>
 
@@ -187,22 +201,22 @@
                 </div>
               </div>
 
-              <label>E-mail:</label>
+              <label>Email:</label>
               <div class="form-group">
-                <div class="input-group">
-                  <span class="input-group-addon"> <i class="fa fa-envelope-open-o"></i></span>                
-                  <input type="text" class="form-control input-lg" id="editarEmail" name="editarEmail" value="" placeholder="Email" >
-                </div>
-              </div>            
+                  <div class="input-group">
+                  <span class="input-group-addon"> <i class="fa fa-group"></i></span>
+                  <select class="form-control input-lg" name="editarEmailCE" id="editarEmailCEM" >
+                      <option value="" id="editarEmailCE"></option> 
+                      <?php
+                            $persona = ModeloUsuarios::mdlMostrarUsuarios('tusuario',null, null);
+                            foreach ($persona as $key => $value){
+                              echo '<option value="'.$value["EMAIL"].'">'.$value["EMAIL"].'</option>';
+                            }
+                          ?> 
+                   </select>
+                  </div> 
+              </div>             
               
-              <label>Principal:</label>
-              <div class="form-group">
-                <div class="input-group">
-                  <span class="input-group-addon"> <i class="fa fa-check-circle-o"></i></span>                
-                  <input type="text" class="form-control input-lg" id="editarPrincipal" name="editarPrincipal" value="" placeholder="Principal" >
-                </div>
-              </div>            
-
               <label>Empresa:</label>
               <div class="form-group">
                   <div class="input-group">
@@ -218,6 +232,11 @@
                    </select>
                   </div> 
               </div> 
+              <div class="form-group">
+                <div class="input-group">
+                    <input type="checkbox" name="editarPrincipal" id="editarPrincipal" value="1"> Contacto Principal
+                </div>
+              </div>
               
             </div>
           </div>

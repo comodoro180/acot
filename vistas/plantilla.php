@@ -89,7 +89,16 @@ PLUGINGS DE JAVASCRIPT
                   $_GET["ruta"] == "roles" ||
                   $_GET["ruta"] == "contactosEmpresa" ||
                   $_GET["ruta"] == "pedidoTipoEstado" ||
+                  $_GET["ruta"] == "pedidos" ||
+                  $_GET["ruta"] == "pedidoDetalle" ||
+                  $_GET["ruta"] == "cotizacionTipoEstado" ||
                   $_GET["ruta"] == "proveedorProductos"||
+                  $_GET["ruta"] == "proveedorTipoProducto"||
+                  $_GET["ruta"] == "cotizacionDetalleTipoEstado"||
+                  $_GET["ruta"] == "cotizaciones"||
+                  $_GET["ruta"] == "cotizacionDetalle"||
+                  $_GET["ruta"] == "ordenServicioTipoEstado"||
+                  $_GET["ruta"] == "ordenServicio"||
                   //$_GET["ruta"] == "recuperar_clave" ||
                   $_GET["ruta"] == "proveedores" ||
                   $_GET["ruta"] == "contactosProveedor" ||
@@ -139,6 +148,15 @@ PLUGINGS DE JAVASCRIPT
 <script src="vistas/js/pedidoTipoEstado.js"></script>
 <script src="vistas/js/contactosProveedor.js"></script>
 <script src="vistas/js/proveedorProducto.js"></script>
+<script src="vistas/js/cotizacionTipoEstado.js"></script>
+<script src="vistas/js/proveedorTipoProducto.js"></script>
+<script src="vistas/js/cotizacionDetalleTipoEstado.js"></script>
+<script src="vistas/js/pedidos.js"></script>
+<script src="vistas/js/pedidoDetalle.js"></script>
+<script src="vistas/js/cotizaciones.js"></script>
+<script src="vistas/js/cotizacionDetalle.js"></script>
+<script src="vistas/js/ordenServicioTipoEstado.js"></script>
+<script src="vistas/js/ordenServicio.js"></script>
 
 </body>
 </html>

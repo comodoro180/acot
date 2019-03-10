@@ -21,7 +21,7 @@ class ControladorProveedorProductos{
                     echo '<script>
                             swal({
                                     type: "success",
-                                    title: "¡La información ha sido guardadoa correctamente!",
+                                    title: "¡La información ha sido guardada correctamente!",
                                     showConfirmButton: true,
                                     confirmButtonText: "Cerrar"
 
@@ -128,7 +128,7 @@ class ControladorProveedorProductos{
 
                         swal({
                                   type: "success",
-                                  title: "El datos han sido borrado correctamente",
+                                  title: "El datos han sido borrados correctamente",
                                   showConfirmButton: true,
                                   confirmButtonText: "Cerrar"
                                   }).then(function(result){
