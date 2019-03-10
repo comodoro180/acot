@@ -183,6 +183,7 @@
                               <span>Usuarios</span>
                             </a>
                         </li>
+<!--                        
                         <li>
                             <a href="usuariosEmpresa" <?php if ($_GET["ruta"] == "usuariosEmpresa") echo 'class="AcotMenuSeleccionado"'; ?>>
                               <i class="fa fa-circle-o"></i>
@@ -195,6 +196,7 @@
                               <span>Usuarios por proveedor</span>
                             </a>
                         </li>
+-->                        
                         <li>
                             <a href="roles" <?php if ($_GET["ruta"] == "roles") echo 'class="AcotMenuSeleccionado"'; ?>>
                               <i class="fa fa-circle-o"></i>
@@ -226,6 +228,12 @@
                               <span>Empresas</span>
                             </a>
                         </li>
+                        <li>
+                            <a href="contactosEmpresa" <?php if ($_GET["ruta"] == "contactosEmpresas") echo 'class="AcotMenuSeleccionado"'; ?>>
+                              <i class="fa fa-circle-o"></i>
+                              <span>Contactos empresa</span>
+                            </a>
+                        </li>                        
                     </ul>
                 </li>
 <!--ADMISNISTRACIÓN - PROVEEDORES-->  
